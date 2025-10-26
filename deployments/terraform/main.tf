@@ -21,6 +21,14 @@ data "archive_file" "function_archive" {
   output_path = local.archive_path
 }
 
+// Secrets for the service
+resource "aws_secretsmanager_secret" "audience" {
+  name = "gloomhaven-companion-service-audience"
+}
+resource "aws_secretsmanager_secret" "issuer" {
+  name = "gloomhaven-companion-service-issuer"
+}
+
 // create the lambda function from zip file
 resource "aws_lambda_function" "gloomhaven-companion-service" {
   function_name = "gloomhaven-companion-service"
@@ -34,6 +42,38 @@ resource "aws_lambda_function" "gloomhaven-companion-service" {
 
   runtime = "provided.al2023"
 }
+resource "aws_lambda_function_url" "gloomhaven-companion-service" {
+  function_name      = aws_lambda_function.gloomhaven-companion-service.id
+  authorization_type = "NONE"
+  cors {
+    allow_origins = ["*"]
+  }
+}
+
+// This is the target permission that needs to be added to the function's policy 
+// However, there is no way to add the Condition in terraform.
+// For now the policy is added manually to the function.
+// {
+//   "Sid": "FunctionURLAllowInvokeAction",
+//   "Effect": "Allow",
+//   "Principal": "*",
+//   "Action": "lambda:InvokeFunction",
+//   "Resource": "arn:aws:lambda:us-east-1:675101127982:function:gloomhaven-companion-service",
+//   "Condition": {
+//     "Bool": {
+//       "lambda:InvokedViaFunctionUrl": "true"
+//     }
+//   }
+// }
+// resource "aws_lambda_permission" "allow_public_url_invocation" {
+//   statement_id = "FunctionURLAllowInvokeAction"
+//   action       = "lambda:InvokeFunction"
+//   function_name = aws_lambda_function.gloomhaven-companion-service.function_name
+//   principal     = "*"
+// 
+//   depends_on = [aws_lambda_function_url.gloomhaven-companion-service]
+// }
+
 
 resource "aws_cloudwatch_log_group" "gloomhaven-companion-service" {
   name = "/aws/lambda/${aws_lambda_function.gloomhaven-companion-service.function_name}"
