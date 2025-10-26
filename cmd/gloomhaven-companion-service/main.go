@@ -4,6 +4,7 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -11,12 +12,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+var app *fiber.App
 var fiberLambda *fiberadapter.FiberLambda
 
 // init the Fiber Server
 func init() {
-	log.Printf("Fiber cold start")
-	var app *fiber.App
 	app = fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
@@ -33,7 +33,11 @@ func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.API
 }
 
 func main() {
-	// Make the handler available for Remote Procedure Call by AWS Lambda
-	lambda.Start(Handler)
+	localServicePort := os.Getenv("LOCAL_SERVICE_PORT")
+	if localServicePort == "" {
+		lambda.Start(Handler)
+	} else {
+		// Run the service locally without the Lambda wrapper.
+		log.Fatal(app.Listen(":" + localServicePort))
+	}
 }
-

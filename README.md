@@ -2,9 +2,6 @@
 
 Hopefully I can make something to clear up some table space while playing Gloomhaven 2E.
 
-# Deploy to AWS
+# Local Development
 
-```sh
-terraform -chdir=./deployments/terraform init
-terraform -chdir=./deployments/terraform apply
-```
+Use the scripts in the `scripts` directory. They are pretty self explanatory.
