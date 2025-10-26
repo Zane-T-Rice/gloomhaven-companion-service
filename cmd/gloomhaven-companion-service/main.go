@@ -93,7 +93,27 @@ func init() {
 			return c.Next()
 		},
 		func(c *fiber.Ctx) error {
-			return c.SendString("Hello, World 4!")
+			return c.SendString("[List of enemies]")
+		},
+	)
+
+	app.Get("/characters",
+		adaptor.HTTPMiddleware(ensurevalidtoken.EnsureValidToken()),
+		func(c *fiber.Ctx) error {
+			log.Println("Starting /characters")
+			token := c.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+
+			claims := token.CustomClaims.(*ensurevalidtoken.CustomClaims)
+			if !claims.HasScope("read:characters") {
+				c.Response().SetStatusCode(fasthttp.StatusForbidden)
+				c.Write([]byte(`{"message":"Insufficient scope."}`))
+				return nil
+			}
+
+			return c.Next()
+		},
+		func(c *fiber.Ctx) error {
+			return c.SendString("[List of characters]")
 		},
 	)
 
@@ -123,8 +143,6 @@ func convertLambdaFunctionURLRequestToAPIGatewayProxyRequest(
 
 // Handler will deal with Fiber working with Lambda
 func Handler(ctx context.Context, req events.LambdaFunctionURLRequest) (events.APIGatewayProxyResponse, error) {
-	// func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	// If no name is provided in the HTTP request body, throw an error
 	apiGatewayProxyRequest := convertLambdaFunctionURLRequestToAPIGatewayProxyRequest(req)
 	return fiberLambda.ProxyWithContext(ctx, apiGatewayProxyRequest)
 }
