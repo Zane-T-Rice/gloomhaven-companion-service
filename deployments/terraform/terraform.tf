@@ -1,7 +1,14 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 terraform {
+
+  # These values have to be hardcoded and Terraform cannot generate this S3 bucket
+  # as well as use it as a state storage device. The S3 bucket has versioning
+  # turned on to allow rollbacks of Terraform state.
+  backend "s3" {
+    bucket       = "zanesworld-terraform-state-files"
+    key          = "gloomhaven-companion-service/terraform.tfstate"
+    region       = "us-east-1"
+    use_lockfile = true
+  }
 
   required_providers {
     aws = {

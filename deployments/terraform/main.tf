@@ -1,12 +1,9 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 provider "aws" {
   region = var.aws_region
 
   default_tags {
     tags = {
-      zanesworld = "gloomhaven-companion"
+      zanesworld = "gloomhaven-companion-service"
     }
   }
 }
@@ -17,17 +14,8 @@ data "aws_iam_role" "lambda_exec" {
   name = "AWSLambdaBasicExecutionRole"
 }
 
-// build the binary for the lambda function in a specified path
-resource "null_resource" "function_binary" {
-  provisioner "local-exec" {
-    command = "GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ${local.binary_path} ${local.src_path}"
-  }
-}
-
 // zip the binary, as we can use only zip files to AWS lambda
 data "archive_file" "function_archive" {
-  depends_on = [null_resource.function_binary]
-
   type        = "zip"
   source_file = local.binary_path
   output_path = local.archive_path
