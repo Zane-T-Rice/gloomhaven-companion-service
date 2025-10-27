@@ -44,7 +44,7 @@ func setEnvironmentVariable(secretName string, environmentVariableName string, s
 		log.Fatal(err.Error())
 	}
 
-	audienceSecret := Secret{}
-	json.Unmarshal([]byte(*result.SecretString), &audienceSecret)
-	os.Setenv(environmentVariableName, audienceSecret.Secret)
+	secret := Secret{}
+	json.Unmarshal([]byte(*result.SecretString), &secret)
+	os.Setenv(environmentVariableName, secret.Secret)
 }
