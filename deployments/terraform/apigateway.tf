@@ -89,12 +89,3 @@ resource "aws_api_gateway_stage" "prod" {
   # optional: enable access logging or settings here
 }
 
-output "api_rest_api_id" {
-  description = "API Gateway REST API id"
-  value       = aws_api_gateway_rest_api.gloomhaven_api.id
-}
-
-output "api_invoke_url" {
-  description = "Invoke URL for the API Gateway (execute-api)"
-  value       = "https://${aws_api_gateway_rest_api.gloomhaven_api.id}.execute-api.${var.aws_region}.amazonaws.com/${aws_api_gateway_stage.prod.stage_name}"
-}
