@@ -40,7 +40,14 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	dynamoDbClient = dynamodb.NewFromConfig(config)
+
+	if os.Getenv("LOCAL_SERVICE_PORT") == "" {
+		dynamoDbClient = dynamodb.NewFromConfig(config)
+	} else {
+		dynamoDbClient = dynamodb.NewFromConfig(config, func(o *dynamodb.Options) {
+			o.BaseEndpoint = aws.String("http://localhost:8000/")
+		})
+	}
 
 	app = fiber.New()
 
