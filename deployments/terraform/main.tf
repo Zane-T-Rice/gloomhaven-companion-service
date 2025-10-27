@@ -48,6 +48,3 @@ resource "aws_cloudwatch_log_group" "gloomhaven-companion-service" {
 
   retention_in_days = 30
 }
-
-
-
