@@ -98,5 +98,5 @@ resource "aws_api_gateway_base_path_mapping" "gloomhaven_companion_service" {
   api_id      = aws_api_gateway_rest_api.gloomhaven_companion_service.id
   stage_name  = aws_api_gateway_stage.prod.stage_name
   domain_name = data.aws_api_gateway_domain_name.domain_name.domain_name
-  base_path = aws_lambda_function.gloomhaven-companion-service.function_name
+  base_path   = aws_lambda_function.gloomhaven-companion-service.function_name
 }
