@@ -1,6 +1,6 @@
 // API Gateway for the gloomhaven-companion-service Lambda
-resource "aws_api_gateway_rest_api" "gloomhaven_api" {
-  name        = "gloomhaven-companion-api"
+resource "aws_api_gateway_rest_api" "gloomhaven_companion_service" {
+  name        = "gloomhaven-companion-service"
   description = "REST API for gloomhaven companion service backed by Lambda"
 
   endpoint_configuration {
@@ -10,15 +10,15 @@ resource "aws_api_gateway_rest_api" "gloomhaven_api" {
 
 # Root ANY method to proxy the root path /
 resource "aws_api_gateway_method" "root_any" {
-  rest_api_id   = aws_api_gateway_rest_api.gloomhaven_api.id
-  resource_id   = aws_api_gateway_rest_api.gloomhaven_api.root_resource_id
+  rest_api_id   = aws_api_gateway_rest_api.gloomhaven_companion_service.id
+  resource_id   = aws_api_gateway_rest_api.gloomhaven_companion_service.root_resource_id
   http_method   = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "root_lambda" {
-  rest_api_id = aws_api_gateway_rest_api.gloomhaven_api.id
-  resource_id = aws_api_gateway_rest_api.gloomhaven_api.root_resource_id
+  rest_api_id = aws_api_gateway_rest_api.gloomhaven_companion_service.id
+  resource_id = aws_api_gateway_rest_api.gloomhaven_companion_service.root_resource_id
   http_method = aws_api_gateway_method.root_any.http_method
 
   integration_http_method = "POST"
@@ -28,13 +28,13 @@ resource "aws_api_gateway_integration" "root_lambda" {
 
 # Proxy resource to route all nested paths
 resource "aws_api_gateway_resource" "proxy" {
-  rest_api_id = aws_api_gateway_rest_api.gloomhaven_api.id
-  parent_id   = aws_api_gateway_rest_api.gloomhaven_api.root_resource_id
+  rest_api_id = aws_api_gateway_rest_api.gloomhaven_companion_service.id
+  parent_id   = aws_api_gateway_rest_api.gloomhaven_companion_service.root_resource_id
   path_part   = "{proxy+}"
 }
 
 resource "aws_api_gateway_method" "proxy_any" {
-  rest_api_id   = aws_api_gateway_rest_api.gloomhaven_api.id
+  rest_api_id   = aws_api_gateway_rest_api.gloomhaven_companion_service.id
   resource_id   = aws_api_gateway_resource.proxy.id
   http_method   = "ANY"
   authorization = "NONE"
@@ -45,7 +45,7 @@ resource "aws_api_gateway_method" "proxy_any" {
 }
 
 resource "aws_api_gateway_integration" "proxy_lambda" {
-  rest_api_id = aws_api_gateway_rest_api.gloomhaven_api.id
+  rest_api_id = aws_api_gateway_rest_api.gloomhaven_companion_service.id
   resource_id = aws_api_gateway_resource.proxy.id
   http_method = aws_api_gateway_method.proxy_any.http_method
 
@@ -60,17 +60,17 @@ resource "aws_lambda_permission" "allow_api_gateway" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.gloomhaven-companion-service.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_rest_api.gloomhaven_api.execution_arn}/*/*"
+  source_arn    = "${aws_api_gateway_rest_api.gloomhaven_companion_service.execution_arn}/*/*"
 }
 
 # Deployment and stage
 resource "aws_api_gateway_deployment" "gloomhaven_deployment" {
-  rest_api_id = aws_api_gateway_rest_api.gloomhaven_api.id
+  rest_api_id = aws_api_gateway_rest_api.gloomhaven_companion_service.id
 
   # redeploy when the API definition changes
   triggers = {
     redeploy = sha1(jsonencode({
-      resources = aws_api_gateway_rest_api.gloomhaven_api
+      resources = aws_api_gateway_rest_api.gloomhaven_companion_service
     }))
   }
 
@@ -83,33 +83,20 @@ resource "aws_api_gateway_deployment" "gloomhaven_deployment" {
 
 resource "aws_api_gateway_stage" "prod" {
   stage_name    = "prod"
-  rest_api_id   = aws_api_gateway_rest_api.gloomhaven_api.id
+  rest_api_id   = aws_api_gateway_rest_api.gloomhaven_companion_service.id
   deployment_id = aws_api_gateway_deployment.gloomhaven_deployment.id
 
   # optional: enable access logging or settings here
 }
 
-// Custom domain for the API Gateway
-data "aws_acm_certificate" "issued" {
-  domain   = "api.zanesworld.click"
-  statuses = ["AMAZON_ISSUED"]
-}
-
-resource "aws_api_gateway_domain_name" "custom" {
+data "aws_api_gateway_domain_name" "domain_name" {
   domain_name = "api.zanesworld.click"
-
-  regional_certificate_arn = data.aws_acm_certificate.issued.arn
-
-  endpoint_configuration {
-    types = ["REGIONAL"]
-  }
-
-  security_policy = "TLS_1_2"
 }
 
-resource "aws_api_gateway_base_path_mapping" "custom_mapping" {
-  domain_name = aws_api_gateway_domain_name.custom.domain_name
-  api_id      = aws_api_gateway_rest_api.gloomhaven_api.id
+// Map custom domain to the API Gateway
+resource "aws_api_gateway_base_path_mapping" "gloomhaven_companion_service" {
+  api_id      = aws_api_gateway_rest_api.gloomhaven_companion_service.id
   stage_name  = aws_api_gateway_stage.prod.stage_name
-  base_path   = "gloomhaven-companion-service"
+  domain_name = data.aws_api_gateway_domain_name.domain_name.domain_name
+  base_path = aws_lambda_function.gloomhaven-companion-service.function_name
 }
