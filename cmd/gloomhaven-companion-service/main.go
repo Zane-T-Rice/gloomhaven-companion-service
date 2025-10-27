@@ -7,6 +7,7 @@ import (
 	setenvironmentvariables "gloomhaven-companion-service/internal/set-environment-variables"
 	"log"
 	"os"
+	"strings"
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
 	"github.com/auth0/go-jwt-middleware/v2/validator"
@@ -70,29 +71,11 @@ func init() {
 	fiberLambda = fiberadapter.New(app)
 }
 
-// I need this hideous function becuase fiberLambda only works with
-// APIGatewayProxyRequest/APIGatewayProxyResponse and I am using
-// a Lambda function url at the moment.
-// func convertLambdaFunctionURLRequestToAPIGatewayProxyRequest(
-// 	lfurlReq events.LambdaFunctionURLRequest,
-// ) events.APIGatewayProxyRequest {
-// 	apiGatewayReq := events.APIGatewayProxyRequest{
-// 		Path:            lfurlReq.RawPath,
-// 		HTTPMethod:      lfurlReq.RequestContext.HTTP.Method,
-// 		Headers:         lfurlReq.Headers,
-// 		Body:            lfurlReq.Body,
-// 		IsBase64Encoded: lfurlReq.IsBase64Encoded,
-// 	}
-//
-// 	// Add query string parameters
-// 	apiGatewayReq.QueryStringParameters = make(map[string]string)
-// 	maps.Copy(apiGatewayReq.QueryStringParameters, lfurlReq.QueryStringParameters)
-//
-// 	return apiGatewayReq
-// }
-
 // Handler will deal with Fiber working with Lambda
 func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	// I cannot figure out how to prevent API Gateway from including the base path
+	// in the request path, so we manually strip it here.
+	req.Path, _ = strings.CutPrefix(req.Path, "/gloomhaven-companion-service")
 	return fiberLambda.ProxyWithContext(ctx, req)
 }
 
