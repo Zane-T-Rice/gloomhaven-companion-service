@@ -17,14 +17,30 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor" // or v3
 	"github.com/valyala/fasthttp"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
 var app *fiber.App
 var fiberLambda *fiberadapter.FiberLambda
+var dynamoDbClient *dynamodb.Client
+
+type Item struct {
+	Id     string `dynamodbav:"id"`
+	Entity string `dynamodbav:"entity"`
+}
 
 // init the Fiber Server
 func init() {
 	setenvironmentvariables.SetEnvironmentVariables()
+	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	dynamoDbClient = dynamodb.NewFromConfig(config)
 
 	app = fiber.New()
 
@@ -44,6 +60,24 @@ func init() {
 			return c.Next()
 		},
 		func(c *fiber.Ctx) error {
+			itemDTO := Item{
+				Id:     "enemy1",
+				Entity: "#ENEMY",
+			}
+
+			tableName := "gloomhaven-companion-service"
+
+			item, err := attributevalue.MarshalMap(itemDTO)
+			if err != nil {
+				panic(err)
+			}
+			_, err = dynamoDbClient.PutItem(context.TODO(), &dynamodb.PutItemInput{
+				TableName: aws.String(tableName), Item: item,
+			})
+			if err != nil {
+				log.Printf("Couldn't add item to table. Here's why: %v\n", err)
+				return err
+			}
 			return c.SendString("[List of enemies]")
 		},
 	)
