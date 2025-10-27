@@ -74,6 +74,10 @@ resource "aws_api_gateway_deployment" "gloomhaven_deployment" {
     }))
   }
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
   depends_on = [aws_api_gateway_integration.proxy_lambda, aws_api_gateway_integration.root_lambda]
 }
 
