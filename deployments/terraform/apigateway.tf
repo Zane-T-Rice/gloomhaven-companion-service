@@ -89,3 +89,27 @@ resource "aws_api_gateway_stage" "prod" {
   # optional: enable access logging or settings here
 }
 
+// Custom domain for the API Gateway
+data "aws_acm_certificate" "issued" {
+  domain   = "api.zanesworld.click"
+  statuses = ["AMAZON_ISSUED"]
+}
+
+resource "aws_api_gateway_domain_name" "custom" {
+  domain_name = "api.zanesworld.click"
+
+  regional_certificate_arn = data.aws_acm_certificate.issued.arn
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+
+  security_policy = "TLS_1_2"
+}
+
+resource "aws_api_gateway_base_path_mapping" "custom_mapping" {
+  domain_name = aws_api_gateway_domain_name.custom.domain_name
+  api_id      = aws_api_gateway_rest_api.gloomhaven_api.id
+  stage_name  = aws_api_gateway_stage.prod.stage_name
+  base_path   = "gloomhaven-companion-service"
+}
