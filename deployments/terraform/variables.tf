@@ -13,7 +13,10 @@ variable "dynamodb_table_name" {
 }
 
 locals {
-  archive_path = "../../dist/gloomhaven-companion-service.zip"
-  binary_name  = "bootstrap"
-  binary_path  = "../../dist/bootstrap"
+  gloomhaven_companion_service_archive_path           = "../../dist/gloomhaven-companion-service/gloomhaven-companion-service.zip"
+  gloomhaven_companion_service_binary_name            = "bootstrap"
+  gloomhaven_companion_service_binary_path            = "../../dist/gloomhaven-companion-service/bootstrap"
+  gloomahven_companion_service_websocket_archive_path = "../../dist/gloomhaven-companion-service-websocket/gloomhaven-companion-service-websocket.zip"
+  gloomahven_companion_service_websocket_binary_name  = "bootstrap"
+  gloomahven_companion_service_websocket_binary_path  = "../../dist/gloomhaven-companion-service-websocket/bootstrap"
 }
