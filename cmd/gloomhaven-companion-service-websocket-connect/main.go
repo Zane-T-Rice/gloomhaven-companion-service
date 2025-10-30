@@ -13,6 +13,8 @@ import (
 )
 
 func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyRequest) (events.APIGatewayCustomAuthorizerResponse, error) {
+	log.Printf("Handling websocket connect request")
+
 	setenvironmentvariables.SetEnvironmentVariables()
 
 	// Extract the authorization token and scenarioId from the request
