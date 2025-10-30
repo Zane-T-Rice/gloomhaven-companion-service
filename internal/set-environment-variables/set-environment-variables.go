@@ -30,7 +30,7 @@ func SetEnvironmentVariables() {
 
 		setEnvironmentVariable("gloomhaven-companion-service-audience", "AUDIENCE", secretManagerClient)
 		setEnvironmentVariable("gloomhaven-companion-service-issuer", "ISSUER", secretManagerClient)
-		setEnvironmentVariable("gloomhaven-companion-service-url", "URL", secretManagerClient)
+		setEnvironmentVariable("gloomhaven-companion-service-url", "GLOOMHAVEN_COMPANION_SERVICE_URL", secretManagerClient)
 	}
 }
 

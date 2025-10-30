@@ -13,10 +13,13 @@ variable "dynamodb_table_name" {
 }
 
 locals {
-  gloomhaven_companion_service_archive_path           = "../../dist/gloomhaven-companion-service/gloomhaven-companion-service.zip"
-  gloomhaven_companion_service_binary_name            = "bootstrap"
-  gloomhaven_companion_service_binary_path            = "../../dist/gloomhaven-companion-service/bootstrap"
-  gloomahven_companion_service_websocket_archive_path = "../../dist/gloomhaven-companion-service-websocket/gloomhaven-companion-service-websocket.zip"
-  gloomahven_companion_service_websocket_binary_name  = "bootstrap"
-  gloomahven_companion_service_websocket_binary_path  = "../../dist/gloomhaven-companion-service-websocket/bootstrap"
+  gloomhaven_companion_service_archive_path                   = "../../dist/gloomhaven-companion-service/gloomhaven-companion-service.zip"
+  gloomhaven_companion_service_binary_name                    = "bootstrap"
+  gloomhaven_companion_service_binary_path                    = "../../dist/gloomhaven-companion-service/bootstrap"
+  gloomhaven_companion_service_websocket_connect_archive_path = "../../dist/gloomhaven-companion-service-websocket-connect/gloomhaven-companion-service-websocket-connect.zip"
+  gloomhaven_companion_service_websocket_connect_binary_name  = "bootstrap"
+  gloomhaven_companion_service_websocket_connect_binary_path  = "../../dist/gloomhaven-companion-service-websocket-connect/bootstrap"
+  gloomhaven_companion_service_websocket_default_archive_path = "../../dist/gloomhaven-companion-service-websocket-default/gloomhaven-companion-service-websocket-default.zip"
+  gloomhaven_companion_service_websocket_default_binary_name  = "bootstrap"
+  gloomhaven_companion_service_websocket_default_binary_path  = "../../dist/gloomhaven-companion-service-websocket-default/bootstrap"
 }
