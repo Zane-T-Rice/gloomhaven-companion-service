@@ -29,15 +29,6 @@ resource "aws_apigatewayv2_integration" "disconnect_integration" {
   integration_method = "POST"
 }
 
-
-// resource "aws_apigatewayv2_authorizer" "lambda_request_authorizer" {
-//   api_id                            = aws_apigatewayv2_api.websocket_api.id
-//   authorizer_type                   = "REQUEST"
-//   name                              = "websocket-lambda-request-authorizer"
-//   authorizer_uri                    = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${aws_lambda_function.gloomhaven-companion-service-websocket-connect.arn}/invocations"
-//   identity_sources                  = ["route.request.header.Authorization"]
-// }
-
 resource "aws_apigatewayv2_route" "connect" {
   api_id    = aws_apigatewayv2_api.websocket_api.id
   route_key = "$connect"
@@ -66,24 +57,6 @@ resource "aws_apigatewayv2_route" "disconnect" {
   target = "integrations/${aws_apigatewayv2_integration.disconnect_integration.id}"
 }
 
-
-
-// resource "aws_lambda_permission" "allow_apigw_invoke_main" {
-// 	statement_id  = "AllowExecutionFromWebSocketAPIGWMain"
-// 	action        = "lambda:InvokeFunction"
-// 	function_name = aws_lambda_function.gloomhaven-companion-service.function_name
-// 	principal     = "apigateway.amazonaws.com"
-// 	source_arn    = "${aws_apigatewayv2_api.websocket_api.execution_arn}/*/*"
-// }
-// 
-// resource "aws_lambda_permission" "allow_apigw_invoke_authorizer" {
-// 	statement_id  = "AllowExecutionFromWebSocketAPIGWAuthorizer"
-// 	action        = "lambda:InvokeFunction"
-// 	function_name = aws_lambda_function.gloomhaven-companion-service-websocket.function_name
-// 	principal     = "apigateway.amazonaws.com"
-// 	source_arn    = "${aws_apigatewayv2_api.websocket_api.execution_arn}/*/*"
-// }
-
 resource "aws_apigatewayv2_deployment" "websocket_deployment" {
   api_id = aws_apigatewayv2_api.websocket_api.id
 
@@ -105,4 +78,16 @@ resource "aws_apigatewayv2_stage" "prod" {
   api_id        = aws_apigatewayv2_api.websocket_api.id
   name          = "prod"
   deployment_id = aws_apigatewayv2_deployment.websocket_deployment.id
+}
+
+data "aws_api_gateway_domain_name" "ws_domain_name" {
+  domain_name = "ws.zanesworld.click"
+}
+
+// Map custom domain to the API Gateway
+resource "aws_apigatewayv2_api_mapping" "gloomhaven_companion_service_ws" {
+  api_id          = aws_apigatewayv2_api.websocket_api.id
+  stage           = aws_apigatewayv2_stage.prod.name
+  domain_name     = data.aws_api_gateway_domain_name.ws_domain_name.domain_name
+  api_mapping_key = aws_lambda_function.gloomhaven-companion-service.function_name
 }
