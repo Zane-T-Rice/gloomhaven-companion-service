@@ -3,6 +3,7 @@ package utils
 import (
 	"context"
 	"encoding/json"
+	"gloomhaven-companion-service/internal/constants"
 	"log"
 	"os"
 
@@ -27,10 +28,11 @@ func SetEnvironmentVariables() {
 
 		secretManagerClient := secretsmanager.NewFromConfig(config)
 
-		setEnvironmentVariable("gloomhaven-companion-service-audience", "AUDIENCE", secretManagerClient)
-		setEnvironmentVariable("gloomhaven-companion-service-issuer", "ISSUER", secretManagerClient)
-		setEnvironmentVariable("gloomhaven-companion-service-url", "GLOOMHAVEN_COMPANION_SERVICE_URL", secretManagerClient)
-		setEnvironmentVariable("gloomhaven-companion-service-website-domain", "WEBSITE_DOMAIN", secretManagerClient)
+		setEnvironmentVariable(constants.AUDIENCE_SECRET_NAME, constants.AUDIENCE, secretManagerClient)
+		setEnvironmentVariable(constants.ISSUER_SECRET_NAME, constants.ISSUER, secretManagerClient)
+		setEnvironmentVariable(constants.URL_SECRET_NAME, constants.GLOOMHAVEN_COMPANION_SERVICE_URL, secretManagerClient)
+		setEnvironmentVariable(constants.WEBSITE_DOMAIN_SECRET_NAME, constants.WEBSITE_DOMAIN, secretManagerClient)
+		setEnvironmentVariable(constants.API_GATEWAY_BASE_PATH_SECRET_NAME, constants.API_GATEWAY_BASE_PATH, secretManagerClient)
 	}
 }
 
