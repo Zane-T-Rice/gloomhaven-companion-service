@@ -5,7 +5,6 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
-	"slices"
 	"strings"
 
 	"github.com/google/uuid"
@@ -16,24 +15,6 @@ type CampaignsService struct {
 }
 
 func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
-	queryItems := []types.CampaignItem{}
-	s.DynamoDB.Query(
-		constants.PARENT,
-		constants.ROOT,
-		constants.ENTITY,
-		constants.CAMPAIGN,
-		nil,
-		&queryItems,
-	)
-	campaigns := []dto.Campaign{}
-	for _, item := range queryItems {
-		campaigns = append(campaigns, dto.Campaign{
-			Parent: item.Parent,
-			Entity: item.Entity,
-			Name:   item.Name,
-		})
-	}
-
 	player := types.PlayerItem{}
 	if err := s.DynamoDB.GetItem(
 		constants.PARENT,
@@ -45,10 +26,22 @@ func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
 		return nil, err
 	}
 
-	campaigns = utils.Filter(campaigns, func(c dto.Campaign) bool {
-		campaignId := strings.Split(c.Entity, constants.SEPERATOR)[2]
-		return slices.Contains(player.CampaignIds, campaignId)
-	})
+	campaigns := []dto.Campaign{}
+	for _, campaignId := range player.CampaignIds {
+		item := types.CampaignItem{}
+		s.DynamoDB.GetItem(
+			constants.PARENT,
+			constants.ROOT,
+			constants.ENTITY,
+			constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+			&item,
+		)
+		campaigns = append(campaigns, dto.Campaign{
+			Parent: item.Parent,
+			Entity: item.Entity,
+			Name:   item.Name,
+		})
+	}
 
 	return campaigns, nil
 }
