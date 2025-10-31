@@ -70,7 +70,7 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 			Data:         []byte(scenarioId),
 		})
 		if err != nil {
-			log.Printf("Error posting to connection %s: %v", connectionId, err)
+			log.Printf("Error posting to connection %s: %v", *connectionId, err)
 			// Handle errors, e.g., remove invalid connection ID from store
 		}
 	}
