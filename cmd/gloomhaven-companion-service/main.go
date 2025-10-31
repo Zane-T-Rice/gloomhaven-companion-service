@@ -3,6 +3,7 @@ package main
 
 import (
 	"context"
+	"gloomhaven-companion-service/internal/constants"
 	"gloomhaven-companion-service/internal/middlewares"
 	"gloomhaven-companion-service/internal/routers"
 	"log"
@@ -31,7 +32,7 @@ func init() {
 	app = fiber.New()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: os.Getenv("WEBSITE_DOMAIN"),
+		AllowOrigins: os.Getenv(constants.WEBSITE_DOMAIN),
 	}))
 
 	// Always ensure the token is valid before doing anything.
@@ -46,12 +47,12 @@ func init() {
 func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	// I cannot figure out how to prevent API Gateway from including the base path
 	// in the request path, so we manually strip it here.
-	req.Path, _ = strings.CutPrefix(req.Path, "/gloomhaven-companion-service")
+	req.Path, _ = strings.CutPrefix(req.Path, constants.API_GATEWAY_BASE_PATH)
 	return fiberLambda.ProxyWithContext(ctx, req)
 }
 
 func main() {
-	localServicePort := os.Getenv("LOCAL_SERVICE_PORT")
+	localServicePort := os.Getenv(constants.LOCAL_SERVICE_PORT)
 	if localServicePort == "" {
 		lambda.Start(Handler)
 	} else {

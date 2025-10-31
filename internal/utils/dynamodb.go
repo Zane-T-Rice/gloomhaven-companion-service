@@ -2,6 +2,7 @@ package utils
 
 import (
 	"context"
+	"gloomhaven-companion-service/internal/constants"
 	"log"
 	"os"
 
@@ -20,11 +21,11 @@ func (db DynamoDB) ConnectToDynamoDB() {
 		log.Fatal(err)
 	}
 
-	if os.Getenv("LOCAL_SERVICE_PORT") == "" {
+	if os.Getenv(constants.LOCAL_SERVICE_PORT) == "" {
 		*db.DynamoDBClient = dynamodb.NewFromConfig(config)
 	} else {
 		*db.DynamoDBClient = dynamodb.NewFromConfig(config, func(o *dynamodb.Options) {
-			o.BaseEndpoint = aws.String("http://localhost:8000/")
+			o.BaseEndpoint = aws.String(constants.LOCAL_DATABASE_ENDPOINT)
 		})
 	}
 }

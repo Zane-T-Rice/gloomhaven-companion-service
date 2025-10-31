@@ -2,6 +2,7 @@ package middlewares
 
 import (
 	"context"
+	"gloomhaven-companion-service/internal/constants"
 	"log"
 	"net/http"
 	"net/url"
@@ -27,7 +28,7 @@ func (c CustomClaims) Validate(ctx context.Context) error {
 
 // EnsureValidToken is a middleware that will check the validity of our JWT.
 func EnsureValidToken() func(next http.Handler) http.Handler {
-	issuerURL, err := url.Parse(os.Getenv("ISSUER"))
+	issuerURL, err := url.Parse(os.Getenv(constants.ISSUER))
 	if err != nil {
 		log.Fatalf("Failed to parse the issuer url: %v", err)
 	}
@@ -38,7 +39,7 @@ func EnsureValidToken() func(next http.Handler) http.Handler {
 		provider.KeyFunc,
 		validator.RS256,
 		issuerURL.String(),
-		[]string{os.Getenv("AUDIENCE")},
+		[]string{os.Getenv(constants.AUDIENCE)},
 		validator.WithCustomClaims(
 			func() validator.CustomClaims {
 				return &CustomClaims{}

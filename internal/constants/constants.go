@@ -8,4 +8,15 @@ const (
 	// Scope Names
 	SCOPE_READ_CAMPAIGNS  = "read:campaigns"
 	SCOPE_WRITE_CAMPAIGNS = "write:campaigns"
+
+	// Environment Variable Names
+	AUDIENCE                = "AUDIENCE"
+	ISSUER                  = "ISSUER"
+	WEBSITE_DOMAIN          = "WEBSITE_DOMAIN"
+	LOCAL_SERVICE_PORT      = "LOCAL_SERVICE_PORT"
+	API_GATEWAY_BASE_PATH   = "/gloomhaven-companion-service"
+	LOCAL_DATABASE_ENDPOINT = "http://localhost:8000/"
+
+	// Route Names
+	CAMPAIGNS = "campaigns"
 )
