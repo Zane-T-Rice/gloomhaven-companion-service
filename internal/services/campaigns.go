@@ -1,19 +1,19 @@
 package services
 
 import (
-	"gloomhaven-companion-service/internal/types"
+	"gloomhaven-companion-service/internal/dto"
 
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
-type campaignsService struct {
-	List func() ([]types.Item, error)
+type CampaignsService struct {
+	DynamoDBClient *dynamodb.Client
 }
 
-func CampaignsService(dynamodbClient *dynamodb.Client) campaignsService {
-	return campaignsService{
-		List: func() ([]types.Item, error) {
-			return []types.Item{}, nil
-		},
-	}
+func (s CampaignsService) List() ([]dto.Campaign, error) {
+	return []dto.Campaign{}, nil
+}
+
+func NewCampaignsService(dynamodbClient *dynamodb.Client) CampaignsService {
+	return CampaignsService{DynamoDBClient: dynamodbClient}
 }

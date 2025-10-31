@@ -11,7 +11,7 @@ import (
 )
 
 func RegisterCampaignsRoutes(app *fiber.App, dynamodbClient *dynamodb.Client) {
-	campaignsController := controllers.CampaignsController(dynamodbClient)
+	campaignsController := controllers.NewCampaignsController(dynamodbClient)
 
 	campaign := app.Group("/campaigns")
 	campaign.Get("/",

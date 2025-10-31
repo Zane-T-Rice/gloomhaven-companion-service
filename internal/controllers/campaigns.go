@@ -7,20 +7,22 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type campaignsController struct {
-	List func(c *fiber.Ctx) error
+type CampaignsController struct {
+	CampaignsService services.CampaignsService
 }
 
-func CampaignsController(dynamodbClient *dynamodb.Client) campaignsController {
-	campaignsService := services.CampaignsService(dynamodbClient)
+func (c CampaignsController) List(cxt *fiber.Ctx) error {
+	campaigns, err := c.CampaignsService.List()
+	if err != nil {
+		return err
+	}
+	return cxt.JSON(campaigns)
+}
 
-	return campaignsController{
-		List: func(c *fiber.Ctx) error {
-			campaigns, err := campaignsService.List()
-			if err != nil {
-				return err
-			}
-			return c.JSON(campaigns)
-		},
+func NewCampaignsController(dynamodbClient *dynamodb.Client) CampaignsController {
+	campaignsService := services.NewCampaignsService(dynamodbClient)
+
+	return CampaignsController{
+		CampaignsService: campaignsService,
 	}
 }
