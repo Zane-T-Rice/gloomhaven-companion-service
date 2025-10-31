@@ -16,19 +16,17 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
-
 	utils "gloomhaven-companion-service/internal/utils"
 )
 
 var app *fiber.App
 var fiberLambda *fiberadapter.FiberLambda
-var dynamoDbClient *dynamodb.Client
 
 // init the Fiber Server
 func init() {
 	utils.SetEnvironmentVariables()
-	utils.ConnectToDynamoDB(&dynamoDbClient)
+	dynamodb := utils.NewDynamoDB()
+	dynamodb.ConnectToDynamoDB()
 
 	app = fiber.New()
 
@@ -39,7 +37,7 @@ func init() {
 	// Always ensure the token is valid before doing anything.
 	app.Use(adaptor.HTTPMiddleware(middlewares.EnsureValidToken()))
 
-	routers.RegisterCampaignsRoutes(app, dynamoDbClient)
+	routers.RegisterCampaignsRoutes(app, dynamodb)
 
 	fiberLambda = fiberadapter.New(app)
 }

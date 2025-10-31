@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"gloomhaven-companion-service/internal/services"
+	"gloomhaven-companion-service/internal/utils"
 
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -19,8 +19,8 @@ func (c CampaignsController) List(cxt *fiber.Ctx) error {
 	return cxt.JSON(campaigns)
 }
 
-func NewCampaignsController(dynamodbClient *dynamodb.Client) CampaignsController {
-	campaignsService := services.NewCampaignsService(dynamodbClient)
+func NewCampaignsController(dynamodb utils.DynamoDB) CampaignsController {
+	campaignsService := services.NewCampaignsService(dynamodb)
 
 	return CampaignsController{
 		CampaignsService: campaignsService,
