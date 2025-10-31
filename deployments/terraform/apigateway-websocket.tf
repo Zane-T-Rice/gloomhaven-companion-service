@@ -11,21 +11,21 @@ resource "aws_apigatewayv2_api" "websocket_api" {
 resource "aws_apigatewayv2_integration" "connect_integration" {
   api_id             = aws_apigatewayv2_api.websocket_api.id
   integration_type   = "AWS_PROXY"
-  integration_uri    = aws_lambda_function.gloomhaven-companion-service-websocket-connect.invoke_arn
+  integration_uri    = aws_lambda_function.gloomhaven_companion_service_websocket_connect.invoke_arn
   integration_method = "POST"
 }
 
 resource "aws_apigatewayv2_integration" "default_integration" {
   api_id             = aws_apigatewayv2_api.websocket_api.id
   integration_type   = "AWS_PROXY"
-  integration_uri    = aws_lambda_function.gloomhaven-companion-service-websocket-default.invoke_arn
+  integration_uri    = aws_lambda_function.gloomhaven_companion_service_websocket_default.invoke_arn
   integration_method = "POST"
 }
 
 resource "aws_apigatewayv2_integration" "disconnect_integration" {
   api_id             = aws_apigatewayv2_api.websocket_api.id
   integration_type   = "AWS_PROXY"
-  integration_uri    = aws_lambda_function.gloomhaven-companion-service-websocket-disconnect.invoke_arn
+  integration_uri    = aws_lambda_function.gloomhaven_companion_service_websocket_disconnect.invoke_arn
   integration_method = "POST"
 }
 
@@ -89,5 +89,5 @@ resource "aws_apigatewayv2_api_mapping" "gloomhaven_companion_service_ws" {
   api_id          = aws_apigatewayv2_api.websocket_api.id
   stage           = aws_apigatewayv2_stage.prod.name
   domain_name     = data.aws_api_gateway_domain_name.ws_domain_name.domain_name
-  api_mapping_key = aws_lambda_function.gloomhaven-companion-service.function_name
+  api_mapping_key = aws_lambda_function.gloomhaven_companion_service.function_name
 }

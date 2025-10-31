@@ -24,7 +24,7 @@ resource "aws_api_gateway_integration" "root_lambda" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.gloomhaven-companion-service.invoke_arn
+  uri                     = aws_lambda_function.gloomhaven_companion_service.invoke_arn
 }
 
 # Proxy resource to route all nested paths
@@ -52,14 +52,14 @@ resource "aws_api_gateway_integration" "proxy_lambda" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.gloomhaven-companion-service.invoke_arn
+  uri                     = aws_lambda_function.gloomhaven_companion_service.invoke_arn
 }
 
 # Allow API Gateway to invoke the Lambda
 resource "aws_lambda_permission" "allow_api_gateway" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.gloomhaven-companion-service.function_name
+  function_name = aws_lambda_function.gloomhaven_companion_service.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.gloomhaven_companion_service.execution_arn}/*/*"
 }
@@ -99,5 +99,5 @@ resource "aws_api_gateway_base_path_mapping" "gloomhaven_companion_service" {
   api_id      = aws_api_gateway_rest_api.gloomhaven_companion_service.id
   stage_name  = aws_api_gateway_stage.prod.stage_name
   domain_name = data.aws_api_gateway_domain_name.domain_name.domain_name
-  base_path   = aws_lambda_function.gloomhaven-companion-service.function_name
+  base_path   = aws_lambda_function.gloomhaven_companion_service.function_name
 }
