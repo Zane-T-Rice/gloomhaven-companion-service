@@ -42,7 +42,7 @@ func (db *DynamoDB) PutItem(item interface{}) error {
 		TableName: aws.String(constants.TABLE_NAME), Item: dynamodbItem,
 	})
 	if err != nil {
-		log.Printf("Couldn't add item to table. Here's why: %v\n", err)
+		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
 		return err
 	}
 	return nil
@@ -58,12 +58,12 @@ func (db *DynamoDB) GetItem(
 	result, err := db.DynamoDBClient.GetItem(context.TODO(), &dynamodb.GetItemInput{
 		TableName: aws.String(constants.TABLE_NAME),
 		Key: map[string]types.AttributeValue{
-			"parent": &types.AttributeValueMemberS{Value: partitionKeyValue},
-			"entity": &types.AttributeValueMemberS{Value: sortKeyValue},
+			partitionKey: &types.AttributeValueMemberS{Value: partitionKeyValue},
+			sortKey:      &types.AttributeValueMemberS{Value: sortKeyValue},
 		},
 	})
 	if err != nil {
-		log.Printf("Couldn't get item from table. Here's why: %v\n", err)
+		log.Fatalf("Couldn't get item from table. Here's why: %v\n", err)
 		return err
 	}
 	if result.Item == nil {
@@ -74,6 +74,47 @@ func (db *DynamoDB) GetItem(
 		log.Fatalf("failed to unmarshal DynamoDB item, %v", err)
 		return err
 	}
+	return nil
+}
+
+func (db *DynamoDB) Query(
+	partitionKey string,
+	partitionKeyValue string,
+	sortKey string,
+	sortKeyValue string,
+	indexName *string,
+	output any, // output must be a non-nil pointer
+) error {
+	queryInput := dynamodb.QueryInput{
+		TableName: aws.String(constants.TABLE_NAME),
+		KeyConditions: map[string]types.Condition{
+			partitionKey: {
+				ComparisonOperator: types.ComparisonOperatorEq,
+				AttributeValueList: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: partitionKeyValue},
+				},
+			},
+			sortKey: {
+				ComparisonOperator: types.ComparisonOperatorBeginsWith,
+				AttributeValueList: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: sortKeyValue},
+				},
+			},
+		},
+		IndexName: indexName,
+	}
+	result, err := db.DynamoDBClient.Query(context.TODO(), &queryInput)
+	if err != nil {
+		log.Fatalf("Couldn't get item from table. Here's why: %v\n", err)
+		return err
+	}
+
+	err = attributevalue.UnmarshalListOfMaps(result.Items, output)
+	if err != nil {
+		log.Fatalf("failed to unmarshal DynamoDB items, %v", err)
+		return err
+	}
+
 	return nil
 }
 

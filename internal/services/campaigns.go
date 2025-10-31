@@ -15,7 +15,24 @@ type CampaignsService struct {
 }
 
 func (s *CampaignsService) List() ([]dto.Campaign, error) {
-	return []dto.Campaign{}, nil
+	queryItems := []types.CampaignItem{}
+	s.DynamoDB.Query(
+		constants.PARENT,
+		constants.ROOT,
+		constants.ENTITY,
+		constants.CAMPAIGN,
+		nil,
+		&queryItems,
+	)
+	campaigns := []dto.Campaign{}
+	for _, item := range queryItems {
+		campaigns = append(campaigns, dto.Campaign{
+			Parent: item.Parent,
+			Entity: item.Entity,
+			Name:   item.Name,
+		})
+	}
+	return campaigns, nil
 }
 
 func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId string) (*dto.Campaign, error) {
@@ -36,12 +53,13 @@ func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId stri
 		return nil, err
 	}
 
-	// Also add the campaign to the list of campaigns under Player
+	// Also add the campaign to the list of the Player's campaigns.
+	// If the Player does not exist, create it.
 	player := types.PlayerItem{}
 	if err := s.DynamoDB.GetItem(
 		constants.PARENT,
 		constants.ROOT,
-		constants.PLAYER,
+		constants.ENTITY,
 		constants.PLAYER+constants.SEPERATOR+playerId,
 		&player,
 	); err != nil {
