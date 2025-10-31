@@ -6,5 +6,6 @@ const (
 	FORBIDDEN_ERROR_MESSAGE = "Insufficient scope."
 
 	// Scope Names
-	SCOPE_READ_ENEMIES = "read:enemies"
+	SCOPE_READ_CAMPAIGNS  = "read:campaigns"
+	SCOPE_WRITE_CAMPAIGNS = "write:campaigns"
 )

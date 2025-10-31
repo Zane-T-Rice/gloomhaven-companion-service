@@ -3,7 +3,8 @@ package main
 
 import (
 	"context"
-	"gloomhaven-companion-service/internal/constants"
+	"gloomhaven-companion-service/internal/middlewares"
+	"gloomhaven-companion-service/internal/routers"
 	"log"
 	"os"
 	"strings"
@@ -11,24 +12,18 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	fiberadapter "github.com/awslabs/aws-lambda-go-api-proxy/fiber"
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/adaptor" // or v3
+	"github.com/gofiber/fiber/v2" // or v3
+	"github.com/gofiber/fiber/v2/middleware/adaptor"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 
-	middleware "gloomhaven-companion-service/internal/middleware"
 	utils "gloomhaven-companion-service/internal/utils"
 )
 
 var app *fiber.App
 var fiberLambda *fiberadapter.FiberLambda
 var dynamoDbClient *dynamodb.Client
-
-type Item struct {
-	Id     string `dynamodbav:"id"`
-	Entity string `dynamodbav:"entity"`
-}
 
 // init the Fiber Server
 func init() {
@@ -41,31 +36,10 @@ func init() {
 		AllowOrigins: os.Getenv("WEBSITE_DOMAIN"),
 	}))
 
-	app.Get("/campaign",
-		adaptor.HTTPMiddleware(middleware.EnsureValidToken()),
-		middleware.HasScope(constants.SCOPE_READ_ENEMIES),
-		func(c *fiber.Ctx) error {
-			// itemDTO := Item{
-			// 	Id:     "enemy1",
-			// 	Entity: "#ENEMY",
-			// }
+	// Always ensure the token is valid before doing anything.
+	app.Use(adaptor.HTTPMiddleware(middlewares.EnsureValidToken()))
 
-			// tableName := "gloomhaven-companion-service"
-
-			// item, err := attributevalue.MarshalMap(itemDTO)
-			// if err != nil {
-			// 	panic(err)
-			// }
-			// _, err = dynamoDbClient.PutItem(context.TODO(), &dynamodb.PutItemInput{
-			// 	TableName: aws.String(tableName), Item: item,
-			// })
-			// if err != nil {
-			// 	log.Printf("Couldn't add item to table. Here's why: %v\n", err)
-			// 	return err
-			// }
-			return c.SendString("[List of enemies]")
-		},
-	)
+	routers.RegisterCampaignsRoutes(app, dynamoDbClient)
 
 	fiberLambda = fiberadapter.New(app)
 }

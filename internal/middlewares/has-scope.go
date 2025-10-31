@@ -1,4 +1,4 @@
-package middleware
+package middlewares
 
 import (
 	errors "gloomhaven-companion-service/internal/errors"
