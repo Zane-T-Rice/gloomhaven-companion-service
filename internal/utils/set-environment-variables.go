@@ -1,4 +1,4 @@
-package setenvironmentvariables
+package utils
 
 import (
 	"context"
@@ -17,7 +17,6 @@ type Secret struct {
 }
 
 func SetEnvironmentVariables() {
-	log.Println("IN SetEnvironmentVariables")
 	godotenv.Load()
 	localServicePort := os.Getenv("LOCAL_SERVICE_PORT")
 	if localServicePort == "" {
@@ -31,11 +30,11 @@ func SetEnvironmentVariables() {
 		setEnvironmentVariable("gloomhaven-companion-service-audience", "AUDIENCE", secretManagerClient)
 		setEnvironmentVariable("gloomhaven-companion-service-issuer", "ISSUER", secretManagerClient)
 		setEnvironmentVariable("gloomhaven-companion-service-url", "GLOOMHAVEN_COMPANION_SERVICE_URL", secretManagerClient)
+		setEnvironmentVariable("gloomhaven-companion-service-website-domain", "WEBSITE_DOMAIN", secretManagerClient)
 	}
 }
 
 func setEnvironmentVariable(secretName string, environmentVariableName string, svc *secretsmanager.Client) {
-	log.Println("IN setEnvironmentVariable")
 	input := &secretsmanager.GetSecretValueInput{
 		SecretId:     aws.String(secretName),
 		VersionStage: aws.String("AWSCURRENT"), // VersionStage defaults to AWSCURRENT if unspecified

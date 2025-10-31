@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	setenvironmentvariables "gloomhaven-companion-service/internal/set-environment-variables"
+	"gloomhaven-companion-service/internal/utils"
 	"io"
 	"log"
 	"net/http"
@@ -26,7 +26,7 @@ var dynamoDbClient *dynamodb.Client
 func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyRequest) (events.APIGatewayProxyResponse, error) {
 	log.Printf("Handling websocket connect request")
 
-	setenvironmentvariables.SetEnvironmentVariables()
+	utils.SetEnvironmentVariables()
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
 	if err != nil {
 		log.Fatal(err)

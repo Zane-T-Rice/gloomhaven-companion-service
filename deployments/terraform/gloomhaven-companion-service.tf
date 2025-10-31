@@ -6,7 +6,7 @@ data "archive_file" "function_archive" {
 }
 
 // create the lambda function from zip file
-resource "aws_lambda_function" "gloomhaven-companion-service" {
+resource "aws_lambda_function" "gloomhaven_companion_service" {
   function_name = "gloomhaven-companion-service"
   description   = "Backend service for the gloomhaven companion."
   role          = data.aws_iam_role.lambda_exec.arn
@@ -19,8 +19,8 @@ resource "aws_lambda_function" "gloomhaven-companion-service" {
   runtime = "provided.al2023"
 }
 
-resource "aws_cloudwatch_log_group" "gloomhaven-companion-service" {
-  name = "/aws/lambda/${aws_lambda_function.gloomhaven-companion-service.function_name}"
+resource "aws_cloudwatch_log_group" "gloomhaven_companion_service" {
+  name = "/aws/lambda/${aws_lambda_function.gloomhaven_companion_service.function_name}"
 
   retention_in_days = 30
 }

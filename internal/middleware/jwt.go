@@ -1,4 +1,4 @@
-package ensurevalidtoken
+package middleware
 
 import (
 	"context"

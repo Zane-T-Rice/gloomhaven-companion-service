@@ -3,24 +3,22 @@ package main
 
 import (
 	"context"
-	ensurevalidtoken "gloomhaven-companion-service/internal/ensure-valid-token"
-	setenvironmentvariables "gloomhaven-companion-service/internal/set-environment-variables"
+	"gloomhaven-companion-service/internal/constants"
 	"log"
 	"os"
 	"strings"
 
-	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
-	"github.com/auth0/go-jwt-middleware/v2/validator"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	fiberadapter "github.com/awslabs/aws-lambda-go-api-proxy/fiber"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor" // or v3
-	"github.com/valyala/fasthttp"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+
+	middleware "gloomhaven-companion-service/internal/middleware"
+	utils "gloomhaven-companion-service/internal/utils"
 )
 
 var app *fiber.App
@@ -34,37 +32,18 @@ type Item struct {
 
 // init the Fiber Server
 func init() {
-	setenvironmentvariables.SetEnvironmentVariables()
-	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if os.Getenv("LOCAL_SERVICE_PORT") == "" {
-		dynamoDbClient = dynamodb.NewFromConfig(config)
-	} else {
-		dynamoDbClient = dynamodb.NewFromConfig(config, func(o *dynamodb.Options) {
-			o.BaseEndpoint = aws.String("http://localhost:8000/")
-		})
-	}
+	utils.SetEnvironmentVariables()
+	utils.ConnectToDynamoDB(&dynamoDbClient)
 
 	app = fiber.New()
 
-	app.Get("/enemies",
-		adaptor.HTTPMiddleware(ensurevalidtoken.EnsureValidToken()),
-		func(c *fiber.Ctx) error {
-			log.Println("Starting /enemies")
-			token := c.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: os.Getenv("WEBSITE_DOMAIN"),
+	}))
 
-			claims := token.CustomClaims.(*ensurevalidtoken.CustomClaims)
-			if !claims.HasScope("read:enemies") {
-				c.Response().SetStatusCode(fasthttp.StatusForbidden)
-				c.Write([]byte(`{"message":"Insufficient scope."}`))
-				return nil
-			}
-
-			return c.Next()
-		},
+	app.Get("/campaign",
+		adaptor.HTTPMiddleware(middleware.EnsureValidToken()),
+		middleware.HasScope(constants.SCOPE_READ_ENEMIES),
 		func(c *fiber.Ctx) error {
 			// itemDTO := Item{
 			// 	Id:     "enemy1",
@@ -85,26 +64,6 @@ func init() {
 			// 	return err
 			// }
 			return c.SendString("[List of enemies]")
-		},
-	)
-
-	app.Get("/characters",
-		adaptor.HTTPMiddleware(ensurevalidtoken.EnsureValidToken()),
-		func(c *fiber.Ctx) error {
-			log.Println("Starting /characters")
-			token := c.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
-
-			claims := token.CustomClaims.(*ensurevalidtoken.CustomClaims)
-			if !claims.HasScope("read:characters") {
-				c.Response().SetStatusCode(fasthttp.StatusForbidden)
-				c.Write([]byte(`{"message":"Insufficient scope."}`))
-				return nil
-			}
-
-			return c.Next()
-		},
-		func(c *fiber.Ctx) error {
-			return c.SendString("[List of characters]")
 		},
 	)
 
