@@ -9,7 +9,7 @@ type CampaignsService struct {
 	DynamoDB utils.DynamoDB
 }
 
-func (s CampaignsService) List() ([]dto.Campaign, error) {
+func (s *CampaignsService) List() ([]dto.Campaign, error) {
 	return []dto.Campaign{}, nil
 }
 

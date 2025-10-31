@@ -47,7 +47,7 @@ func init() {
 func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	// I cannot figure out how to prevent API Gateway from including the base path
 	// in the request path, so we manually strip it here.
-	req.Path, _ = strings.CutPrefix(req.Path, constants.API_GATEWAY_BASE_PATH)
+	req.Path, _ = strings.CutPrefix(req.Path, os.Getenv(constants.API_GATEWAY_BASE_PATH))
 	return fiberLambda.ProxyWithContext(ctx, req)
 }
 

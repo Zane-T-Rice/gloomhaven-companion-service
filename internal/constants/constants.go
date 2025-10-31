@@ -14,8 +14,8 @@ const (
 	ISSUER                  = "ISSUER"
 	WEBSITE_DOMAIN          = "WEBSITE_DOMAIN"
 	LOCAL_SERVICE_PORT      = "LOCAL_SERVICE_PORT"
-	API_GATEWAY_BASE_PATH   = "/gloomhaven-companion-service"
-	LOCAL_DATABASE_ENDPOINT = "http://localhost:8000/"
+	API_GATEWAY_BASE_PATH   = "API_GATEWAY_BASE_PATH"
+	LOCAL_DATABASE_ENDPOINT = "LOCAL_DATABASE_ENDPOINT"
 
 	// Route Names
 	CAMPAIGNS = "campaigns"

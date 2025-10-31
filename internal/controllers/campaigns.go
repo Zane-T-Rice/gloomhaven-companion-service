@@ -11,7 +11,7 @@ type CampaignsController struct {
 	CampaignsService services.CampaignsService
 }
 
-func (c CampaignsController) List(cxt *fiber.Ctx) error {
+func (c *CampaignsController) List(cxt *fiber.Ctx) error {
 	campaigns, err := c.CampaignsService.List()
 	if err != nil {
 		return err

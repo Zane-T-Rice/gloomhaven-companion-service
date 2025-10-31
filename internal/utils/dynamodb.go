@@ -12,20 +12,20 @@ import (
 )
 
 type DynamoDB struct {
-	DynamoDBClient **dynamodb.Client
+	DynamoDBClient *dynamodb.Client
 }
 
-func (db DynamoDB) ConnectToDynamoDB() {
+func (db *DynamoDB) ConnectToDynamoDB() {
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	if os.Getenv(constants.LOCAL_SERVICE_PORT) == "" {
-		*db.DynamoDBClient = dynamodb.NewFromConfig(config)
+		db.DynamoDBClient = dynamodb.NewFromConfig(config)
 	} else {
-		*db.DynamoDBClient = dynamodb.NewFromConfig(config, func(o *dynamodb.Options) {
-			o.BaseEndpoint = aws.String(constants.LOCAL_DATABASE_ENDPOINT)
+		db.DynamoDBClient = dynamodb.NewFromConfig(config, func(o *dynamodb.Options) {
+			o.BaseEndpoint = aws.String(os.Getenv(constants.LOCAL_DATABASE_ENDPOINT))
 		})
 	}
 }

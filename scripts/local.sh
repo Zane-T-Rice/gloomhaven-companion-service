@@ -1,2 +1,2 @@
 scripts/build.sh
-./dist/bootstrap
+./dist/gloomhaven-companion-service/bootstrap
