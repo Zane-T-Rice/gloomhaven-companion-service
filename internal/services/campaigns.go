@@ -5,6 +5,7 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"slices"
 	"strings"
 
 	"github.com/google/uuid"
@@ -14,7 +15,7 @@ type CampaignsService struct {
 	DynamoDB utils.DynamoDB
 }
 
-func (s *CampaignsService) List() ([]dto.Campaign, error) {
+func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
 	queryItems := []types.CampaignItem{}
 	s.DynamoDB.Query(
 		constants.PARENT,
@@ -32,6 +33,23 @@ func (s *CampaignsService) List() ([]dto.Campaign, error) {
 			Name:   item.Name,
 		})
 	}
+
+	player := types.PlayerItem{}
+	if err := s.DynamoDB.GetItem(
+		constants.PARENT,
+		constants.ROOT,
+		constants.ENTITY,
+		constants.PLAYER+constants.SEPERATOR+playerId,
+		&player,
+	); err != nil {
+		return nil, err
+	}
+
+	campaigns = utils.Filter(campaigns, func(c dto.Campaign) bool {
+		campaignId := strings.Split(c.Entity, constants.SEPERATOR)[2]
+		return slices.Contains(player.CampaignIds, campaignId)
+	})
+
 	return campaigns, nil
 }
 

@@ -15,7 +15,9 @@ type CampaignsController struct {
 }
 
 func (c *CampaignsController) List(cxt *fiber.Ctx) error {
-	campaigns, err := c.CampaignsService.List()
+	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+	playerId := token.RegisteredClaims.Subject
+	campaigns, err := c.CampaignsService.List(playerId)
 	if err != nil {
 		return err
 	}
