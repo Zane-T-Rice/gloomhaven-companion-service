@@ -64,10 +64,11 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 				"entity": item["entity"],
 			},
 		})
-	}
-	if err != nil {
-		log.Printf("Couldn't delete item from table. Here's why: %v\n", err)
-		return events.APIGatewayProxyResponse{StatusCode: http.StatusInternalServerError}, err
+		if err != nil {
+			log.Printf("Couldn't delete item from table. Here's why: %v\n", err)
+		} else {
+			log.Printf("Deleted connection id %s from scenario %s", request.RequestContext.ConnectionID, scenarioId)
+		}
 	}
 
 	return events.APIGatewayProxyResponse{StatusCode: http.StatusOK}, nil
