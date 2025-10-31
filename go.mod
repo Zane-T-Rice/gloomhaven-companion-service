@@ -13,6 +13,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.39.9
 	github.com/awslabs/aws-lambda-go-api-proxy v0.16.2
 	github.com/gofiber/fiber/v2 v2.52.9
+	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1
 )
 
@@ -31,7 +32,6 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.35.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.38.9 // indirect
 	github.com/aws/smithy-go v1.23.1 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
