@@ -14,4 +14,11 @@ resource "aws_dynamodb_table" "gloomhaven-companion-service" {
     name = "entity"
     type = "S"
   }
+
+  global_secondary_index {
+    name            = "entity-index"
+    hash_key        = "entity"
+    range_key       = "id"
+    projection_type = "KEYS_ONLY" # Or "KEYS_ONLY", "INCLUDE"
+  }
 }

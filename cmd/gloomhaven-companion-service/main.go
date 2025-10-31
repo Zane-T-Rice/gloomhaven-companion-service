@@ -20,7 +20,6 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
@@ -67,24 +66,24 @@ func init() {
 			return c.Next()
 		},
 		func(c *fiber.Ctx) error {
-			itemDTO := Item{
-				Id:     "enemy1",
-				Entity: "#ENEMY",
-			}
+			// itemDTO := Item{
+			// 	Id:     "enemy1",
+			// 	Entity: "#ENEMY",
+			// }
 
-			tableName := "gloomhaven-companion-service"
+			// tableName := "gloomhaven-companion-service"
 
-			item, err := attributevalue.MarshalMap(itemDTO)
-			if err != nil {
-				panic(err)
-			}
-			_, err = dynamoDbClient.PutItem(context.TODO(), &dynamodb.PutItemInput{
-				TableName: aws.String(tableName), Item: item,
-			})
-			if err != nil {
-				log.Printf("Couldn't add item to table. Here's why: %v\n", err)
-				return err
-			}
+			// item, err := attributevalue.MarshalMap(itemDTO)
+			// if err != nil {
+			// 	panic(err)
+			// }
+			// _, err = dynamoDbClient.PutItem(context.TODO(), &dynamodb.PutItemInput{
+			// 	TableName: aws.String(tableName), Item: item,
+			// })
+			// if err != nil {
+			// 	log.Printf("Couldn't add item to table. Here's why: %v\n", err)
+			// 	return err
+			// }
 			return c.SendString("[List of enemies]")
 		},
 	)
