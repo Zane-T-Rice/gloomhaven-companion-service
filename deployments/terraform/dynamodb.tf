@@ -2,11 +2,11 @@
 resource "aws_dynamodb_table" "gloomhaven_companion_service" {
   name         = var.dynamodb_table_name
   billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "id"
+  hash_key     = "parent"
   range_key    = "entity"
 
   attribute {
-    name = "id"
+    name = "parent"
     type = "S"
   }
 
@@ -18,7 +18,7 @@ resource "aws_dynamodb_table" "gloomhaven_companion_service" {
   global_secondary_index {
     name            = "entity-index"
     hash_key        = "entity"
-    range_key       = "id"
+    range_key       = "parent"
     projection_type = "KEYS_ONLY" # Or "KEYS_ONLY", "INCLUDE"
   }
 }

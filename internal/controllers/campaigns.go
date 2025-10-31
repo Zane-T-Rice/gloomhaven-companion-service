@@ -2,8 +2,11 @@ package controllers
 
 import (
 	"gloomhaven-companion-service/internal/services"
+	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
 
+	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
+	"github.com/auth0/go-jwt-middleware/v2/validator"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -17,6 +20,20 @@ func (c *CampaignsController) List(cxt *fiber.Ctx) error {
 		return err
 	}
 	return cxt.JSON(campaigns)
+}
+
+func (c *CampaignsController) Create(cxt *fiber.Ctx) error {
+	input := types.CampaignCreateInput{}
+	if err := cxt.BodyParser(&input); err != nil {
+		return err
+	}
+	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+	playerId := token.RegisteredClaims.Subject
+	campaign, err := c.CampaignsService.Create(input, playerId)
+	if err != nil {
+		return err
+	}
+	return cxt.JSON(*campaign)
 }
 
 func NewCampaignsController(dynamodb utils.DynamoDB) CampaignsController {

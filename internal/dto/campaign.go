@@ -1,7 +1,7 @@
 package dto
 
 type Campaign struct {
-	Id     string `dynamodbav:"id"`
+	Parent string `dynamodbav:"parent"`
 	Entity string `dynamodbav:"entity"`
-	name   string `dynamodbav:"name"`
+	Name   string `dynamodbav:"name"`
 }

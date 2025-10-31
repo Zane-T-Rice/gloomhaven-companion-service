@@ -18,4 +18,8 @@ func RegisterCampaignsRoutes(app *fiber.App, dynamodb utils.DynamoDB) {
 		middlewares.HasScope(constants.SCOPE_READ_CAMPAIGNS),
 		campaignsController.List,
 	)
+	campaign.Post("/",
+		middlewares.HasScope(constants.SCOPE_WRITE_CAMPAIGNS),
+		campaignsController.Create,
+	)
 }

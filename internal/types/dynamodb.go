@@ -1,6 +1,6 @@
 package types
 
 type Item struct {
-	Id     string `dynamodbav:"id"`
+	Parent string `dynamodbav:"parent"`
 	Entity string `dynamodbav:"entity"`
 }
