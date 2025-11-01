@@ -44,9 +44,7 @@ func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
 		return err
 	}
 	campaignId := cxt.Params("campaignId")
-	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
-	playerId := token.RegisteredClaims.Subject
-	campaign, err := c.CampaignsService.Patch(input, campaignId, playerId)
+	campaign, err := c.CampaignsService.Patch(input, campaignId)
 	if err != nil {
 		return err
 	}
@@ -55,9 +53,7 @@ func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
 
 func (c *CampaignsController) Delete(cxt *fiber.Ctx) error {
 	campaignId := cxt.Params("campaignId")
-	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
-	playerId := token.RegisteredClaims.Subject
-	campaign, err := c.CampaignsService.Delete(campaignId, playerId)
+	campaign, err := c.CampaignsService.Delete(campaignId)
 	if err != nil {
 		return err
 	}

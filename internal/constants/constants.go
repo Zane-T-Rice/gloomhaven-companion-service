@@ -5,7 +5,7 @@ const (
 	STATUS_CODE_FORBIDDEN   = 403
 	STATUS_CODE_NOT_FOUND   = 404
 	NOT_FOUND_ERROR_MESSAGE = "The requested resource was not found."
-	FORBIDDEN_ERROR_MESSAGE = "Insufficient scope."
+	FORBIDDEN_ERROR_MESSAGE = "Forbidden."
 
 	// Scope Names
 	SCOPE_READ_CAMPAIGNS  = "read:campaigns"
@@ -29,6 +29,7 @@ const (
 
 	// Route Names
 	CAMPAIGNS = "campaigns"
+	SCENARIOS = "scenarios"
 
 	// DynamoDB
 	TABLE_NAME = "gloomhaven-companion-service"
@@ -38,6 +39,7 @@ const (
 	ROOT       = SEPERATOR + "ROOT"
 	CAMPAIGN   = SEPERATOR + "CAMPAIGN"
 	PLAYER     = SEPERATOR + "PLAYER"
+	SCENARIO   = SEPERATOR + "SCENARIO"
 )
 
 // This one is defined outside the const block to allow its address to be taken

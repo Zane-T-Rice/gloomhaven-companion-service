@@ -37,8 +37,11 @@ func init() {
 
 	// Always ensure the token is valid before doing anything.
 	app.Use(adaptor.HTTPMiddleware(middlewares.EnsureValidToken()))
+	// Always ensure the player is allowed to act on the specified Campaign.
+	app.Use("/campaigns/:campaignId", middlewares.EnsurePlayerCampaignExists(&dynamodb))
 
 	routers.RegisterCampaignsRoutes(app, dynamodb)
+	routers.RegisterScenariosRoutes(app, dynamodb)
 
 	fiberLambda = fiberadapter.New(app)
 }

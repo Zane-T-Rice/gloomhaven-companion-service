@@ -74,18 +74,7 @@ func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId stri
 	return &campaign, nil
 }
 
-func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId string, playerId string) (*dto.Campaign, error) {
-	// Verify campaign exists for player, which means the player has access to delete it
-	playerCampaignItem := types.PlayerCampaignItem{}
-	if err := s.DynamoDB.GetItem(
-		constants.PARENT,
-		constants.PLAYER+constants.SEPERATOR+playerId,
-		constants.ENTITY,
-		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
-		&playerCampaignItem,
-	); err != nil {
-		return nil, err
-	}
+func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId string) (*dto.Campaign, error) {
 	campaignItem := types.CampaignItem{}
 	s.DynamoDB.UpdateItem(
 		constants.PARENT,
@@ -103,19 +92,7 @@ func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId stri
 	return &campaign, nil
 }
 
-func (s *CampaignsService) Delete(campaignId string, playerId string) (*dto.Campaign, error) {
-	// Verify campaign exists for player, which means the player has access to delete it
-	playerCampaignItem := types.PlayerCampaignItem{}
-	if err := s.DynamoDB.GetItem(
-		constants.PARENT,
-		constants.PLAYER+constants.SEPERATOR+playerId,
-		constants.ENTITY,
-		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
-		&playerCampaignItem,
-	); err != nil {
-		return nil, err
-	}
-
+func (s *CampaignsService) Delete(campaignId string) (*dto.Campaign, error) {
 	playerCampaigns := []types.PlayerCampaignItem{}
 	if err := s.DynamoDB.Query(
 		constants.ENTITY,
