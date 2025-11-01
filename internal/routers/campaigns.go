@@ -22,4 +22,12 @@ func RegisterCampaignsRoutes(app *fiber.App, dynamodb utils.DynamoDB) {
 		middlewares.HasScope(constants.SCOPE_WRITE_CAMPAIGNS),
 		campaignsController.Create,
 	)
+	campaign.Patch("/:campaignId",
+		middlewares.HasScope(constants.SCOPE_WRITE_CAMPAIGNS),
+		campaignsController.Patch,
+	)
+	campaign.Delete("/:campaignId",
+		middlewares.HasScope(constants.SCOPE_WRITE_CAMPAIGNS),
+		campaignsController.Delete,
+	)
 }

@@ -1,7 +1,11 @@
 package types
 
 type CampaignCreateInput struct {
-	Name string `json:"name"`
+	Name string `dynamodbav:"name"`
+}
+
+type CampaignPatchInput struct {
+	Name string `dynamodbav:"name"`
 }
 
 type CampaignItem struct {

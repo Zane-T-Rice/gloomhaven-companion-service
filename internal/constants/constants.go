@@ -39,3 +39,6 @@ const (
 	CAMPAIGN   = SEPERATOR + "CAMPAIGN"
 	PLAYER     = SEPERATOR + "PLAYER"
 )
+
+// This one is defined outside the const block to allow its address to be taken
+var ENTITY_INDEX = "entity-index"

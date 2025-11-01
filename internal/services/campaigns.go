@@ -5,7 +5,6 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
-	"strings"
 
 	"github.com/google/uuid"
 )
@@ -15,25 +14,25 @@ type CampaignsService struct {
 }
 
 func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
-	player := types.PlayerItem{}
-	if err := s.DynamoDB.GetItem(
+	playerCampaigns := []types.PlayerCampaignItem{}
+	if err := s.DynamoDB.Query(
 		constants.PARENT,
-		constants.ROOT,
-		constants.ENTITY,
 		constants.PLAYER+constants.SEPERATOR+playerId,
-		&player,
+		constants.ENTITY,
+		constants.CAMPAIGN,
+		nil,
+		&playerCampaigns,
 	); err != nil {
 		return nil, err
 	}
-
 	campaigns := []dto.Campaign{}
-	for _, campaignId := range player.CampaignIds {
+	for _, playerCampaign := range playerCampaigns {
 		item := types.CampaignItem{}
 		s.DynamoDB.GetItem(
 			constants.PARENT,
 			constants.ROOT,
 			constants.ENTITY,
-			constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+			playerCampaign.Entity,
 			&item,
 		)
 		campaigns = append(campaigns, dto.Campaign{
@@ -42,57 +41,120 @@ func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
 			Name:   item.Name,
 		})
 	}
-
 	return campaigns, nil
 }
 
 func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId string) (*dto.Campaign, error) {
 	campaignId := uuid.New().String()
-	item := types.CampaignItem{
+	campaignItem := types.CampaignItem{
 		Item: types.Item{
 			Parent: constants.ROOT,
 			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
 		},
 		Name: input.Name,
 	}
-	campaign := dto.Campaign{
-		Parent: item.Parent,
-		Entity: item.Entity,
-		Name:   item.Name,
+	if err := s.DynamoDB.PutItem(campaignItem); err != nil {
+		return nil, err
 	}
-	if err := s.DynamoDB.PutItem(item); err != nil {
+	playerCampaignItem := types.PlayerCampaignItem{
+		Item: types.Item{
+			Parent: constants.PLAYER + constants.SEPERATOR + playerId,
+			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
+		},
+	}
+	if err := s.DynamoDB.PutItem(playerCampaignItem); err != nil {
 		return nil, err
 	}
 
-	// Also add the campaign to the list of the Player's campaigns.
-	// If the Player does not exist, create it.
-	player := types.PlayerItem{}
+	campaign := dto.Campaign{
+		Parent: campaignItem.Parent,
+		Entity: campaignItem.Entity,
+		Name:   campaignItem.Name,
+	}
+	return &campaign, nil
+}
+
+func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId string, playerId string) (*dto.Campaign, error) {
+	// Verify campaign exists for player, which means the player has access to delete it
+	playerCampaignItem := types.PlayerCampaignItem{}
 	if err := s.DynamoDB.GetItem(
+		constants.PARENT,
+		constants.PLAYER+constants.SEPERATOR+playerId,
+		constants.ENTITY,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		&playerCampaignItem,
+	); err != nil {
+		return nil, err
+	}
+	campaignItem := types.CampaignItem{}
+	s.DynamoDB.UpdateItem(
 		constants.PARENT,
 		constants.ROOT,
 		constants.ENTITY,
-		constants.PLAYER+constants.SEPERATOR+playerId,
-		&player,
-	); err != nil {
-		if !strings.Contains(err.Error(), constants.NOT_FOUND_ERROR_MESSAGE) {
-			return nil, err
-		}
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		input,
+		&campaignItem,
+	)
+	campaign := dto.Campaign{
+		Parent: campaignItem.Parent,
+		Entity: campaignItem.Entity,
+		Name:   campaignItem.Name,
+	}
+	return &campaign, nil
+}
 
-		player := types.PlayerItem{
-			Item: types.Item{
-				Parent: constants.ROOT,
-				Entity: constants.PLAYER + constants.SEPERATOR + playerId,
-			},
-			CampaignIds: []string{campaignId},
-		}
-		if err := s.DynamoDB.PutItem(player); err != nil {
+func (s *CampaignsService) Delete(campaignId string, playerId string) (*dto.Campaign, error) {
+	// Verify campaign exists for player, which means the player has access to delete it
+	playerCampaignItem := types.PlayerCampaignItem{}
+	if err := s.DynamoDB.GetItem(
+		constants.PARENT,
+		constants.PLAYER+constants.SEPERATOR+playerId,
+		constants.ENTITY,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		&playerCampaignItem,
+	); err != nil {
+		return nil, err
+	}
+
+	playerCampaigns := []types.PlayerCampaignItem{}
+	if err := s.DynamoDB.Query(
+		constants.ENTITY,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		constants.PARENT,
+		constants.PLAYER,
+		&constants.ENTITY_INDEX,
+		&playerCampaigns,
+	); err != nil {
+		return nil, err
+	}
+
+	for _, playerCampaign := range playerCampaigns {
+		if err := s.DynamoDB.DeleteItem(
+			constants.PARENT,
+			playerCampaign.Parent,
+			constants.ENTITY,
+			playerCampaign.Entity,
+			&types.PlayerCampaignItem{},
+		); err != nil {
 			return nil, err
 		}
-	} else {
-		player.CampaignIds = append(player.CampaignIds, campaignId)
-		if err := s.DynamoDB.PutItem(player); err != nil {
-			return nil, err
-		}
+	}
+
+	campaignItem := types.CampaignItem{}
+	if err := s.DynamoDB.DeleteItem(
+		constants.PARENT,
+		constants.ROOT,
+		constants.ENTITY,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		&campaignItem,
+	); err != nil {
+		return nil, err
+	}
+
+	campaign := dto.Campaign{
+		Parent: campaignItem.Parent,
+		Entity: campaignItem.Entity,
+		Name:   campaignItem.Name,
 	}
 
 	return &campaign, nil

@@ -38,6 +38,32 @@ func (c *CampaignsController) Create(cxt *fiber.Ctx) error {
 	return cxt.JSON(*campaign)
 }
 
+func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
+	input := types.CampaignPatchInput{}
+	if err := cxt.BodyParser(&input); err != nil {
+		return err
+	}
+	campaignId := cxt.Params("campaignId")
+	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+	playerId := token.RegisteredClaims.Subject
+	campaign, err := c.CampaignsService.Patch(input, campaignId, playerId)
+	if err != nil {
+		return err
+	}
+	return cxt.JSON(*campaign)
+}
+
+func (c *CampaignsController) Delete(cxt *fiber.Ctx) error {
+	campaignId := cxt.Params("campaignId")
+	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+	playerId := token.RegisteredClaims.Subject
+	campaign, err := c.CampaignsService.Delete(campaignId, playerId)
+	if err != nil {
+		return err
+	}
+	return cxt.JSON(*campaign)
+}
+
 func NewCampaignsController(dynamodb utils.DynamoDB) CampaignsController {
 	campaignsService := services.NewCampaignsService(dynamodb)
 

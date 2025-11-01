@@ -1,5 +1,5 @@
 package types
 
-type PlayerItem struct {
+type PlayerCampaignItem struct {
 	Item `dynamodbav:",inline"`
 }

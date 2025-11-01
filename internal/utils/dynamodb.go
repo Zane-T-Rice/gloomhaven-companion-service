@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
+	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/expression"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
@@ -43,6 +44,55 @@ func (db *DynamoDB) PutItem(item interface{}) error {
 	})
 	if err != nil {
 		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
+		return err
+	}
+	return nil
+}
+
+func buildUpdateExpression(input interface{}) (*expression.Expression, error) {
+	inputItem, err := attributevalue.MarshalMap(input)
+	if err != nil {
+		return nil, err
+	}
+	var updateBuilder expression.UpdateBuilder
+	for key, val := range inputItem {
+		updateBuilder = updateBuilder.Set(expression.Name(key), expression.Value(val))
+	}
+	expr, err := expression.NewBuilder().WithUpdate(updateBuilder).Build()
+	return &expr, err
+}
+
+func (db *DynamoDB) UpdateItem(
+	partitionKey string,
+	partitionKeyValue string,
+	sortKey string,
+	sortKeyValue string,
+	input interface{},
+	output interface{},
+) error {
+	expr, err := buildUpdateExpression(input)
+	if err != nil {
+		return err
+	}
+	updateItemResult, err := db.DynamoDBClient.UpdateItem(context.TODO(), &dynamodb.UpdateItemInput{
+		TableName: aws.String(constants.TABLE_NAME),
+		Key: map[string]types.AttributeValue{
+			partitionKey: &types.AttributeValueMemberS{Value: partitionKeyValue},
+			sortKey:      &types.AttributeValueMemberS{Value: sortKeyValue},
+		},
+		ReturnValues:              types.ReturnValueAllNew,
+		ExpressionAttributeNames:  expr.Names(),
+		ExpressionAttributeValues: expr.Values(),
+		UpdateExpression:          expr.Update(),
+		ConditionExpression:       expr.Condition(),
+	})
+	if err != nil {
+		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
+		return err
+	}
+	err = attributevalue.UnmarshalMap(updateItemResult.Attributes, &output)
+	if err != nil {
+		log.Fatalf("failed to unmarshal DynamoDB item, %v", err)
 		return err
 	}
 	return nil
@@ -115,6 +165,33 @@ func (db *DynamoDB) Query(
 		return err
 	}
 
+	return nil
+}
+
+func (db *DynamoDB) DeleteItem(
+	partitionKey string,
+	partitionKeyValue string,
+	sortKey string,
+	sortKeyValue string,
+	output any, // output must be a non-nil pointer
+) error {
+	deleteItemResults, err := db.DynamoDBClient.DeleteItem(context.TODO(), &dynamodb.DeleteItemInput{
+		TableName: aws.String(constants.TABLE_NAME),
+		Key: map[string]types.AttributeValue{
+			partitionKey: &types.AttributeValueMemberS{Value: partitionKeyValue},
+			sortKey:      &types.AttributeValueMemberS{Value: sortKeyValue},
+		},
+		ReturnValues: types.ReturnValueAllOld,
+	})
+	if err != nil {
+		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
+		return err
+	}
+	err = attributevalue.UnmarshalMap(deleteItemResults.Attributes, &output)
+	if err != nil {
+		log.Fatalf("failed to unmarshal DynamoDB item, %v", err)
+		return err
+	}
 	return nil
 }
 
