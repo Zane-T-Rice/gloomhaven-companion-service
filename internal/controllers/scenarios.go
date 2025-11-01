@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
@@ -26,6 +27,9 @@ func (c *ScenariosController) Create(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
+	if input.Name == nil {
+		return errors.NewBadRequestError()
+	}
 	campaignId := cxt.Params("campaignId")
 	scenario, err := c.ScenariosService.Create(input, campaignId)
 	if err != nil {
@@ -38,6 +42,9 @@ func (c *ScenariosController) Patch(cxt *fiber.Ctx) error {
 	input := types.ScenarioPatchInput{}
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
+	}
+	if input.Name == nil {
+		return errors.NewBadRequestError()
 	}
 	campaignId := cxt.Params("campaignId")
 	scenarioId := cxt.Params("scenarioId")

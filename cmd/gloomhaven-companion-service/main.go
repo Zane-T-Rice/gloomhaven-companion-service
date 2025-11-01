@@ -42,6 +42,7 @@ func init() {
 
 	routers.RegisterCampaignsRoutes(app, dynamodb)
 	routers.RegisterScenariosRoutes(app, dynamodb)
+	routers.RegisterFiguresRoutes(app, dynamodb)
 
 	fiberLambda = fiberadapter.New(app)
 }

@@ -34,7 +34,7 @@ func (db *DynamoDB) ConnectToDynamoDB() {
 	}
 }
 
-func (db *DynamoDB) PutItem(item interface{}) error {
+func (db *DynamoDB) PutItem(item any) error {
 	dynamodbItem, err := attributevalue.MarshalMap(item)
 	if err != nil {
 		return err
@@ -49,7 +49,7 @@ func (db *DynamoDB) PutItem(item interface{}) error {
 	return nil
 }
 
-func buildUpdateExpression(input interface{}) (*expression.Expression, error) {
+func buildUpdateExpression(input any) (*expression.Expression, error) {
 	inputItem, err := attributevalue.MarshalMap(input)
 	if err != nil {
 		return nil, err
@@ -67,8 +67,8 @@ func (db *DynamoDB) UpdateItem(
 	partitionKeyValue string,
 	sortKey string,
 	sortKeyValue string,
-	input interface{},
-	output interface{},
+	input any,
+	output any,
 ) error {
 	expr, err := buildUpdateExpression(input)
 	if err != nil {
@@ -103,7 +103,7 @@ func (db *DynamoDB) GetItem(
 	partitionKeyValue string,
 	sortKey string,
 	sortKeyValue string,
-	output interface{},
+	output any,
 ) error {
 	result, err := db.DynamoDBClient.GetItem(context.TODO(), &dynamodb.GetItemInput{
 		TableName: aws.String(constants.TABLE_NAME),

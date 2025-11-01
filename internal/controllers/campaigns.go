@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
@@ -29,6 +30,9 @@ func (c *CampaignsController) Create(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
+	if input.Name == nil {
+		return errors.NewBadRequestError()
+	}
 	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
 	playerId := token.RegisteredClaims.Subject
 	campaign, err := c.CampaignsService.Create(input, playerId)
@@ -42,6 +46,9 @@ func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
 	input := types.CampaignPatchInput{}
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
+	}
+	if input.Name == nil {
+		return errors.NewBadRequestError()
 	}
 	campaignId := cxt.Params("campaignId")
 	campaign, err := c.CampaignsService.Patch(input, campaignId)

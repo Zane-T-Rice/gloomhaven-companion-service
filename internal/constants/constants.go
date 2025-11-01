@@ -2,10 +2,12 @@ package constants
 
 const (
 	// Error Messages and Status Codes
-	STATUS_CODE_FORBIDDEN   = 403
-	STATUS_CODE_NOT_FOUND   = 404
-	NOT_FOUND_ERROR_MESSAGE = "The requested resource was not found."
-	FORBIDDEN_ERROR_MESSAGE = "Forbidden."
+	STATUS_CODE_BAD_REQUEST   = 403
+	STATUS_CODE_FORBIDDEN     = 403
+	STATUS_CODE_NOT_FOUND     = 404
+	BAD_REQUEST_ERROR_MESSAGE = "The body of this request is invalid."
+	NOT_FOUND_ERROR_MESSAGE   = "The requested resource was not found."
+	FORBIDDEN_ERROR_MESSAGE   = "Forbidden."
 
 	// Scope Names
 	SCOPE_READ_CAMPAIGNS  = "read:campaigns"
@@ -30,6 +32,7 @@ const (
 	// Route Names
 	CAMPAIGNS = "campaigns"
 	SCENARIOS = "scenarios"
+	FIGURES   = "figures"
 
 	// DynamoDB
 	TABLE_NAME = "gloomhaven-companion-service"
@@ -40,6 +43,7 @@ const (
 	CAMPAIGN   = SEPERATOR + "CAMPAIGN"
 	PLAYER     = SEPERATOR + "PLAYER"
 	SCENARIO   = SEPERATOR + "SCENARIO"
+	FIGURE     = SEPERATOR + "FIGURE"
 )
 
 // This one is defined outside the const block to allow its address to be taken

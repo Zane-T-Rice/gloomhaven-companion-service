@@ -5,7 +5,6 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
-	"log"
 
 	"github.com/google/uuid"
 )
@@ -15,7 +14,6 @@ type ScenariosService struct {
 }
 
 func (s *ScenariosService) List(campaignId string) ([]dto.Scenario, error) {
-	log.Printf("Looking up scenarios for campaign %s", campaignId)
 	scenarioItems := []types.ScenarioItem{}
 	if err := s.DynamoDB.Query(
 		constants.PARENT,

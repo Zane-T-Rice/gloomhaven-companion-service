@@ -5,7 +5,6 @@ import (
 	errors "gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
-	"log"
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
 	"github.com/auth0/go-jwt-middleware/v2/validator"
@@ -17,7 +16,6 @@ func EnsurePlayerCampaignExists(s *utils.DynamoDB) fiber.Handler {
 		token := c.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
 		playerId := token.RegisteredClaims.Subject
 		campaignId := c.Params("campaignId")
-		log.Printf("campaignId: %s", campaignId)
 		playerCampaign := types.PlayerCampaignItem{}
 		if err := s.GetItem(
 			constants.PARENT,
@@ -26,8 +24,6 @@ func EnsurePlayerCampaignExists(s *utils.DynamoDB) fiber.Handler {
 			constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 			&playerCampaign,
 		); err != nil {
-			log.Printf("Player %s cannot access this campaign %s", playerId, campaignId)
-			log.Printf("Why? %v", err)
 			return errors.NewForbiddenError()
 		}
 		return c.Next()
