@@ -30,7 +30,7 @@ func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
 		item := types.CampaignItem{}
 		s.DynamoDB.GetItem(
 			constants.PARENT,
-			constants.ROOT,
+			playerCampaign.Entity,
 			constants.ENTITY,
 			playerCampaign.Entity,
 			&item,
@@ -48,7 +48,7 @@ func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId stri
 	campaignId := uuid.New().String()
 	campaignItem := types.CampaignItem{
 		Item: types.Item{
-			Parent: constants.ROOT,
+			Parent: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
 			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
 		},
 		Name: input.Name,
@@ -78,7 +78,7 @@ func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId stri
 	campaignItem := types.CampaignItem{}
 	s.DynamoDB.UpdateItem(
 		constants.PARENT,
-		constants.ROOT,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 		constants.ENTITY,
 		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 		input,
@@ -120,7 +120,7 @@ func (s *CampaignsService) Delete(campaignId string) (*dto.Campaign, error) {
 	campaignItem := types.CampaignItem{}
 	if err := s.DynamoDB.DeleteItem(
 		constants.PARENT,
-		constants.ROOT,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 		constants.ENTITY,
 		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 		&campaignItem,
