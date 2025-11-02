@@ -10,8 +10,8 @@ const (
 	FORBIDDEN_ERROR_MESSAGE   = "Forbidden."
 
 	// Scope Names
-	SCOPE_READ_CAMPAIGNS  = "read:campaigns"
-	SCOPE_WRITE_CAMPAIGNS = "write:campaigns"
+	SCOPE_ADMIN  = "gloomhaven-companion:admin"
+	SCOPE_PUBLIC = "gloomhaven-companion:public"
 
 	// Environment Variable Names
 	AUDIENCE                         = "AUDIENCE"

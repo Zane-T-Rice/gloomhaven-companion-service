@@ -37,6 +37,7 @@ func init() {
 
 	// Always ensure the token is valid before doing anything.
 	app.Use(adaptor.HTTPMiddleware(middlewares.EnsureValidToken()))
+	app.Use(middlewares.HasOneOfScopes([]string{constants.SCOPE_ADMIN, constants.SCOPE_PUBLIC}))
 	// Always ensure the player is allowed to act on the specified Campaign.
 	app.Use("/campaigns/:campaignId", middlewares.EnsurePlayerCampaignExists(&dynamodb))
 
