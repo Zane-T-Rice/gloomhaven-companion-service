@@ -5,6 +5,7 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"strings"
 
 	"github.com/google/uuid"
 )
@@ -93,6 +94,24 @@ func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId stri
 }
 
 func (s *CampaignsService) Delete(campaignId string) (*dto.Campaign, error) {
+	scenarios := []types.ScenarioItem{}
+	if err := s.DynamoDB.Query(
+		constants.PARENT,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		constants.ENTITY,
+		constants.SCENARIO,
+		nil,
+		&scenarios,
+	); err != nil {
+		return nil, err
+	}
+
+	scenariosService := NewScenariosService(s.DynamoDB)
+
+	for _, scenario := range scenarios {
+		scenariosService.Delete(campaignId, strings.Split(scenario.Entity, constants.SEPERATOR)[2])
+	}
+
 	playerCampaigns := []types.PlayerCampaignItem{}
 	if err := s.DynamoDB.Query(
 		constants.ENTITY,
