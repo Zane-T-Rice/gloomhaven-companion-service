@@ -27,5 +27,7 @@ func NewFigure(item types.FigureItem) Figure {
 		Shield:    item.Shield,
 		Rank:      item.Rank,
 		Number:    item.Number,
+		Move:      item.Move,
+		Attack:    item.Attack,
 	}
 }
