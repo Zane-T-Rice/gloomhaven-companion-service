@@ -12,6 +12,8 @@ type Figure struct {
 	Shield    *int    `dynamodbav:"shield" json:"shield"`
 	Rank      *string `dynamodbav:"rank" json:"rank"`
 	Number    *int    `dynamodbav:"number" json:"number"`
+	Move      *int    `dynamodbav:"move" json:"move"`
+	Attack    *int    `dynamodbav:"attack" json:"attack"`
 }
 
 func NewFigure(item types.FigureItem) Figure {

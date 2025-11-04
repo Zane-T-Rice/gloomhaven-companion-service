@@ -10,6 +10,8 @@ type FigureCreateInput struct {
 	Shield    *int    `dynamodbav:"shield,omitempty" json:"shield"`
 	Rank      *string `dynamodbav:"rank,omitempty" json:"rank"`
 	Number    *int    `dynamodbav:"number,omitempty" json:"number"`
+	Move      *int    `dynamodbav:"move" json:"move"`
+	Attack    *int    `dynamodbav:"attack" json:"attack"`
 }
 
 type FigurePatchInput struct {
@@ -34,5 +36,7 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 			Shield:    input.Shield,
 			Rank:      input.Rank,
 			Number:    input.Number,
+			Move:      input.Move,
+			Attack:    input.Attack,
 		}}
 }
