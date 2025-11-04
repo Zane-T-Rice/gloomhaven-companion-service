@@ -36,11 +36,7 @@ func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
 			playerCampaign.Entity,
 			&item,
 		)
-		campaigns = append(campaigns, dto.Campaign{
-			Parent: item.Parent,
-			Entity: item.Entity,
-			Name:   item.Name,
-		})
+		campaigns = append(campaigns, dto.NewCampaign(item))
 	}
 	return campaigns, nil
 }
@@ -67,11 +63,7 @@ func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId stri
 		return nil, err
 	}
 
-	campaign := dto.Campaign{
-		Parent: campaignItem.Parent,
-		Entity: campaignItem.Entity,
-		Name:   campaignItem.Name,
-	}
+	campaign := dto.NewCampaign(campaignItem)
 	return &campaign, nil
 }
 
@@ -85,11 +77,7 @@ func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId stri
 		input,
 		&campaignItem,
 	)
-	campaign := dto.Campaign{
-		Parent: campaignItem.Parent,
-		Entity: campaignItem.Entity,
-		Name:   campaignItem.Name,
-	}
+	campaign := dto.NewCampaign(campaignItem)
 	return &campaign, nil
 }
 
@@ -147,11 +135,7 @@ func (s *CampaignsService) Delete(campaignId string) (*dto.Campaign, error) {
 		return nil, err
 	}
 
-	campaign := dto.Campaign{
-		Parent: campaignItem.Parent,
-		Entity: campaignItem.Entity,
-		Name:   campaignItem.Name,
-	}
+	campaign := dto.NewCampaign(campaignItem)
 
 	return &campaign, nil
 }

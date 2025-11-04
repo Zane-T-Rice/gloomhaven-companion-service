@@ -27,39 +27,18 @@ func (s *FiguresService) List(campaignId string, scenarioId string) ([]dto.Figur
 	}
 	figures := []dto.Figure{}
 	for _, figureItem := range figureItems {
-		figures = append(figures, dto.Figure{
-			Parent:    figureItem.Parent,
-			Entity:    figureItem.Entity,
-			Name:      figureItem.Name,
-			MaximumHP: figureItem.MaximumHP,
-			Damage:    figureItem.Damage,
-		})
+		figures = append(figures, dto.NewFigure(figureItem))
 	}
 	return figures, nil
 }
 
 func (s *FiguresService) Create(input types.FigureCreateInput, campaignId string, scenarioId string) (*dto.Figure, error) {
 	figureId := uuid.New().String()
-	figureItem := types.FigureItem{
-		Item: types.Item{
-			Parent: constants.CAMPAIGN + constants.SEPERATOR + campaignId + constants.SCENARIO + constants.SEPERATOR + scenarioId,
-			Entity: constants.FIGURE + constants.SEPERATOR + figureId,
-		},
-		Name:      input.Name,
-		MaximumHP: input.MaximumHP,
-		Damage:    input.Damage,
-	}
+	figureItem := types.NewFigureItem(input, campaignId, scenarioId, figureId)
 	if err := s.DynamoDB.PutItem(figureItem); err != nil {
 		return nil, err
 	}
-
-	figure := dto.Figure{
-		Parent:    figureItem.Parent,
-		Entity:    figureItem.Entity,
-		Name:      figureItem.Name,
-		MaximumHP: figureItem.MaximumHP,
-		Damage:    figureItem.Damage,
-	}
+	figure := dto.NewFigure(figureItem)
 	return &figure, nil
 }
 
@@ -73,13 +52,7 @@ func (s *FiguresService) Patch(input types.FigurePatchInput, campaignId string, 
 		input,
 		&figureItem,
 	)
-	figure := dto.Figure{
-		Parent:    figureItem.Parent,
-		Entity:    figureItem.Entity,
-		Name:      figureItem.Name,
-		MaximumHP: figureItem.MaximumHP,
-		Damage:    figureItem.Damage,
-	}
+	figure := dto.NewFigure(figureItem)
 	return &figure, nil
 }
 
@@ -95,11 +68,7 @@ func (s *FiguresService) Delete(campaignId string, scenarioId string, figureId s
 		return nil, err
 	}
 
-	figure := dto.Figure{
-		Parent: figureItem.Parent,
-		Entity: figureItem.Entity,
-		Name:   figureItem.Name,
-	}
+	figure := dto.NewFigure(figureItem)
 
 	return &figure, nil
 }

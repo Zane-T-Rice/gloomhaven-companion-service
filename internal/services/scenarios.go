@@ -28,11 +28,7 @@ func (s *ScenariosService) List(campaignId string) ([]dto.Scenario, error) {
 	}
 	scenarios := []dto.Scenario{}
 	for _, scenarioItem := range scenarioItems {
-		scenarios = append(scenarios, dto.Scenario{
-			Parent: scenarioItem.Parent,
-			Entity: scenarioItem.Entity,
-			Name:   scenarioItem.Name,
-		})
+		scenarios = append(scenarios, dto.NewScenario(scenarioItem))
 	}
 	return scenarios, nil
 }
@@ -50,11 +46,7 @@ func (s *ScenariosService) Create(input types.ScenarioCreateInput, campaignId st
 		return nil, err
 	}
 
-	scenario := dto.Scenario{
-		Parent: scenarioItem.Parent,
-		Entity: scenarioItem.Entity,
-		Name:   scenarioItem.Name,
-	}
+	scenario := dto.NewScenario(scenarioItem)
 	return &scenario, nil
 }
 
@@ -68,11 +60,7 @@ func (s *ScenariosService) Patch(input types.ScenarioPatchInput, campaignId stri
 		input,
 		&scenarioItem,
 	)
-	scenario := dto.Scenario{
-		Parent: scenarioItem.Parent,
-		Entity: scenarioItem.Entity,
-		Name:   scenarioItem.Name,
-	}
+	scenario := dto.NewScenario(scenarioItem)
 	return &scenario, nil
 }
 
@@ -106,11 +94,7 @@ func (s *ScenariosService) Delete(campaignId string, scenarioId string) (*dto.Sc
 		return nil, err
 	}
 
-	scenario := dto.Scenario{
-		Parent: scenarioItem.Parent,
-		Entity: scenarioItem.Entity,
-		Name:   scenarioItem.Name,
-	}
+	scenario := dto.NewScenario(scenarioItem)
 
 	return &scenario, nil
 }
