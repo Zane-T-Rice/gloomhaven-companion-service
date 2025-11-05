@@ -4,10 +4,10 @@ import "gloomhaven-companion-service/internal/constants"
 
 type FigureCreateInput struct {
 	Name           *string `dynamodbav:"name" json:"name"`
-	MaximumHP      *int    `dynamodbav:"maximum_hp,omitempty" json:"maximumHP"`
-	Damage         *int    `dynamodbav:"damage,omitempty" json:"damage"`
-	Class          *string `dynamodbav:"class,omitempty" json:"class"`
-	Rank           *string `dynamodbav:"rank,omitempty" json:"rank"`
+	MaximumHP      *int    `dynamodbav:"maximum_hp" json:"maximumHP"`
+	Damage         *int    `dynamodbav:"damage" json:"damage"`
+	Class          *string `dynamodbav:"class" json:"class"`
+	Rank           *string `dynamodbav:"rank" json:"rank"`
 	Shield         *int    `dynamodbav:"shield" json:"shield"`
 	Number         *int    `dynamodbav:"number" json:"number"`
 	Move           *int    `dynamodbav:"move" json:"move"`
