@@ -2,6 +2,9 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"gloomhaven-companion-service/internal/constants"
+	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
 	"log"
 	"net/http"
@@ -13,19 +16,12 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/apigatewaymanagementapi"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
+	awsTypes "github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
-
-type Item struct {
-	Id     string `dynamodbav:"id"`
-	Entity string `dynamodbav:"entity"`
-}
 
 var dynamoDbClient *dynamodb.Client
 
 func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyRequest) (events.APIGatewayProxyResponse, error) {
-	log.Printf("Handling websocket default request")
-
 	utils.SetEnvironmentVariables()
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
 	if err != nil {
@@ -40,17 +36,17 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 		})
 	}
 
-	scenarioId := request.Body
-	log.Printf("scenarioId=%s", scenarioId)
+	figure := types.FigureItem{}
+	json.Unmarshal([]byte(request.Body), &figure)
 
 	tableName := "gloomhaven-companion-service"
 
 	connections, err := dynamoDbClient.Query(context.TODO(), &dynamodb.QueryInput{
 		TableName:              aws.String(tableName),
-		ProjectionExpression:   aws.String("id, entity"),
+		ProjectionExpression:   aws.String("parent, entity"),
 		KeyConditionExpression: aws.String("entity = :entity"),
-		ExpressionAttributeValues: map[string]types.AttributeValue{
-			":entity": &types.AttributeValueMemberS{Value: scenarioId},
+		ExpressionAttributeValues: map[string]awsTypes.AttributeValue{
+			":entity": &awsTypes.AttributeValueMemberS{Value: figure.Parent},
 		},
 		IndexName: aws.String("entity-index"),
 	})
@@ -60,18 +56,30 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 	}
 
 	svc := apigatewaymanagementapi.NewFromConfig(config, func(o *apigatewaymanagementapi.Options) {
-		o.BaseEndpoint = aws.String("https://ws.zanesworld.click/gloomhaven-companion-service")
+		o.BaseEndpoint = aws.String(os.Getenv(constants.WEB_SOCKETS_URL))
 	})
 
+	// Broadcast the figure object to all the listeners except the sender.
 	for _, item := range connections.Items {
-		connectionId := aws.String(item["id"].(*types.AttributeValueMemberS).Value)
+		connectionId := aws.String(item["parent"].(*awsTypes.AttributeValueMemberS).Value)
+		if *connectionId == request.RequestContext.ConnectionID {
+			continue
+		}
 		_, err := svc.PostToConnection(ctx, &apigatewaymanagementapi.PostToConnectionInput{
 			ConnectionId: connectionId,
-			Data:         []byte(scenarioId),
+			Data:         []byte(request.Body),
 		})
 		if err != nil {
 			log.Printf("Error posting to connection %s: %v", *connectionId, err)
-			// Handle errors, e.g., remove invalid connection ID from store
+
+			// Delete the bad connection.
+			dynamoDbClient.DeleteItem(context.TODO(), &dynamodb.DeleteItemInput{
+				TableName: aws.String(tableName),
+				Key: map[string]awsTypes.AttributeValue{
+					"parent": item["parent"],
+					"entity": item["entity"],
+				},
+			})
 		}
 	}
 

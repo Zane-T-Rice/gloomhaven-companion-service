@@ -18,6 +18,7 @@ const (
 	ISSUER                           = "ISSUER"
 	GLOOMHAVEN_COMPANION_SERVICE_URL = "GLOOMHAVEN_COMPANION_SERVICE_URL"
 	WEBSITE_DOMAIN                   = "WEBSITE_DOMAIN"
+	WEB_SOCKETS_URL                  = "WEB_SOCKETS_URL"
 	API_GATEWAY_BASE_PATH            = "API_GATEWAY_BASE_PATH"
 	LOCAL_SERVICE_PORT               = "LOCAL_SERVICE_PORT"
 	LOCAL_DATABASE_ENDPOINT          = "LOCAL_DATABASE_ENDPOINT"
@@ -26,6 +27,7 @@ const (
 	AUDIENCE_SECRET_NAME              = "gloomhaven-companion-service-audience"
 	ISSUER_SECRET_NAME                = "gloomhaven-companion-service-issuer"
 	URL_SECRET_NAME                   = "gloomhaven-companion-service-url"
+	WEB_SOCKETS_URL_SECRET_NAME       = "gloomhaven-companion-service-websockets-url"
 	WEBSITE_DOMAIN_SECRET_NAME        = "gloomhaven-companion-service-website-domain"
 	API_GATEWAY_BASE_PATH_SECRET_NAME = "gloomhaven-companion-service-api-gateway-base-path"
 

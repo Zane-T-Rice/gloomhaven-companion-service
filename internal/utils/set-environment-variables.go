@@ -33,6 +33,7 @@ func SetEnvironmentVariables() {
 		setEnvironmentVariable(constants.URL_SECRET_NAME, constants.GLOOMHAVEN_COMPANION_SERVICE_URL, secretManagerClient)
 		setEnvironmentVariable(constants.WEBSITE_DOMAIN_SECRET_NAME, constants.WEBSITE_DOMAIN, secretManagerClient)
 		setEnvironmentVariable(constants.API_GATEWAY_BASE_PATH_SECRET_NAME, constants.API_GATEWAY_BASE_PATH, secretManagerClient)
+		setEnvironmentVariable(constants.WEB_SOCKETS_URL_SECRET_NAME, constants.WEB_SOCKETS_URL, secretManagerClient)
 	}
 }
 

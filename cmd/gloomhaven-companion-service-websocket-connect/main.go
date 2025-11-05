@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
+	"gloomhaven-companion-service/internal/constants"
+	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
-	"io"
 	"log"
 	"net/http"
 	"os"
@@ -16,16 +17,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
-type Item struct {
-	Id     string `dynamodbav:"id"`
-	Entity string `dynamodbav:"entity"`
-}
-
 var dynamoDbClient *dynamodb.Client
 
 func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyRequest) (events.APIGatewayProxyResponse, error) {
-	log.Printf("Handling websocket connect request")
-
 	utils.SetEnvironmentVariables()
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
 	if err != nil {
@@ -42,8 +36,8 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 
 	// Extract the authorization token and scenarioId from the request
 	token := request.Headers["Authorization"]
+	campaignId := request.QueryStringParameters["campaignId"]
 	scenarioId := request.QueryStringParameters["scenarioId"]
-	log.Printf("scenarioId=%s", scenarioId)
 
 	// Make a GET call to the companion service to validate the token.
 	// The companion service expects the Authorization header to be forwarded.
@@ -52,7 +46,10 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 		return events.APIGatewayProxyResponse{StatusCode: http.StatusForbidden}, nil
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", os.Getenv("GLOOMHAVEN_COMPANION_SERVICE_URL")+"/enemies", nil)
+	req, err := http.NewRequestWithContext(ctx, "GET",
+		os.Getenv("GLOOMHAVEN_COMPANION_SERVICE_URL")+
+			"/campaigns/"+campaignId+"/scenarios/"+scenarioId, nil,
+	)
 	if err != nil {
 		log.Printf("failed to create request: %v", err)
 		return events.APIGatewayProxyResponse{StatusCode: http.StatusForbidden}, nil
@@ -67,15 +64,13 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 	}
 	defer resp.Body.Close()
 
-	body, _ := io.ReadAll(resp.Body)
-	log.Printf("companion service response: status=%d body=%s", resp.StatusCode, string(body))
-
 	// Treat HTTP 200 as a successful validation. Adjust logic if the companion
 	// service uses a different success status or response shape.
 	if resp.StatusCode == http.StatusOK {
-		itemDTO := Item{
-			Id:     request.RequestContext.ConnectionID,
-			Entity: scenarioId,
+		itemDTO := types.Item{
+			Parent: request.RequestContext.ConnectionID,
+			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId +
+				constants.SCENARIO + constants.SEPERATOR + scenarioId,
 		}
 
 		tableName := "gloomhaven-companion-service"

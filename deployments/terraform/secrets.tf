@@ -13,3 +13,6 @@ resource "aws_secretsmanager_secret" "url" {
 resource "aws_secretsmanager_secret" "website_domain" {
   name = "gloomhaven-companion-service-website-domain"
 }
+resource "aws_secretsmanager_secret" "web_sockets_url" {
+  name = "gloomhaven-companion-service-websockets-url"
+}

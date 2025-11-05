@@ -15,16 +15,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
 
-type Item struct {
-	Id     string `dynamodbav:"id"`
-	Entity string `dynamodbav:"entity"`
-}
-
 var dynamoDbClient *dynamodb.Client
 
 func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyRequest) (events.APIGatewayProxyResponse, error) {
-	log.Printf("Handling websocket disconnnect request")
-
 	utils.SetEnvironmentVariables()
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
 	if err != nil {
@@ -39,16 +32,13 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 		})
 	}
 
-	scenarioId := request.Body
-	log.Printf("scenarioId=%s", scenarioId)
-
 	tableName := "gloomhaven-companion-service"
 	connections, err := dynamoDbClient.Query(context.TODO(), &dynamodb.QueryInput{
 		TableName:              aws.String(tableName),
-		ProjectionExpression:   aws.String("id, entity"),
-		KeyConditionExpression: aws.String("id = :id"),
+		ProjectionExpression:   aws.String("parent, entity"),
+		KeyConditionExpression: aws.String("parent = :parent"),
 		ExpressionAttributeValues: map[string]types.AttributeValue{
-			":id": &types.AttributeValueMemberS{Value: request.RequestContext.ConnectionID},
+			":parent": &types.AttributeValueMemberS{Value: request.RequestContext.ConnectionID},
 		},
 	})
 	if err != nil {
@@ -60,14 +50,14 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 		_, err = dynamoDbClient.DeleteItem(context.TODO(), &dynamodb.DeleteItemInput{
 			TableName: aws.String(tableName),
 			Key: map[string]types.AttributeValue{
-				"id":     item["id"],
+				"parent": item["parent"],
 				"entity": item["entity"],
 			},
 		})
 		if err != nil {
 			log.Printf("Couldn't delete item from table. Here's why: %v\n", err)
 		} else {
-			log.Printf("Deleted connection id %s from scenario %s", request.RequestContext.ConnectionID, scenarioId)
+			log.Printf("Deleted connection id %s", request.RequestContext.ConnectionID)
 		}
 	}
 
