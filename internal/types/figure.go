@@ -3,15 +3,19 @@ package types
 import "gloomhaven-companion-service/internal/constants"
 
 type FigureCreateInput struct {
-	Name      *string `dynamodbav:"name,omitempty" json:"name"`
-	MaximumHP *int    `dynamodbav:"maximum_hp,omitempty" json:"maximumHP"`
-	Damage    *int    `dynamodbav:"damage,omitempty" json:"damage"`
-	Class     *string `dynamodbav:"class,omitempty" json:"class"`
-	Shield    *int    `dynamodbav:"shield,omitempty" json:"shield"`
-	Rank      *string `dynamodbav:"rank,omitempty" json:"rank"`
-	Number    *int    `dynamodbav:"number,omitempty" json:"number"`
-	Move      *int    `dynamodbav:"move" json:"move"`
-	Attack    *int    `dynamodbav:"attack" json:"attack"`
+	Name           *string `dynamodbav:"name,omitempty" json:"name"`
+	MaximumHP      *int    `dynamodbav:"maximum_hp,omitempty" json:"maximumHP"`
+	Damage         *int    `dynamodbav:"damage,omitempty" json:"damage"`
+	Class          *string `dynamodbav:"class,omitempty" json:"class"`
+	Shield         *int    `dynamodbav:"shield,omitempty" json:"shield"`
+	Rank           *string `dynamodbav:"rank,omitempty" json:"rank"`
+	Number         *int    `dynamodbav:"number,omitempty" json:"number"`
+	Move           *int    `dynamodbav:"move" json:"move"`
+	Attack         *int    `dynamodbav:"attack" json:"attack"`
+	XP             *int    `dynamodbav:"xp" json:"xp"`
+	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innate_defenses"`
+	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innate_offenses"`
+	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
 }
 
 type FigurePatchInput struct {
@@ -29,14 +33,18 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 		Entity: constants.FIGURE + constants.SEPERATOR + figureId,
 	},
 		FigureCreateInput: FigureCreateInput{
-			Name:      input.Name,
-			MaximumHP: input.MaximumHP,
-			Damage:    input.Damage,
-			Class:     input.Class,
-			Shield:    input.Shield,
-			Rank:      input.Rank,
-			Number:    input.Number,
-			Move:      input.Move,
-			Attack:    input.Attack,
+			Name:           input.Name,
+			MaximumHP:      input.MaximumHP,
+			Damage:         input.Damage,
+			Class:          input.Class,
+			Shield:         input.Shield,
+			Rank:           input.Rank,
+			Number:         input.Number,
+			Move:           input.Move,
+			Attack:         input.Attack,
+			XP:             input.XP,
+			InnateDefenses: input.InnateDefenses,
+			InnateOffenses: input.InnateOffenses,
+			Statuses:       input.Statuses,
 		}}
 }
