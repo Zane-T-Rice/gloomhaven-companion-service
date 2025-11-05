@@ -15,8 +15,8 @@ type Figure struct {
 	Move           *int    `dynamodbav:"move" json:"move"`
 	Attack         *int    `dynamodbav:"attack" json:"attack"`
 	XP             *int    `dynamodbav:"xp" json:"xp"`
-	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innate_defenses"`
-	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innate_offenses"`
+	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innateDefenses"`
+	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innateOffenses"`
 	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
 }
 
