@@ -3,9 +3,11 @@ package services
 import (
 	"gloomhaven-companion-service/internal/constants"
 	"gloomhaven-companion-service/internal/dto"
+	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
 	"strings"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -124,6 +126,30 @@ func (s *CampaignsService) Delete(campaignId string) (*dto.Campaign, error) {
 		}
 	}
 
+	joinCampaigns := []types.JoinCampaignItem{}
+	if err := s.DynamoDB.Query(
+		constants.ENTITY,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		constants.PARENT,
+		constants.JOIN,
+		&constants.ENTITY_INDEX,
+		&joinCampaigns,
+	); err != nil {
+		return nil, err
+	}
+
+	for _, joinCampaign := range joinCampaigns {
+		if err := s.DynamoDB.DeleteItem(
+			constants.PARENT,
+			joinCampaign.Parent,
+			constants.ENTITY,
+			joinCampaign.Entity,
+			&types.JoinCampaignItem{},
+		); err != nil {
+			return nil, err
+		}
+	}
+
 	campaignItem := types.CampaignItem{}
 	if err := s.DynamoDB.DeleteItem(
 		constants.PARENT,
@@ -138,6 +164,70 @@ func (s *CampaignsService) Delete(campaignId string) (*dto.Campaign, error) {
 	campaign := dto.NewCampaign(campaignItem)
 
 	return &campaign, nil
+}
+
+func (s *CampaignsService) JoinCampaign(input types.JoinCampaignInput, playerId string) (*dto.Campaign, error) {
+	now := time.Now().Unix()
+	joinCampaignItems := []types.JoinCampaignItem{}
+	if err := s.DynamoDB.Query(
+		constants.PARENT,
+		constants.JOIN+constants.SEPERATOR+*input.Code,
+		constants.ENTITY,
+		constants.CAMPAIGN,
+		nil,
+		&joinCampaignItems,
+	); err != nil {
+		return nil, err
+	}
+
+	if now-*joinCampaignItems[0].CreatedAt > 300 {
+		return nil, errors.NewForbiddenError()
+	}
+
+	campaignId := strings.Split(joinCampaignItems[0].Entity, "#")[2]
+	playerCampaignItem := types.PlayerCampaignItem{
+		Item: types.Item{
+			Parent: constants.PLAYER + constants.SEPERATOR + playerId,
+			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
+		},
+	}
+	if err := s.DynamoDB.PutItem(playerCampaignItem); err != nil {
+		return nil, err
+	}
+
+	campaignItem := types.CampaignItem{}
+	if err := s.DynamoDB.GetItem(
+		constants.PARENT,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		constants.ENTITY,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
+		&campaignItem,
+	); err != nil {
+		return nil, err
+	}
+
+	campaign := dto.NewCampaign(campaignItem)
+	return &campaign, nil
+}
+
+func (s *CampaignsService) CreateJoinCode(campaignId string) (*dto.JoinCampaign, error) {
+	now := time.Now().Unix()
+	joinCode := utils.GenerateRandomString(10)
+	joinCampaignItem := types.JoinCampaignItem{
+		Item: types.Item{
+			Parent: constants.JOIN + constants.SEPERATOR + joinCode,
+			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
+		},
+		JoinCampaignInput: types.JoinCampaignInput{
+			Code: &joinCode,
+		},
+		CreatedAt: &now,
+	}
+	if err := s.DynamoDB.PutItem(joinCampaignItem); err != nil {
+		return nil, err
+	}
+	joinCampaign := dto.NewJoinCampaign(joinCampaignItem)
+	return &joinCampaign, nil
 }
 
 func NewCampaignsService(dynamodb utils.DynamoDB) CampaignsService {

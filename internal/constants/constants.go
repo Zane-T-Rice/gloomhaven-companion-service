@@ -46,6 +46,7 @@ const (
 	PLAYER     = SEPERATOR + "PLAYER"
 	SCENARIO   = SEPERATOR + "SCENARIO"
 	FIGURE     = SEPERATOR + "FIGURE"
+	JOIN       = SEPERATOR + "JOIN"
 )
 
 // This one is defined outside the const block to allow its address to be taken

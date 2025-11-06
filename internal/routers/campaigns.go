@@ -11,7 +11,14 @@ import (
 func RegisterCampaignsRoutes(app *fiber.App, dynamodb utils.DynamoDB) {
 	campaignsController := controllers.NewCampaignsController(dynamodb)
 
+	// This lets people use their Join Codes to join a Campaign.
+	app.Post("/join",
+		campaignsController.JoinCampaign,
+	)
+
 	campaign := app.Group("/" + constants.CAMPAIGNS)
+
+	// Campaign CRUD
 	campaign.Get("/",
 		campaignsController.List,
 	)
@@ -23,5 +30,10 @@ func RegisterCampaignsRoutes(app *fiber.App, dynamodb utils.DynamoDB) {
 	)
 	campaign.Delete("/:campaignId",
 		campaignsController.Delete,
+	)
+
+	// This lets someone who can see a campaign generate an invite code for it.
+	campaign.Post("/:campaignId/create-join-code",
+		campaignsController.CreateJoinCode,
 	)
 }

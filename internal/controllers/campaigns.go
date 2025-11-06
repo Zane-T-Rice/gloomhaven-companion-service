@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
@@ -30,9 +29,6 @@ func (c *CampaignsController) Create(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
-	if input.Name == nil {
-		return errors.NewBadRequestError()
-	}
 	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
 	playerId := token.RegisteredClaims.Subject
 	campaign, err := c.CampaignsService.Create(input, playerId)
@@ -47,9 +43,6 @@ func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
-	if input.Name == nil {
-		return errors.NewBadRequestError()
-	}
 	campaignId := cxt.Params("campaignId")
 	campaign, err := c.CampaignsService.Patch(input, campaignId)
 	if err != nil {
@@ -61,6 +54,29 @@ func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
 func (c *CampaignsController) Delete(cxt *fiber.Ctx) error {
 	campaignId := cxt.Params("campaignId")
 	campaign, err := c.CampaignsService.Delete(campaignId)
+	if err != nil {
+		return err
+	}
+	return cxt.JSON(*campaign)
+}
+
+func (c *CampaignsController) CreateJoinCode(cxt *fiber.Ctx) error {
+	campaignId := cxt.Params("campaignId")
+	joinCampaignCode, err := c.CampaignsService.CreateJoinCode(campaignId)
+	if err != nil {
+		return err
+	}
+	return cxt.JSON(*joinCampaignCode)
+}
+
+func (c *CampaignsController) JoinCampaign(cxt *fiber.Ctx) error {
+	input := types.JoinCampaignInput{}
+	if err := cxt.BodyParser(&input); err != nil {
+		return err
+	}
+	token := cxt.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
+	playerId := token.RegisteredClaims.Subject
+	campaign, err := c.CampaignsService.JoinCampaign(input, playerId)
 	if err != nil {
 		return err
 	}
