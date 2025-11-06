@@ -48,7 +48,7 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 
 	req, err := http.NewRequestWithContext(ctx, "GET",
 		os.Getenv("GLOOMHAVEN_COMPANION_SERVICE_URL")+
-			"/campaigns/"+campaignId+"/scenarios/"+scenarioId, nil,
+			"/campaigns/"+campaignId+"/scenarios/"+scenarioId+"/figures", nil,
 	)
 	if err != nil {
 		log.Printf("failed to create request: %v", err)
@@ -64,8 +64,6 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 	}
 	defer resp.Body.Close()
 
-	// Treat HTTP 200 as a successful validation. Adjust logic if the companion
-	// service uses a different success status or response shape.
 	if resp.StatusCode == http.StatusOK {
 		itemDTO := types.Item{
 			Parent: request.RequestContext.ConnectionID,
