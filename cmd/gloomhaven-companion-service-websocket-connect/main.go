@@ -35,7 +35,8 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 	}
 
 	// Extract the authorization token and scenarioId from the request
-	token := "Bearer " + request.Headers["sec-websocket-protocol"]
+	protocol := request.Headers["Sec-WebSocket-Protocol"]
+	token := "Bearer " + protocol
 	campaignId := request.QueryStringParameters["campaignId"]
 	scenarioId := request.QueryStringParameters["scenarioId"]
 
@@ -84,7 +85,9 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 			log.Printf("Couldn't add item to table. Here's why: %v\n", err)
 			return events.APIGatewayProxyResponse{StatusCode: http.StatusForbidden}, err
 		}
-		return events.APIGatewayProxyResponse{StatusCode: http.StatusOK}, nil
+		return events.APIGatewayProxyResponse{StatusCode: http.StatusOK, Headers: map[string]string{
+			"Sec-WebSocket-Protocol": protocol,
+		}}, nil
 	}
 
 	// Anything else is a denial
