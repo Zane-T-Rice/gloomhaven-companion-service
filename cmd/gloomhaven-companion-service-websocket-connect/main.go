@@ -35,7 +35,7 @@ func handleRequest(ctx context.Context, request events.APIGatewayWebsocketProxyR
 	}
 
 	// Extract the authorization token and scenarioId from the request
-	token := request.Headers["Authorization"]
+	token := request.Headers["sec-websocket-protocol"]
 	campaignId := request.QueryStringParameters["campaignId"]
 	scenarioId := request.QueryStringParameters["scenarioId"]
 
