@@ -2,3 +2,4 @@ GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ./dist/gloomhaven-companion-service-websocket-connect/bootstrap ./cmd/gloomhaven-companion-service-websocket-connect/
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ./dist/gloomhaven-companion-service-websocket-default/bootstrap ./cmd/gloomhaven-companion-service-websocket-default/
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ./dist/gloomhaven-companion-service-websocket-disconnect/bootstrap ./cmd/gloomhaven-companion-service-websocket-disconnect/
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ./dist/gloomhaven-companion-service-websocket-local/bootstrap ./cmd/gloomhaven-companion-service-websocket-local/
