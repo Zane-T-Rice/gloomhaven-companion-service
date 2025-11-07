@@ -26,6 +26,11 @@ type DefaultRequest struct {
 	RequestContext RequestContext
 }
 
+type Message struct {
+	MessageID string           `dynamodbav:"message_id" json:"messageID"`
+	Resource  types.FigureItem `dynamodbav:"resource" json:"resource"`
+}
+
 func Default(ctx context.Context, request DefaultRequest) (events.APIGatewayProxyResponse, error) {
 	var dynamoDbClient *dynamodb.Client
 
@@ -43,8 +48,9 @@ func Default(ctx context.Context, request DefaultRequest) (events.APIGatewayProx
 		})
 	}
 
-	figure := types.FigureItem{}
-	json.Unmarshal([]byte(request.Body), &figure)
+	message := Message{}
+	json.Unmarshal([]byte(request.Body), &message)
+	figure := message.Resource
 
 	tableName := "gloomhaven-companion-service"
 
