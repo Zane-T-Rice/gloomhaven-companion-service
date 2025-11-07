@@ -28,6 +28,7 @@ type DefaultRequest struct {
 
 type Message struct {
 	MessageID string           `dynamodbav:"message_id" json:"messageID"`
+	Action    string           `dynamodbav:"action" json:"action"`
 	Resource  types.FigureItem `dynamodbav:"resource" json:"resource"`
 }
 
