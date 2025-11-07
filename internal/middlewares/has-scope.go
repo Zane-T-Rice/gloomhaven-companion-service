@@ -2,7 +2,6 @@ package middlewares
 
 import (
 	errors "gloomhaven-companion-service/internal/errors"
-	"strings"
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
 	"github.com/auth0/go-jwt-middleware/v2/validator"
@@ -25,10 +24,10 @@ func HasOneOfScopes(requiredScopes []string) fiber.Handler {
 		token := c.Context().Value(jwtmiddleware.ContextKey{}).(*validator.ValidatedClaims)
 		claims := token.CustomClaims.(*CustomClaims)
 		for _, requiredScope := range requiredScopes {
-			if !strings.Contains(claims.Scope, requiredScope) {
-				return errors.NewForbiddenError()
+			if claims.HasScope(requiredScope) {
+				return c.Next()
 			}
 		}
-		return c.Next()
+		return errors.NewForbiddenError()
 	}
 }
