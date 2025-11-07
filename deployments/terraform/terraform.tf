@@ -1,9 +1,11 @@
 terraform {
-
-  # These values have to be hardcoded and Terraform cannot generate this S3 bucket
-  # as well as use it as a state storage device. The S3 bucket has versioning
-  # turned on to allow rollbacks of Terraform state.
+  // The s3 bucket must be manually created outside of this 
+  // terraform configuration. This is where terraform will
+  // store the .tfstate file. It is recommended that you enable
+  // versioning on the s3 bucket to be able to rollback your
+  // terraform .tfstate file.
   backend "s3" {
+    // You can use any name for the bucket that you like.
     bucket       = "zanesworld-terraform-state-files"
     key          = "gloomhaven-companion-service/terraform.tfstate"
     region       = "us-east-1"

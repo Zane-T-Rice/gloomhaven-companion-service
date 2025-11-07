@@ -13,6 +13,10 @@ variable "dynamodb_table_name" {
 }
 
 locals {
+  gloomhaven_companion_service_lambda_execution_role = "AWSLambdaBasicExecutionRole"
+  gloomhaven_companion_service_websocket_domain_name = "ws.zanesworld.click"
+  gloomhaven_companion_service_api_domain_name       = "api.zanesworld.click"
+
   gloomhaven_companion_service_archive_path = "../../dist/gloomhaven-companion-service/gloomhaven-companion-service.zip"
   gloomhaven_companion_service_binary_name  = "bootstrap"
   gloomhaven_companion_service_binary_path  = "../../dist/gloomhaven-companion-service/bootstrap"

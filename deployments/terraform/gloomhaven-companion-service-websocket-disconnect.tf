@@ -1,10 +1,3 @@
-// zip the binary, as we can use only zip files to AWS lambda
-data "archive_file" "function_archive_4" {
-  type        = "zip"
-  source_file = local.gloomhaven_companion_service_websocket_disconnect_binary_path
-  output_path = local.gloomhaven_companion_service_websocket_disconnect_archive_path
-}
-
 // create the lambda function from zip file
 resource "aws_lambda_function" "gloomhaven_companion_service_websocket_disconnect" {
   function_name = "gloomhaven-companion-service-websocket-disconnect"

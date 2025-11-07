@@ -1,3 +1,11 @@
+// NOTE:
+//
+// There are a few resources that need to be created
+// or updated manually.
+// 
+// There is more information about these in
+// custom-domains.tf, data.tf, secrets.tf, and terraform.tf.
+
 provider "aws" {
   region = var.aws_region
 
@@ -8,8 +16,3 @@ provider "aws" {
   }
 }
 
-# Use existing Role to avoid needing to give Software Engineer Group
-# Full IAM Access.
-data "aws_iam_role" "lambda_exec" {
-  name = "AWSLambdaBasicExecutionRole"
-}
