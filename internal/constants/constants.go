@@ -35,6 +35,7 @@ const (
 	CAMPAIGNS = "campaigns"
 	SCENARIOS = "scenarios"
 	FIGURES   = "figures"
+	TEMPLATES = "templates"
 
 	// DynamoDB
 	TABLE_NAME = "gloomhaven-companion-service"
@@ -46,6 +47,7 @@ const (
 	PLAYER     = SEPERATOR + "PLAYER"
 	SCENARIO   = SEPERATOR + "SCENARIO"
 	FIGURE     = SEPERATOR + "FIGURE"
+	TEMPLATE   = SEPERATOR + "TEMPLATE"
 	JOIN       = SEPERATOR + "JOIN"
 )
 
