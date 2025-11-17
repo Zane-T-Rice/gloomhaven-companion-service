@@ -35,13 +35,7 @@ func (s *ScenariosService) List(campaignId string) ([]dto.Scenario, error) {
 
 func (s *ScenariosService) Create(input types.ScenarioCreateInput, campaignId string) (*dto.Scenario, error) {
 	scenarioId := uuid.New().String()
-	scenarioItem := types.ScenarioItem{
-		Item: types.Item{
-			Parent: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
-			Entity: constants.SCENARIO + constants.SEPERATOR + scenarioId,
-		},
-		Name: input.Name,
-	}
+	scenarioItem := types.NewScenarioItem(input, campaignId, scenarioId)
 	if err := s.DynamoDB.PutItem(scenarioItem); err != nil {
 		return nil, err
 	}

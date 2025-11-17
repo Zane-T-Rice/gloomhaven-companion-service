@@ -10,8 +10,9 @@ type Stat struct {
 }
 
 type TemplateCreateInput struct {
-	Class *string      `dynamodbav:"class,omitempty" json:"class"`
-	Stats map[int]Stat `dynamodbav:"stats,omitempty" json:"stats"`
+	Class        *string      `dynamodbav:"class,omitempty" json:"class"`
+	StandeeLimit *int         `dynamodbav:"standee_limit,omitempty" json:"standeeLimit"`
+	Stats        map[int]Stat `dynamodbav:"stats,omitempty" json:"stats"`
 }
 
 type TemplatePatchInput struct {
@@ -30,8 +31,9 @@ func NewTemplateItem(input TemplateCreateInput, templateId string) TemplateItem 
 			Entity: constants.TEMPLATE + constants.SEPERATOR + templateId,
 		},
 		TemplateCreateInput: TemplateCreateInput{
-			Class: input.Class,
-			Stats: input.Stats,
+			Class:        input.Class,
+			Stats:        input.Stats,
+			StandeeLimit: input.StandeeLimit,
 		},
 	}
 }

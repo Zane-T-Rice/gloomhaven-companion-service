@@ -1,0 +1,166 @@
+{
+  "class": "Night Demon",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 3,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 3,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 5,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 4,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 5,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 3,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 8,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 4,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 6,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 4,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 11,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 4,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 7,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 4,
+        "attack": 4,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 13,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 5,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 8,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 4,
+        "attack": 5,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 15,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 5,
+        "attack": 5,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 11,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 4,
+        "attack": 5,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 17,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 5,
+        "attack": 6,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 16,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 4,
+        "attack": 5,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 23,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 5,
+        "attack": 7,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 20,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Normal",
+        "move": 4,
+        "attack": 6,
+        "innateDefenses": "AttackersGainDisadvantage"
+      },
+      "elite": {
+        "maximumHP": 30,
+        "damage": 0,
+        "class": "Night Demon",
+        "rank": "Elite",
+        "move": 5,
+        "attack": 7,
+        "innateDefenses": "AttackersGainDisadvantage"
+      }
+    }
+  }
+}

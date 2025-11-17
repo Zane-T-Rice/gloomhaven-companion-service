@@ -10,10 +10,12 @@ type Figure struct {
 	Damage         *int    `dynamodbav:"damage" json:"damage"`
 	Class          *string `dynamodbav:"class" json:"class"`
 	Shield         *int    `dynamodbav:"shield" json:"shield"`
+	Retaliate      *int    `dynamodbav:"retaliate" json:"retaliate"`
 	Rank           *string `dynamodbav:"rank" json:"rank"`
 	Number         *int    `dynamodbav:"number" json:"number"`
 	Move           *int    `dynamodbav:"move" json:"move"`
 	Attack         *int    `dynamodbav:"attack" json:"attack"`
+	Target         *int    `dynamodbav:"target" json:"target"`
 	XP             *int    `dynamodbav:"xp" json:"xp"`
 	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innateDefenses"`
 	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innateOffenses"`
@@ -29,10 +31,12 @@ func NewFigure(item types.FigureItem) Figure {
 		Damage:         item.Damage,
 		Class:          item.Class,
 		Shield:         item.Shield,
+		Retaliate:      item.Retaliate,
 		Rank:           item.Rank,
 		Number:         item.Number,
 		Move:           item.Move,
 		Attack:         item.Attack,
+		Target:         item.Target,
 		XP:             item.XP,
 		InnateDefenses: item.InnateDefenses,
 		InnateOffenses: item.InnateOffenses,

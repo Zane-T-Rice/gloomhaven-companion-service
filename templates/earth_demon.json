@@ -1,0 +1,158 @@
+{
+  "class": "Earth Demon",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 7,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 1,
+        "attack": 3
+      },
+      "elite": {
+        "maximumHP": 10,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 2,
+        "attack": 4
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 9,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 1,
+        "attack": 3
+      },
+      "elite": {
+        "maximumHP": 13,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 2,
+        "attack": 4
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 12,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 1,
+        "attack": 3
+      },
+      "elite": {
+        "maximumHP": 18,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 2,
+        "attack": 4
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 13,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 2,
+        "attack": 3
+      },
+      "elite": {
+        "maximumHP": 20,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 2,
+        "attack": 4,
+        "innateOffenses": "Immobilize"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 15,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 2,
+        "attack": 4
+      },
+      "elite": {
+        "maximumHP": 21,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 3,
+        "attack": 5,
+        "innateOffenses": "Immobilize"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 17,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 4,
+        "innateOffenses": "Immobilize"
+      },
+      "elite": {
+        "maximumHP": 25,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 3,
+        "attack": 5,
+        "innateOffenses": "Immobilize"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 21,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 4,
+        "innateOffenses": "Immobilize"
+      },
+      "elite": {
+        "maximumHP": 32,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 3,
+        "attack": 6,
+        "innateOffenses": "Immobilize"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 25,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 5,
+        "innateOffenses": "Immobilize"
+      },
+      "elite": {
+        "maximumHP": 42,
+        "damage": 0,
+        "class": "Earth Demon",
+        "rank": "Elite",
+        "move": 3,
+        "attack": 7,
+        "innateOffenses": "Immobilize"
+      }
+    }
+  }
+}

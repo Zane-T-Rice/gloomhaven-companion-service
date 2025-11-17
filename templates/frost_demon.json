@@ -1,0 +1,164 @@
+{
+  "class": "Frost Demon",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 5,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 2,
+        "attack": 3
+      },
+      "elite": {
+        "maximumHP": 10,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 3,
+        "attack": 3
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 6,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 2,
+        "attack": 3,
+        "retaliate": 1
+      },
+      "elite": {
+        "maximumHP": 10,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 3,
+        "attack": 3,
+        "retaliate": 2
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 7,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 3,
+        "retaliate": 2
+      },
+      "elite": {
+        "maximumHP": 12,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 4,
+        "retaliate": 2
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 8,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 4,
+        "retaliate": 2
+      },
+      "elite": {
+        "maximumHP": 14,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 4,
+        "retaliate": 3
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 11,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 4,
+        "retaliate": 2
+      },
+      "elite": {
+        "maximumHP": 19,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 4,
+        "retaliate": 3
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 13,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 4,
+        "retaliate": 3
+      },
+      "elite": {
+        "maximumHP": 22,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 5,
+        "retaliate": 3
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 18,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 5,
+        "retaliate": 3
+      },
+      "elite": {
+        "maximumHP": 29,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 6,
+        "retaliate": 4
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 25,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Normal",
+        "move": 3,
+        "attack": 5,
+        "retaliate": 3
+      },
+      "elite": {
+        "maximumHP": 40,
+        "damage": 0,
+        "class": "Frost Demon",
+        "rank": "Elite",
+        "move": 4,
+        "attack": 7,
+        "retaliate": 4
+      }
+    }
+  }
+}

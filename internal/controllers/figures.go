@@ -28,7 +28,7 @@ func (c *FiguresController) Create(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
-	if input.Damage == nil || input.MaximumHP == nil || input.Name == nil {
+	if input.Damage == nil || input.MaximumHP == nil || input.Class == nil {
 		return errors.NewBadRequestError()
 	}
 	campaignId := cxt.Params("campaignId")
