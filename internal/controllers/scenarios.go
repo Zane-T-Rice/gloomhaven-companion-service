@@ -28,7 +28,7 @@ func (c *ScenariosController) Create(cxt *fiber.Ctx) error {
 		return err
 	}
 	if input.Name == nil {
-		return errors.NewBadRequestError()
+		return errors.NewBadRequestError(nil)
 	}
 	campaignId := cxt.Params("campaignId")
 	scenario, err := c.ScenariosService.Create(input, campaignId)
@@ -44,7 +44,7 @@ func (c *ScenariosController) Patch(cxt *fiber.Ctx) error {
 		return err
 	}
 	if input.Name == nil {
-		return errors.NewBadRequestError()
+		return errors.NewBadRequestError(nil)
 	}
 	campaignId := cxt.Params("campaignId")
 	scenarioId := cxt.Params("scenarioId")

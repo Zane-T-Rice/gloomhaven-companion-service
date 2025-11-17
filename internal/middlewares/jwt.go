@@ -30,7 +30,7 @@ func (c CustomClaims) Validate(ctx context.Context) error {
 func EnsureValidToken() func(next http.Handler) http.Handler {
 	issuerURL, err := url.Parse(os.Getenv(constants.ISSUER))
 	if err != nil {
-		log.Fatalf("Failed to parse the issuer url: %v", err)
+		log.Printf("Failed to parse the issuer url: %v", err)
 	}
 
 	provider := jwks.NewCachingProvider(issuerURL, 5*time.Minute)
@@ -48,11 +48,11 @@ func EnsureValidToken() func(next http.Handler) http.Handler {
 		validator.WithAllowedClockSkew(time.Minute),
 	)
 	if err != nil {
-		log.Fatalf("Failed to set up the jwt validator")
+		log.Printf("Failed to set up the jwt validator")
 	}
 
 	errorHandler := func(w http.ResponseWriter, r *http.Request, err error) {
-		log.Fatalf("Encountered error while validating JWT: %v", err)
+		log.Printf("Encountered error while validating JWT: %v", err)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusUnauthorized)

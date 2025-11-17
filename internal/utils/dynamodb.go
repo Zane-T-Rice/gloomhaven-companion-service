@@ -6,6 +6,7 @@ import (
 	"gloomhaven-companion-service/internal/errors"
 	"log"
 	"os"
+	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
@@ -22,7 +23,7 @@ type DynamoDB struct {
 func (db *DynamoDB) ConnectToDynamoDB() {
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-east-1"))
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	if os.Getenv(constants.LOCAL_SERVICE_PORT) == "" {
@@ -43,7 +44,7 @@ func (db *DynamoDB) PutItem(item any) error {
 		TableName: aws.String(constants.TABLE_NAME), Item: dynamodbItem,
 	})
 	if err != nil {
-		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
+		log.Printf("Couldn't add item to table. Here's why: %v\n", err)
 		return err
 	}
 	return nil
@@ -54,11 +55,15 @@ func buildUpdateExpression(input any) (*expression.Expression, error) {
 	if err != nil {
 		return nil, err
 	}
+	// Set condition that the incoming updated_at must match the database.
+	conditionBuilder := expression.Equal(expression.Name("updated_at"), expression.Value(inputItem["updated_at"]))
+	// Set the new updated_at that will be written if the above condition is met.
+	inputItem["updated_at"] = &types.AttributeValueMemberS{Value: time.Now().UTC().Format(time.RFC3339)}
 	var updateBuilder expression.UpdateBuilder
 	for key, val := range inputItem {
 		updateBuilder = updateBuilder.Set(expression.Name(key), expression.Value(val))
 	}
-	expr, err := expression.NewBuilder().WithUpdate(updateBuilder).Build()
+	expr, err := expression.NewBuilder().WithUpdate(updateBuilder).WithCondition(conditionBuilder).Build()
 	return &expr, err
 }
 
@@ -87,12 +92,12 @@ func (db *DynamoDB) UpdateItem(
 		ConditionExpression:       expr.Condition(),
 	})
 	if err != nil {
-		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
+		log.Printf("Couldn't update item in table. Here's why: %v\n", err)
 		return err
 	}
 	err = attributevalue.UnmarshalMap(updateItemResult.Attributes, &output)
 	if err != nil {
-		log.Fatalf("failed to unmarshal DynamoDB item, %v", err)
+		log.Printf("failed to unmarshal DynamoDB item, %v", err)
 		return err
 	}
 	return nil
@@ -113,7 +118,7 @@ func (db *DynamoDB) GetItem(
 		},
 	})
 	if err != nil {
-		log.Fatalf("Couldn't get item from table. Here's why: %v\n", err)
+		log.Printf("Couldn't get item from table. Here's why: %v\n", err)
 		return err
 	}
 	if result.Item == nil {
@@ -121,7 +126,7 @@ func (db *DynamoDB) GetItem(
 	}
 	err = attributevalue.UnmarshalMap(result.Item, &output)
 	if err != nil {
-		log.Fatalf("failed to unmarshal DynamoDB item, %v", err)
+		log.Printf("failed to unmarshal DynamoDB item, %v", err)
 		return err
 	}
 	return nil
@@ -155,13 +160,13 @@ func (db *DynamoDB) Query(
 	}
 	result, err := db.DynamoDBClient.Query(context.TODO(), &queryInput)
 	if err != nil {
-		log.Fatalf("Couldn't get item from table. Here's why: %v\n", err)
+		log.Printf("Couldn't get item from table. Here's why: %v\n", err)
 		return err
 	}
 
 	err = attributevalue.UnmarshalListOfMaps(result.Items, output)
 	if err != nil {
-		log.Fatalf("failed to unmarshal DynamoDB items, %v", err)
+		log.Printf("failed to unmarshal DynamoDB items, %v", err)
 		return err
 	}
 
@@ -184,12 +189,12 @@ func (db *DynamoDB) DeleteItem(
 		ReturnValues: types.ReturnValueAllOld,
 	})
 	if err != nil {
-		log.Fatalf("Couldn't add item to table. Here's why: %v\n", err)
+		log.Printf("Couldn't add item to table. Here's why: %v\n", err)
 		return err
 	}
 	err = attributevalue.UnmarshalMap(deleteItemResults.Attributes, &output)
 	if err != nil {
-		log.Fatalf("failed to unmarshal DynamoDB item, %v", err)
+		log.Printf("failed to unmarshal DynamoDB item, %v", err)
 		return err
 	}
 	return nil

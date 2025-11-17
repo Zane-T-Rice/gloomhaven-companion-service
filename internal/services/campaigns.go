@@ -45,13 +45,7 @@ func (s *CampaignsService) List(playerId string) ([]dto.Campaign, error) {
 
 func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId string) (*dto.Campaign, error) {
 	campaignId := uuid.New().String()
-	campaignItem := types.CampaignItem{
-		Item: types.Item{
-			Parent: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
-			Entity: constants.CAMPAIGN + constants.SEPERATOR + campaignId,
-		},
-		Name: input.Name,
-	}
+	campaignItem := types.NewCampaignItem(input, campaignId)
 	if err := s.DynamoDB.PutItem(campaignItem); err != nil {
 		return nil, err
 	}

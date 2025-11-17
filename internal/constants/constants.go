@@ -2,12 +2,15 @@ package constants
 
 const (
 	// Error Messages and Status Codes
-	STATUS_CODE_BAD_REQUEST   = 403
-	STATUS_CODE_FORBIDDEN     = 403
-	STATUS_CODE_NOT_FOUND     = 404
-	BAD_REQUEST_ERROR_MESSAGE = "The body of this request is invalid."
-	NOT_FOUND_ERROR_MESSAGE   = "The requested resource was not found."
-	FORBIDDEN_ERROR_MESSAGE   = "Forbidden."
+	STATUS_CODE_BAD_REQUEST    = 403
+	STATUS_CODE_FORBIDDEN      = 403
+	STATUS_CODE_NOT_FOUND      = 404
+	STATUS_CODE_SERVER_ERROR   = 404
+	BAD_REQUEST_ERROR_MESSAGE  = "The body of this request is invalid."
+	UPDATED_AT_ERROR           = "updatedAt did not match existing record."
+	NOT_FOUND_ERROR_MESSAGE    = "The requested resource was not found."
+	FORBIDDEN_ERROR_MESSAGE    = "Forbidden."
+	SERVER_ERROR_ERROR_MESSAGE = "The server has encountered an error."
 
 	// Scope Names
 	SCOPE_ADMIN  = "gloomhaven-companion:admin"

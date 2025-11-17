@@ -20,6 +20,7 @@ type Figure struct {
 	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innateDefenses"`
 	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innateOffenses"`
 	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
+	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 func NewFigure(item types.FigureItem) Figure {
@@ -41,5 +42,6 @@ func NewFigure(item types.FigureItem) Figure {
 		InnateDefenses: item.InnateDefenses,
 		InnateOffenses: item.InnateOffenses,
 		Statuses:       item.Statuses,
+		UpdatedAt:      item.UpdatedAt,
 	}
 }

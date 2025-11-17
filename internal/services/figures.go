@@ -5,6 +5,7 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"log"
 
 	"github.com/google/uuid"
 )
@@ -44,7 +45,7 @@ func (s *FiguresService) Create(input types.FigureCreateInput, campaignId string
 
 func (s *FiguresService) Patch(input types.FigurePatchInput, campaignId string, scenarioId string, figureId string) (*dto.Figure, error) {
 	figureItem := types.FigureItem{}
-	s.DynamoDB.UpdateItem(
+	err := s.DynamoDB.UpdateItem(
 		constants.PARENT,
 		constants.CAMPAIGN+constants.SEPERATOR+campaignId+constants.SCENARIO+constants.SEPERATOR+scenarioId,
 		constants.ENTITY,
@@ -52,6 +53,10 @@ func (s *FiguresService) Patch(input types.FigurePatchInput, campaignId string, 
 		input,
 		&figureItem,
 	)
+	if err != nil {
+		log.Printf("Patch failed, here's why %v", err)
+		return nil, err
+	}
 	figure := dto.NewFigure(figureItem)
 	return &figure, nil
 }

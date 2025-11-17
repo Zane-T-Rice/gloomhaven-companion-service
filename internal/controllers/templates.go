@@ -25,9 +25,6 @@ func (c *TemplatesController) Create(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
-	// if input.Damage == nil || input.MaximumHP == nil || input.Name == nil {
-	// 	return errors.NewBadRequestError()
-	// }
 	template, err := c.TemplatesService.Create(input)
 	if err != nil {
 		return err
@@ -40,9 +37,6 @@ func (c *TemplatesController) Patch(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
-	// if input.Damage == nil && input.MaximumHP == nil && input.Name == nil {
-	// 	return errors.NewBadRequestError()
-	// }
 	templateId := cxt.Params("templateId")
 	scenario, err := c.TemplatesService.Patch(input, templateId)
 	if err != nil {

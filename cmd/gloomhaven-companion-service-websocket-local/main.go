@@ -35,7 +35,7 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if err != nil {
-		log.Fatalf("Connection failed. %v", err)
+		log.Printf("Connection failed. %v", err)
 	}
 
 	header := http.Header{}

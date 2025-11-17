@@ -1,10 +1,12 @@
 package controllers
 
 import (
+	"gloomhaven-companion-service/internal/constants"
 	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -29,7 +31,7 @@ func (c *FiguresController) Create(cxt *fiber.Ctx) error {
 		return err
 	}
 	if input.Damage == nil || input.MaximumHP == nil || input.Class == nil {
-		return errors.NewBadRequestError()
+		return errors.NewBadRequestError(nil)
 	}
 	campaignId := cxt.Params("campaignId")
 	scenarioId := cxt.Params("scenarioId")
@@ -46,13 +48,17 @@ func (c *FiguresController) Patch(cxt *fiber.Ctx) error {
 		return err
 	}
 	if input.Damage == nil && input.MaximumHP == nil && input.Name == nil {
-		return errors.NewBadRequestError()
+		return errors.NewBadRequestError(nil)
 	}
 	campaignId := cxt.Params("campaignId")
 	scenarioId := cxt.Params("scenarioId")
 	figureId := cxt.Params("figureId")
 	scenario, err := c.FiguresService.Patch(input, campaignId, scenarioId, figureId)
 	if err != nil {
+		if strings.Contains(string(err.Error()), "The conditional request failed") {
+			message := constants.UPDATED_AT_ERROR
+			return errors.NewBadRequestError(&message)
+		}
 		return err
 	}
 	return cxt.JSON(*scenario)

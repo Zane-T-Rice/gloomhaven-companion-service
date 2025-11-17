@@ -1,6 +1,9 @@
 package types
 
-import "gloomhaven-companion-service/internal/constants"
+import (
+	"gloomhaven-companion-service/internal/constants"
+	"time"
+)
 
 type FigureCreateInput struct {
 	Name           *string `dynamodbav:"name" json:"name"`
@@ -18,6 +21,7 @@ type FigureCreateInput struct {
 	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innateDefenses"`
 	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innateOffenses"`
 	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
+	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 type FigurePatchInput struct {
@@ -30,6 +34,7 @@ type FigureItem struct {
 }
 
 func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string, figureId string) FigureItem {
+	updatedAt := time.Now().UTC().Format(time.RFC3339)
 	return FigureItem{Item: Item{
 		Parent: constants.CAMPAIGN + constants.SEPERATOR + campaignId + constants.SCENARIO + constants.SEPERATOR + scenarioId,
 		Entity: constants.FIGURE + constants.SEPERATOR + figureId,
@@ -50,5 +55,6 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 			InnateDefenses: input.InnateDefenses,
 			InnateOffenses: input.InnateOffenses,
 			Statuses:       input.Statuses,
+			UpdatedAt:      &updatedAt,
 		}}
 }
