@@ -6,6 +6,7 @@ type Scenario struct {
 	Parent string  `dynamodbav:"parent" json:"parent"`
 	Entity string  `dynamodbav:"entity" json:"entity"`
 	Name   *string `dynamodbav:"name" json:"name"`
+	Groups *string `dynamodbav:"groups,omitempty" json:"groups"`
 }
 
 func NewScenario(item types.ScenarioItem) Scenario {
@@ -13,5 +14,6 @@ func NewScenario(item types.ScenarioItem) Scenario {
 		Parent: item.Parent,
 		Entity: item.Entity,
 		Name:   item.Name,
+		Groups: item.Groups,
 	}
 }
