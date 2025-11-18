@@ -1,9 +1,12 @@
 package controllers
 
 import (
+	"gloomhaven-companion-service/internal/constants"
+	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"strings"
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
 	"github.com/auth0/go-jwt-middleware/v2/validator"
@@ -46,6 +49,10 @@ func (c *CampaignsController) Patch(cxt *fiber.Ctx) error {
 	campaignId := cxt.Params("campaignId")
 	campaign, err := c.CampaignsService.Patch(input, campaignId)
 	if err != nil {
+		if strings.Contains(string(err.Error()), "The conditional request failed") {
+			message := constants.UPDATED_AT_ERROR
+			return errors.NewBadRequestError(&message)
+		}
 		return err
 	}
 	return cxt.JSON(*campaign)

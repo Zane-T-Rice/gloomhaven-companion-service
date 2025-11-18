@@ -5,6 +5,7 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"log"
 
 	"github.com/google/uuid"
 )
@@ -44,7 +45,7 @@ func (s *TemplatesService) Create(input types.TemplateCreateInput) (*dto.Templat
 
 func (s *TemplatesService) Patch(input types.TemplatePatchInput, templateId string) (*dto.Template, error) {
 	templateItem := types.TemplateItem{}
-	s.DynamoDB.UpdateItem(
+	err := s.DynamoDB.UpdateItem(
 		constants.PARENT,
 		constants.TEMPLATE,
 		constants.ENTITY,
@@ -52,6 +53,10 @@ func (s *TemplatesService) Patch(input types.TemplatePatchInput, templateId stri
 		input,
 		&templateItem,
 	)
+	if err != nil {
+		log.Printf("Patch failed, here's why %v", err)
+		return nil, err
+	}
 	template := dto.NewTemplate(templateItem)
 	return &template, nil
 }

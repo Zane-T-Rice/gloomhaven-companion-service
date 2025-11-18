@@ -1,9 +1,12 @@
 package controllers
 
 import (
+	"gloomhaven-companion-service/internal/constants"
+	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -38,26 +41,30 @@ func (c *TemplatesController) Patch(cxt *fiber.Ctx) error {
 		return err
 	}
 	templateId := cxt.Params("templateId")
-	scenario, err := c.TemplatesService.Patch(input, templateId)
+	template, err := c.TemplatesService.Patch(input, templateId)
 	if err != nil {
+		if strings.Contains(string(err.Error()), "The conditional request failed") {
+			message := constants.UPDATED_AT_ERROR
+			return errors.NewBadRequestError(&message)
+		}
 		return err
 	}
-	return cxt.JSON(*scenario)
+	return cxt.JSON(*template)
 }
 
 func (c *TemplatesController) Delete(cxt *fiber.Ctx) error {
 	templateId := cxt.Params("templateId")
-	scenario, err := c.TemplatesService.Delete(templateId)
+	template, err := c.TemplatesService.Delete(templateId)
 	if err != nil {
 		return err
 	}
-	return cxt.JSON(*scenario)
+	return cxt.JSON(*template)
 }
 
 func NewTemplatesController(dynamodb utils.DynamoDB) TemplatesController {
-	scenariosService := services.NewTemplatesService(dynamodb)
+	templatesService := services.NewTemplatesService(dynamodb)
 
 	return TemplatesController{
-		TemplatesService: scenariosService,
+		TemplatesService: templatesService,
 	}
 }

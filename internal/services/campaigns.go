@@ -6,6 +6,7 @@ import (
 	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"log"
 	"strings"
 	"time"
 
@@ -65,7 +66,7 @@ func (s *CampaignsService) Create(input types.CampaignCreateInput, playerId stri
 
 func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId string) (*dto.Campaign, error) {
 	campaignItem := types.CampaignItem{}
-	s.DynamoDB.UpdateItem(
+	err := s.DynamoDB.UpdateItem(
 		constants.PARENT,
 		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 		constants.ENTITY,
@@ -73,6 +74,10 @@ func (s *CampaignsService) Patch(input types.CampaignPatchInput, campaignId stri
 		input,
 		&campaignItem,
 	)
+	if err != nil {
+		log.Printf("Patch failed, here's why %v", err)
+		return nil, err
+	}
 	campaign := dto.NewCampaign(campaignItem)
 	return &campaign, nil
 }

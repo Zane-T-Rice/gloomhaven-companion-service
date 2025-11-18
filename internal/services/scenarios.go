@@ -5,6 +5,7 @@ import (
 	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
+	"log"
 	"strings"
 
 	"github.com/google/uuid"
@@ -46,7 +47,7 @@ func (s *ScenariosService) Create(input types.ScenarioCreateInput, campaignId st
 
 func (s *ScenariosService) Patch(input types.ScenarioPatchInput, campaignId string, scenarioId string) (*dto.Scenario, error) {
 	scenarioItem := types.ScenarioItem{}
-	s.DynamoDB.UpdateItem(
+	err := s.DynamoDB.UpdateItem(
 		constants.PARENT,
 		constants.CAMPAIGN+constants.SEPERATOR+campaignId,
 		constants.ENTITY,
@@ -54,6 +55,10 @@ func (s *ScenariosService) Patch(input types.ScenarioPatchInput, campaignId stri
 		input,
 		&scenarioItem,
 	)
+	if err != nil {
+		log.Printf("Patch failed, here's why %v", err)
+		return nil, err
+	}
 	scenario := dto.NewScenario(scenarioItem)
 	return &scenario, nil
 }

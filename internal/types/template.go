@@ -2,6 +2,7 @@ package types
 
 import (
 	"gloomhaven-companion-service/internal/constants"
+	"time"
 )
 
 type Stat struct {
@@ -13,6 +14,7 @@ type TemplateCreateInput struct {
 	Class        *string      `dynamodbav:"class,omitempty" json:"class"`
 	StandeeLimit *int         `dynamodbav:"standee_limit,omitempty" json:"standeeLimit"`
 	Stats        map[int]Stat `dynamodbav:"stats,omitempty" json:"stats"`
+	UpdatedAt    *string      `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 type TemplatePatchInput struct {
@@ -25,6 +27,7 @@ type TemplateItem struct {
 }
 
 func NewTemplateItem(input TemplateCreateInput, templateId string) TemplateItem {
+	updatedAt := time.Now().UTC().Format(time.RFC3339)
 	return TemplateItem{
 		Item: Item{
 			Parent: constants.TEMPLATE,
@@ -34,6 +37,7 @@ func NewTemplateItem(input TemplateCreateInput, templateId string) TemplateItem 
 			Class:        input.Class,
 			Stats:        input.Stats,
 			StandeeLimit: input.StandeeLimit,
+			UpdatedAt:    &updatedAt,
 		},
 	}
 }
