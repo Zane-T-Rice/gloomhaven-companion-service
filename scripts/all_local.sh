@@ -7,4 +7,4 @@ $TERMINAL -e ./dist/gloomhaven-companion-service/bootstrap &
 # This one is tricky, but for now just using a sleep. It can always be re-run
 # if the dynamodb local does not come up in time.
 sleep 5
-$TERMINAL -e scripts/seed_local_dynamodb.sh &
+$TERMINAL -e scripts/seed_dynamodb.sh &
