@@ -1,0 +1,154 @@
+{
+  "class": "Bandit Archer",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 4,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 6,
+        "attack": 3,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 5,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 6,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 9,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 6,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 8,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 9,
+        "move": 4,
+        "attack": 3,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 9,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 13,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 12,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 17,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Bandit Archer",
+        "rank": "Elite"
+      }
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "class": "Chaos Demon",
+  "standeeLimit": 4,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 2,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 4,
+        "attack": 3,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 8,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 11,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 14,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 12,
+        "move": 3,
+        "attack": 4,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 18,
+        "move": 5,
+        "attack": 5,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 14,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 21,
+        "move": 5,
+        "attack": 6,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 16,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 26,
+        "move": 5,
+        "attack": 6,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 20,
+        "move": 4,
+        "attack": 6,
+        "innateOffenses": "Muddle",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 33,
+        "move": 5,
+        "attack": 8,
+        "innateOffenses": "Muddle",
+        "innateDefenses": "Curse",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 25,
+        "move": 4,
+        "attack": 7,
+        "innateOffenses": "Muddle",
+        "innateDefenses": "Curse",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 39,
+        "move": 6,
+        "attack": 9,
+        "innateOffenses": "Muddle",
+        "innateDefenses": "Curse",
+        "damage": 0,
+        "class": "Chaos Demon",
+        "rank": "Elite"
+      }
+    }
+  }
+}

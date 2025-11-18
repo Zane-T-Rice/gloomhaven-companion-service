@@ -1,0 +1,150 @@
+{
+  "class": "Ancient Artillery",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 4,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 2,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 7,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 3,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 6,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 2,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 9,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 3,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 8,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 2,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 3,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 9,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 3,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 14,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 4,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 12,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 3,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 16,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 5,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 15,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 3,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 21,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 5,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 18,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 4,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 26,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 6,
+        "innateDefenses": "Muddle"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 21,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Normal",
+        "attack": 5,
+        "innateDefenses": "Muddle"
+      },
+      "elite": {
+        "maximumHP": 34,
+        "damage": 0,
+        "class": "Ancient Artillery",
+        "rank": "Elite",
+        "attack": 7,
+        "innateDefenses": "Muddle"
+      }
+    }
+  }
+}
