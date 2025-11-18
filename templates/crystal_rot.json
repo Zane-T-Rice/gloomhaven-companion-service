@@ -1,0 +1,166 @@
+{
+  "class": "Crystal Rot",
+  "standeeLimit": 4,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 5,
+        "move": 2,
+        "attack": 1,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 8,
+        "move": 2,
+        "attack": 2,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 6,
+        "move": 2,
+        "attack": 2,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 9,
+        "move": 2,
+        "attack": 3,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 2,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 11,
+        "move": 3,
+        "attack": 3,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 10,
+        "move": 3,
+        "attack": 2,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 16,
+        "move": 3,
+        "attack": 3,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 11,
+        "move": 3,
+        "attack": 3,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 18,
+        "move": 3,
+        "attack": 4,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 13,
+        "move": 3,
+        "attack": 3,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 21,
+        "move": 3,
+        "attack": 4,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 18,
+        "move": 3,
+        "attack": 3,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 29,
+        "move": 3,
+        "attack": 4,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 21,
+        "move": 3,
+        "attack": 4,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 33,
+        "move": 3,
+        "attack": 5,
+        "special": "Living Bones, Living Corpses, and Living Spirits within range 3 gain advantage on all their attacks.",
+        "damage": 0,
+        "class": "Crystal Rot",
+        "rank": "Elite"
+      }
+    }
+  }
+}
