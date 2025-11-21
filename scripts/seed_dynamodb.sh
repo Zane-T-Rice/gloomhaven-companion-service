@@ -31,7 +31,23 @@ TOKEN_RESPONSE=`curl --request POST \
 
 ACCESS_TOKEN=`echo $TOKEN_RESPONSE | grep -Eo '"access_token"[^,]*' | grep -Eo '[^:]*$' | tr -d '"'`;
 
-for i in $(ls templates/*); do \
+for i in $(ls templates/enemies/*); do \
+  curl --request POST \
+    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --header "Authorization: Bearer $ACCESS_TOKEN" \
+    --header 'Content-Type: application/json' \
+    --data "@$i";
+done
+
+for i in $(ls templates/characters/*); do \
+  curl --request POST \
+    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --header "Authorization: Bearer $ACCESS_TOKEN" \
+    --header 'Content-Type: application/json' \
+    --data "@$i";
+done
+
+for i in $(ls templates/summons/*); do \
   curl --request POST \
     --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
     --header "Authorization: Bearer $ACCESS_TOKEN" \

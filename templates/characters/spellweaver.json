@@ -1,0 +1,77 @@
+{
+  "class": "Spellweaver",
+  "stats": {
+    "1": {
+      "character": {
+        "maximumHP": 6,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "2": {
+      "character": {
+        "maximumHP": 7,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "3": {
+      "character": {
+        "maximumHP": 8,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "4": {
+      "character": {
+        "maximumHP": 9,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "5": {
+      "character": {
+        "maximumHP": 10,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "6": {
+      "character": {
+        "maximumHP": 11,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "7": {
+      "character": {
+        "maximumHP": 12,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "8": {
+      "character": {
+        "maximumHP": 13,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "9": {
+      "character": {
+        "maximumHP": 14,
+        "class": "Spellweaver",
+        "rank": "Character",
+        "damage": 0
+      }
+    }
+  }
+}

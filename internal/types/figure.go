@@ -23,6 +23,7 @@ type FigureCreateInput struct {
 	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innateOffenses"`
 	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
 	Special        *string `dynamodbav:"special" json:"special"`
+	Alignment      *string `dynamodbav:"alignment" json:"alignment"`
 	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
@@ -59,6 +60,7 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 			InnateOffenses: input.InnateOffenses,
 			Statuses:       input.Statuses,
 			Special:        input.Special,
+			Alignment:      input.Alignment,
 			UpdatedAt:      &updatedAt,
 		}}
 }

@@ -1,0 +1,77 @@
+{
+  "class": "Bruiser",
+  "stats": {
+    "1": {
+      "character": {
+        "maximumHP": 10,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "2": {
+      "character": {
+        "maximumHP": 12,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "3": {
+      "character": {
+        "maximumHP": 14,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "4": {
+      "character": {
+        "maximumHP": 16,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "5": {
+      "character": {
+        "maximumHP": 18,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "6": {
+      "character": {
+        "maximumHP": 20,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "7": {
+      "character": {
+        "maximumHP": 22,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "8": {
+      "character": {
+        "maximumHP": 24,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "9": {
+      "character": {
+        "maximumHP": 26,
+        "class": "Bruiser",
+        "rank": "Character",
+        "damage": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "class": "Mindthief",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "class": "Mindthief",
+        "name": "Rat King",
+        "maximumHP": 10,
+        "move": 3,
+        "special": "Attack X, where X is half the Rat King's current hit point value (rounded up).",
+        "damage": 0
+      }
+    }
+  }
+}

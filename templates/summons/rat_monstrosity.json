@@ -1,0 +1,17 @@
+{
+  "class": "Mindthief",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "class": "Mindthief",
+        "name": "Rat Monstrosity",
+        "maximumHP": 8,
+        "move": 3,
+        "attack": 3,
+        "special": "Add +1 Attack if the target has a negative condition.",
+        "damage": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "class": "Mindthief",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "class": "Mindthief",
+        "name": "Rat Swarm",
+        "maximumHP": 5,
+        "move": 2,
+        "attack": 2,
+        "innateOffenses": "Poison",
+        "damage": 0
+      }
+    }
+  }
+}

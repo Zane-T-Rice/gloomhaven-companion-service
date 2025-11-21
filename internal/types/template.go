@@ -6,8 +6,10 @@ import (
 )
 
 type Stat struct {
-	Normal FigureCreateInput `dynamodbav:"normal,omitempty" json:"normal"`
-	Elite  FigureCreateInput `dynamodbav:"elite,omitempty" json:"elite"`
+	Normal    FigureCreateInput `dynamodbav:"normal,omitempty" json:"normal"`
+	Elite     FigureCreateInput `dynamodbav:"elite,omitempty" json:"elite"`
+	Character FigureCreateInput `dynamodbav:"character,omitempty" json:"character"`
+	Summon    FigureCreateInput `dynamodbav:"summon,omitempty" json:"summon"`
 }
 
 type TemplateCreateInput struct {
