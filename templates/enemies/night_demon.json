@@ -1,5 +1,5 @@
 {
-  "class": "Night Demon",
+  "type": "Night Demon",
   "standeeLimit": 6,
   "stats": {
     "0": {

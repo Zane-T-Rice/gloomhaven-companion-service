@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Item",
+        "name": "Warrior Spirit",
+        "maximumHP": 6,
+        "move": 1,
+        "attack": 2,
+        "damage": 0
+      }
+    }
+  }
+}

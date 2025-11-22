@@ -1,15 +1,14 @@
 {
-  "type": "Mindthief",
+  "type": "Item",
   "stats": {
     "0": {
       "summon": {
         "rank": "Summon",
-        "type": "Mindthief",
-        "name": "Rat Swarm",
-        "maximumHP": 5,
+        "type": "Item",
+        "name": "Skeleton",
+        "maximumHP": 3,
         "move": 2,
         "attack": 2,
-        "innateOffenses": "Poison",
         "damage": 0
       }
     }

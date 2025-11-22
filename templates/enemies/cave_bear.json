@@ -1,5 +1,5 @@
 {
-  "class": "Cave Bear",
+  "type": "Cave Bear",
   "standeeLimit": 4,
   "stats": {
     "0": {

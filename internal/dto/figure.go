@@ -23,6 +23,7 @@ type Figure struct {
 	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
 	Special        *string `dynamodbav:"special" json:"special"`
 	Alignment      *string `dynamodbav:"alignment" json:"alignment"`
+	AttackPlusC    *bool   `dynamodbav:"attack_plus_c" json:"attackPlusC"`
 	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
@@ -48,6 +49,7 @@ func NewFigure(item types.FigureItem) Figure {
 		Statuses:       item.Statuses,
 		Special:        item.Special,
 		Alignment:      item.Alignment,
+		AttackPlusC:    item.AttackPlusC,
 		UpdatedAt:      item.UpdatedAt,
 	}
 }

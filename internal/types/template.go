@@ -8,12 +8,13 @@ import (
 type Stat struct {
 	Normal    FigureCreateInput `dynamodbav:"normal,omitempty" json:"normal"`
 	Elite     FigureCreateInput `dynamodbav:"elite,omitempty" json:"elite"`
+	Boss      FigureCreateInput `dynamodbav:"boss,omitempty" json:"boss"`
 	Character FigureCreateInput `dynamodbav:"character,omitempty" json:"character"`
 	Summon    FigureCreateInput `dynamodbav:"summon,omitempty" json:"summon"`
 }
 
 type TemplateCreateInput struct {
-	Class        *string      `dynamodbav:"class,omitempty" json:"class"`
+	Type         *string      `dynamodbav:"type,omitempty" json:"type"`
 	StandeeLimit *int         `dynamodbav:"standee_limit,omitempty" json:"standeeLimit"`
 	Stats        map[int]Stat `dynamodbav:"stats,omitempty" json:"stats"`
 	UpdatedAt    *string      `dynamodbav:"updated_at" json:"updatedAt"`
@@ -36,7 +37,7 @@ func NewTemplateItem(input TemplateCreateInput, templateId string) TemplateItem 
 			Entity: constants.TEMPLATE + constants.SEPERATOR + templateId,
 		},
 		TemplateCreateInput: TemplateCreateInput{
-			Class:        input.Class,
+			Type:         input.Type,
 			Stats:        input.Stats,
 			StandeeLimit: input.StandeeLimit,
 			UpdatedAt:    &updatedAt,

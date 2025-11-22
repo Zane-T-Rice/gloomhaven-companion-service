@@ -1,5 +1,5 @@
 {
-  "class": "Cultist",
+  "type": "Cultist",
   "standeeLimit": 6,
   "stats": {
     "0": {

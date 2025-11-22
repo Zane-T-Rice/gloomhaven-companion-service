@@ -1,5 +1,5 @@
 {
-  "class": "Earth Demon",
+  "type": "Earth Demon",
   "standeeLimit": 6,
   "stats": {
     "0": {

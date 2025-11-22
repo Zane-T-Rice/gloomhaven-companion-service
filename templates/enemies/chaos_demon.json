@@ -1,5 +1,5 @@
 {
-  "class": "Chaos Demon",
+  "type": "Chaos Demon",
   "standeeLimit": 4,
   "stats": {
     "0": {

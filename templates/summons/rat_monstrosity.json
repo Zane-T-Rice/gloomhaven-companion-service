@@ -1,10 +1,10 @@
 {
-  "class": "Mindthief",
+  "type": "Mindthief",
   "stats": {
     "0": {
       "summon": {
         "rank": "Summon",
-        "class": "Mindthief",
+        "type": "Mindthief",
         "name": "Rat Monstrosity",
         "maximumHP": 8,
         "move": 3,

@@ -1,5 +1,5 @@
 {
-  "class": "City Archer",
+  "type": "City Archer",
   "standeeLimit": 6,
   "stats": {
     "0": {

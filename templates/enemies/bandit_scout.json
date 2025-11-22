@@ -1,5 +1,5 @@
 {
-  "class": "Bandit Scout",
+  "type": "Bandit Scout",
   "standeeLimit": 6,
   "stats": {
     "0": {

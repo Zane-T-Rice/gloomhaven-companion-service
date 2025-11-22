@@ -54,3 +54,11 @@ for i in $(ls templates/summons/*); do \
     --header 'Content-Type: application/json' \
     --data "@$i";
 done
+
+for i in $(ls templates/bosses/*); do \
+  curl --request POST \
+    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --header "Authorization: Bearer $ACCESS_TOKEN" \
+    --header 'Content-Type: application/json' \
+    --data "@$i";
+done

@@ -1,0 +1,109 @@
+{
+  "type": "The Betrayer",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 22,
+        "move": 3,
+        "attack": 1,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 26,
+        "move": 3,
+        "attack": 1,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 29,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 34,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 37,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 42,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 46,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 53,
+        "move": 3,
+        "attack": 5,
+        "damage": 0,
+        "class": "The Betrayer",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Poison,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    }
+  }
+}

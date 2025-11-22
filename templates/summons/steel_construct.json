@@ -1,15 +1,14 @@
 {
-  "type": "Mindthief",
+  "type": "Item",
   "stats": {
     "0": {
       "summon": {
         "rank": "Summon",
-        "type": "Mindthief",
-        "name": "Rat Swarm",
+        "type": "Item",
+        "name": "Steel Construct",
         "maximumHP": 5,
         "move": 2,
-        "attack": 2,
-        "innateOffenses": "Poison",
+        "attack": 3,
         "damage": 0
       }
     }

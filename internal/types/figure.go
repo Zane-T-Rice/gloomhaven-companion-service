@@ -24,6 +24,7 @@ type FigureCreateInput struct {
 	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
 	Special        *string `dynamodbav:"special" json:"special"`
 	Alignment      *string `dynamodbav:"alignment" json:"alignment"`
+	AttackPlusC    *bool   `dynamodbav:"attack_plus_c" json:"attackPlusC"`
 	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 

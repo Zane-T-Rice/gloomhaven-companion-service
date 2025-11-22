@@ -1,5 +1,5 @@
 {
-  "class": "Bandit Archer",
+  "type": "Bandit Archer",
   "standeeLimit": 6,
   "stats": {
     "0": {

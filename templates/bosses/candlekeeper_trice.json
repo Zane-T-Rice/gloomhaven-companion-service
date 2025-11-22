@@ -1,0 +1,109 @@
+{
+  "type": "Candlekeeper Trice",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 18,
+        "move": 3,
+        "attack": 1,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 20,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 24,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 25,
+        "move": 4,
+        "attack": 3,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 29,
+        "move": 4,
+        "attack": 3,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 31,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 37,
+        "move": 5,
+        "attack": 4,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 44,
+        "move": 5,
+        "attack": 5,
+        "damage": 0,
+        "class": "Candlekeeper Trice",
+        "rank": "Boss",
+        "innateDefenses": "Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    }
+  }
+}

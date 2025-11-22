@@ -1,5 +1,5 @@
 {
-  "class": "Frost Demon",
+  "type": "Frost Demon",
   "standeeLimit": 6,
   "stats": {
     "0": {

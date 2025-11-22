@@ -1,5 +1,5 @@
 {
-  "class": "City Guard",
+  "type": "City Guard",
   "standeeLimit": 6,
   "stats": {
     "0": {
