@@ -1,0 +1,165 @@
+{
+  "type": "Giant Viper",
+  "standeeLimit": 10,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 2,
+        "move": 2,
+        "attack": 1,
+        "damage": 0,
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 3,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 3,
+        "move": 2,
+        "attack": 1,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 5,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 4,
+        "move": 3,
+        "attack": 1,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 4,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 8,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 6,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 11,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 13,
+        "move": 4,
+        "attack": 3,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 9,
+        "move": 4,
+        "attack": 3,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 16,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 12,
+        "move": 4,
+        "attack": 3,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 20,
+        "move": 5,
+        "attack": 4,
+        "damage": 0,
+        "innateOffenses": "Poison",
+        "class": "Giant Viper",
+        "rank": "Elite"
+      }
+    }
+  }
+}
