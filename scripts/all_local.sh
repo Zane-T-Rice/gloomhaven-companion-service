@@ -1,5 +1,5 @@
 TERMINAL=alacritty
-$TERMINAL -e scripts/build.sh &
+$TERMINAL -e scripts/build.sh
 $TERMINAL -e scripts/start_dynamodb_local.sh &
 $TERMINAL -e scripts/local_websocket.sh &
 $TERMINAL -e ./dist/gloomhaven-companion-service/bootstrap &

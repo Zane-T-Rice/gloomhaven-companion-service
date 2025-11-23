@@ -189,7 +189,7 @@ func (db *DynamoDB) DeleteItem(
 		ReturnValues: types.ReturnValueAllOld,
 	})
 	if err != nil {
-		log.Printf("Couldn't add item to table. Here's why: %v\n", err)
+		log.Printf("Couldn't delete item from table. Here's why: %v\n", err)
 		return err
 	}
 	err = attributevalue.UnmarshalMap(deleteItemResults.Attributes, &output)
