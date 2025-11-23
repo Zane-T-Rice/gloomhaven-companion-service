@@ -1,0 +1,167 @@
+{
+  "type": "Harrower Infester",
+  "standeeLimit": 4,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 6,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 2,
+        "attack": 2,
+        "retaliate": 1,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "move": 3,
+        "attack": 2,
+        "retaliate": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 8,
+        "move": 2,
+        "attack": 2,
+        "retaliate": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 14,
+        "move": 3,
+        "attack": 3,
+        "retaliate": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 10,
+        "move": 2,
+        "attack": 3,
+        "retaliate": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 17,
+        "move": 3,
+        "attack": 3,
+        "retaliate": 3,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 12,
+        "move": 3,
+        "attack": 3,
+        "retaliate": 2,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 19,
+        "move": 3,
+        "attack": 4,
+        "retaliate": 3,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 12,
+        "move": 3,
+        "attack": 4,
+        "retaliate": 3,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 21,
+        "move": 3,
+        "attack": 5,
+        "retaliate": 3,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 15,
+        "move": 3,
+        "attack": 5,
+        "retaliate": 3,
+        "damage": 0,
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 27,
+        "move": 3,
+        "attack": 6,
+        "retaliate": 4,
+        "damage": 0,
+        "innateDefenses": "Poison",
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 18,
+        "move": 3,
+        "attack": 5,
+        "retaliate": 4,
+        "damage": 0,
+        "innateDefenses": "Poison",
+        "class": "Harrower Infester",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 32,
+        "move": 4,
+        "attack": 6,
+        "retaliate": 4,
+        "damage": 0,
+        "innateDefenses": "Poison",
+        "class": "Harrower Infester",
+        "rank": "Elite"
+      }
+    }
+  }
+}
