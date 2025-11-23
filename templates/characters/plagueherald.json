@@ -1,0 +1,77 @@
+{
+  "type": "Plagueherald",
+  "stats": {
+    "1": {
+      "character": {
+        "maximumHP": 6,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "2": {
+      "character": {
+        "maximumHP": 7,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "3": {
+      "character": {
+        "maximumHP": 8,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "4": {
+      "character": {
+        "maximumHP": 9,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "5": {
+      "character": {
+        "maximumHP": 10,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "6": {
+      "character": {
+        "maximumHP": 11,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "7": {
+      "character": {
+        "maximumHP": 12,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "8": {
+      "character": {
+        "maximumHP": 13,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "9": {
+      "character": {
+        "maximumHP": 14,
+        "class": "Plagueherald",
+        "rank": "Character",
+        "damage": 0
+      }
+    }
+  }
+}

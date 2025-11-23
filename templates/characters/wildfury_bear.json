@@ -1,0 +1,77 @@
+{
+  "type": "Wildfury Bear",
+  "stats": {
+    "1": {
+      "character": {
+        "maximumHP": 10,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "2": {
+      "character": {
+        "maximumHP": 12,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "3": {
+      "character": {
+        "maximumHP": 14,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "4": {
+      "character": {
+        "maximumHP": 16,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "5": {
+      "character": {
+        "maximumHP": 18,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "6": {
+      "character": {
+        "maximumHP": 20,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "7": {
+      "character": {
+        "maximumHP": 22,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "8": {
+      "character": {
+        "maximumHP": 24,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    },
+    "9": {
+      "character": {
+        "maximumHP": 26,
+        "class": "Wildfury Bear",
+        "rank": "Character",
+        "damage": 0
+      }
+    }
+  }
+}
