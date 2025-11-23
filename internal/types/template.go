@@ -6,18 +6,18 @@ import (
 )
 
 type Stat struct {
-	Normal    FigureCreateInput `dynamodbav:"normal,omitempty" json:"normal"`
-	Elite     FigureCreateInput `dynamodbav:"elite,omitempty" json:"elite"`
-	Boss      FigureCreateInput `dynamodbav:"boss,omitempty" json:"boss"`
-	Character FigureCreateInput `dynamodbav:"character,omitempty" json:"character"`
-	Summon    FigureCreateInput `dynamodbav:"summon,omitempty" json:"summon"`
+	Normal    *FigureCreateInput `dynamodbav:"normal,omitempty" json:"normal,omitempty"`
+	Elite     *FigureCreateInput `dynamodbav:"elite,omitempty" json:"elite,omitempty"`
+	Boss      *FigureCreateInput `dynamodbav:"boss,omitempty" json:"boss,omitempty"`
+	Character *FigureCreateInput `dynamodbav:"character,omitempty" json:"character,omitempty"`
+	Summon    *FigureCreateInput `dynamodbav:"summon,omitempty" json:"summon,omitempty"`
 }
 
 type TemplateCreateInput struct {
-	Type         *string      `dynamodbav:"type,omitempty" json:"type"`
-	StandeeLimit *int         `dynamodbav:"standee_limit,omitempty" json:"standeeLimit"`
-	Stats        map[int]Stat `dynamodbav:"stats,omitempty" json:"stats"`
-	UpdatedAt    *string      `dynamodbav:"updated_at" json:"updatedAt"`
+	Type         *string       `dynamodbav:"type,omitempty" json:"type,omitempty"`
+	StandeeLimit *int          `dynamodbav:"standee_limit,omitempty" json:"standeeLimit,omitempty"`
+	Stats        *map[int]Stat `dynamodbav:"stats,omitempty" json:"stats,omitempty"`
+	UpdatedAt    *string       `dynamodbav:"updated_at,omitempty" json:"updatedAt,omitempty"`
 }
 
 type TemplatePatchInput struct {

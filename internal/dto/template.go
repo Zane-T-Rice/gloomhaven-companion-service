@@ -6,10 +6,10 @@ type Template struct {
 	Parent string `dynamodbav:"parent" json:"parent"`
 	Entity string `dynamodbav:"entity" json:"entity"`
 
-	Type         *string            `dynamodbav:"type,omitempty" json:"type"`
-	StandeeLimit *int               `dynamodbav:"standee_limit,omitempty" json:"standeeLimit"`
-	Stats        map[int]types.Stat `dynamodbav:"stats,omitempty" json:"stats"`
-	UpdatedAt    *string            `dynamodbav:"updated_at" json:"updatedAt"`
+	Type         *string             `dynamodbav:"type,omitempty" json:"type,omitempty"`
+	StandeeLimit *int                `dynamodbav:"standee_limit,omitempty" json:"standeeLimit,omitempty"`
+	Stats        *map[int]types.Stat `dynamodbav:"stats,omitempty" json:"stats,omitempty"`
+	UpdatedAt    *string             `dynamodbav:"updated_at" json:"updatedAt,omitempty"`
 }
 
 func NewTemplate(item types.TemplateItem) Template {

@@ -6,27 +6,27 @@ import (
 )
 
 type FigureCreateInput struct {
-	Name           *string `dynamodbav:"name" json:"name"`
-	MaximumHP      *int    `dynamodbav:"maximum_hp" json:"maximumHP"`
-	Damage         *int    `dynamodbav:"damage" json:"damage"`
-	Class          *string `dynamodbav:"class" json:"class"`
-	Rank           *string `dynamodbav:"rank" json:"rank"`
-	Shield         *int    `dynamodbav:"shield" json:"shield"`
-	Retaliate      *int    `dynamodbav:"retaliate" json:"retaliate"`
-	Number         *int    `dynamodbav:"number" json:"number"`
-	Move           *int    `dynamodbav:"move" json:"move"`
-	Attack         *int    `dynamodbav:"attack" json:"attack"`
-	Target         *int    `dynamodbav:"target" json:"target"`
-	Pierce         *int    `dynamodbav:"pierce" json:"pierce"`
-	XP             *int    `dynamodbav:"xp" json:"xp"`
-	InnateDefenses *string `dynamodbav:"innate_defenses" json:"innateDefenses"`
-	InnateOffenses *string `dynamodbav:"innate_offenses" json:"innateOffenses"`
-	Statuses       *string `dynamodbav:"statuses" json:"statuses"`
-	Special        *string `dynamodbav:"special" json:"special"`
-	Alignment      *string `dynamodbav:"alignment" json:"alignment"`
-	AttackPlusC    *bool   `dynamodbav:"attack_plus_c" json:"attackPlusC"`
-	Flying         *bool   `dynamodbav:"flying" json:"flying"`
-	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
+	Name           *string `dynamodbav:"name,omitempty" json:"name,omitempty"`
+	MaximumHP      *int    `dynamodbav:"maximum_hp,omitempty" json:"maximumHP,omitempty"`
+	Damage         *int    `dynamodbav:"damage,omitempty" json:"damage,omitempty"`
+	Class          *string `dynamodbav:"class,omitempty" json:"class,omitempty"`
+	Shield         *int    `dynamodbav:"shield,omitempty" json:"shield,omitempty"`
+	Retaliate      *int    `dynamodbav:"retaliate,omitempty" json:"retaliate,omitempty"`
+	Rank           *string `dynamodbav:"rank,omitempty" json:"rank,omitempty"`
+	Number         *int    `dynamodbav:"number,omitempty" json:"number,omitempty"`
+	Move           *int    `dynamodbav:"move,omitempty" json:"move,omitempty"`
+	Attack         *int    `dynamodbav:"attack,omitempty" json:"attack,omitempty"`
+	Target         *int    `dynamodbav:"target,omitempty" json:"target,omitempty"`
+	Pierce         *int    `dynamodbav:"pierce,omitempty" json:"pierce,omitempty"`
+	XP             *int    `dynamodbav:"xp,omitempty" json:"xp,omitempty"`
+	InnateDefenses *string `dynamodbav:"innate_defenses,omitempty" json:"innateDefenses,omitempty"`
+	InnateOffenses *string `dynamodbav:"innate_offenses,omitempty" json:"innateOffenses,omitempty"`
+	Statuses       *string `dynamodbav:"statuses,omitempty" json:"statuses,omitempty"`
+	Special        *string `dynamodbav:"special,omitempty" json:"special,omitempty"`
+	Alignment      *string `dynamodbav:"alignment,omitempty" json:"alignment,omitempty"`
+	AttackPlusC    *bool   `dynamodbav:"attack_plus_c,omitempty" json:"attackPlusC,omitempty"`
+	Flying         *bool   `dynamodbav:"flying,omitempty" json:"flying,omitempty"`
+	UpdatedAt      *string `dynamodbav:"updated_at,omitempty" json:"updatedAt,omitempty"`
 }
 
 type FigurePatchInput struct {
