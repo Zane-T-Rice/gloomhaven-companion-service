@@ -1,0 +1,164 @@
+{
+  "type": "Savvas Lavaflow",
+  "standeeLimit": 4,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 8,
+        "move": 3,
+        "attack": 2,
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 13,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 9,
+        "move": 3,
+        "attack": 2,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 15,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 11,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 18,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Wound,Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 14,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 21,
+        "move": 3,
+        "attack": 4,
+        "innateOffenses": "Wound,Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 16,
+        "move": 3,
+        "attack": 4,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 25,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Wound,Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 20,
+        "move": 3,
+        "attack": 4,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 30,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Wound,Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 28,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 40,
+        "move": 4,
+        "attack": 6,
+        "innateOffenses": "Wound,Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 35,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 50,
+        "move": 4,
+        "attack": 7,
+        "innateOffenses": "Wound,Poison",
+        "damage": 0,
+        "class": "Savvas Lavaflow",
+        "rank": "Elite"
+      }
+    }
+  }
+}

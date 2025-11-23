@@ -1,0 +1,109 @@
+{
+  "type": "The Dark Rider",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 16,
+        "move": 3,
+        "attack": 1,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 20,
+        "move": 4,
+        "attack": 1,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 23,
+        "move": 4,
+        "attack": 2,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 29,
+        "move": 4,
+        "attack": 2,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 30,
+        "move": 5,
+        "attack": 3,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 36,
+        "move": 5,
+        "attack": 3,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 45,
+        "move": 5,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 52,
+        "move": 6,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Dark Rider",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    }
+  }
+}

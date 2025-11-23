@@ -1,0 +1,101 @@
+{
+  "type": "The Sightless Eye",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 21,
+        "attack": 5,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 23,
+        "attack": 6,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 28,
+        "attack": 6,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 30,
+        "attack": 7,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 35,
+        "attack": 7,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 38,
+        "attack": 8,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 47,
+        "attack": 8,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 54,
+        "attack": 9,
+        "damage": 0,
+        "class": "The Sightless Eye",
+        "rank": "Boss",
+        "innateDefenses": "Poison,Disarm,Stun,Muddle",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    }
+  }
+}

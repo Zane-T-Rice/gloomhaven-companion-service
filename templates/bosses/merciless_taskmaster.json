@@ -1,0 +1,109 @@
+{
+  "type": "Merciless Taskmaster",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 21,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 25,
+        "move": 2,
+        "attack": 3,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 28,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 31,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 34,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 36,
+        "move": 4,
+        "attack": 5,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 43,
+        "move": 4,
+        "attack": 5,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 49,
+        "move": 4,
+        "attack": 6,
+        "damage": 0,
+        "class": "Merciless Taskmaster",
+        "rank": "Boss",
+        "innateDefenses": "Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    }
+  }
+}

@@ -1,122 +1,52 @@
 {
-  "type": "Forest Imp",
-  "standeeLimit": 10,
+  "type": "Wind Demon",
+  "standeeLimit": 6,
   "stats": {
     "0": {
       "normal": {
-        "maximumHP": 1,
+        "maximumHP": 3,
         "move": 3,
-        "attack": 1,
+        "attack": 2,
         "shield": 1,
         "damage": 0,
         "flying": true,
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Normal"
       },
       "elite": {
-        "maximumHP": 4,
+        "maximumHP": 5,
         "move": 3,
-        "attack": 1,
+        "attack": 3,
         "shield": 1,
         "damage": 0,
         "flying": true,
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Elite"
       }
     },
     "1": {
       "normal": {
-        "maximumHP": 2,
+        "maximumHP": 3,
         "move": 3,
-        "attack": 1,
-        "shield": 1,
+        "attack": 2,
+        "shield": 2,
         "damage": 0,
         "flying": true,
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Normal"
       },
       "elite": {
         "maximumHP": 5,
         "move": 3,
-        "attack": 2,
-        "shield": 1,
+        "attack": 3,
+        "shield": 2,
         "damage": 0,
         "flying": true,
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Elite"
       }
     },
     "2": {
-      "normal": {
-        "maximumHP": 2,
-        "move": 3,
-        "attack": 2,
-        "shield": 1,
-        "damage": 0,
-        "flying": true,
-        "class": "Forest Imp",
-        "rank": "Normal"
-      },
-      "elite": {
-        "maximumHP": 6,
-        "move": 3,
-        "attack": 2,
-        "shield": 1,
-        "damage": 0,
-        "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
-        "rank": "Elite"
-      }
-    },
-    "3": {
-      "normal": {
-        "maximumHP": 3,
-        "move": 4,
-        "attack": 2,
-        "shield": 1,
-        "damage": 0,
-        "flying": true,
-        "class": "Forest Imp",
-        "rank": "Normal"
-      },
-      "elite": {
-        "maximumHP": 7,
-        "move": 4,
-        "attack": 2,
-        "shield": 1,
-        "damage": 0,
-        "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
-        "rank": "Elite"
-      }
-    },
-    "4": {
-      "normal": {
-        "maximumHP": 3,
-        "move": 4,
-        "attack": 2,
-        "shield": 2,
-        "damage": 0,
-        "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
-        "rank": "Normal"
-      },
-      "elite": {
-        "maximumHP": 7,
-        "move": 4,
-        "attack": 2,
-        "shield": 2,
-        "damage": 0,
-        "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
-        "rank": "Elite"
-      }
-    },
-    "5": {
       "normal": {
         "maximumHP": 4,
         "move": 4,
@@ -124,23 +54,21 @@
         "shield": 2,
         "damage": 0,
         "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Normal"
       },
       "elite": {
-        "maximumHP": 8,
+        "maximumHP": 7,
         "move": 4,
         "attack": 3,
         "shield": 2,
         "damage": 0,
         "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Elite"
       }
     },
-    "6": {
+    "3": {
       "normal": {
         "maximumHP": 5,
         "move": 4,
@@ -148,43 +76,105 @@
         "shield": 2,
         "damage": 0,
         "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Normal"
       },
       "elite": {
-        "maximumHP": 10,
+        "maximumHP": 8,
         "move": 4,
         "attack": 4,
         "shield": 2,
         "damage": 0,
         "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
+        "class": "Wind Demon",
         "rank": "Elite"
       }
     },
-    "7": {
+    "4": {
       "normal": {
-        "maximumHP": 8,
+        "maximumHP": 7,
         "move": 4,
         "attack": 3,
         "shield": 2,
         "damage": 0,
         "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
+        "class": "Wind Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 4,
+        "attack": 5,
+        "shield": 2,
+        "damage": 0,
+        "flying": true,
+        "class": "Wind Demon",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 10,
+        "move": 4,
+        "attack": 3,
+        "shield": 2,
+        "damage": 0,
+        "flying": true,
+        "class": "Wind Demon",
         "rank": "Normal"
       },
       "elite": {
         "maximumHP": 14,
         "move": 4,
-        "attack": 4,
+        "attack": 5,
         "shield": 2,
         "damage": 0,
         "flying": true,
-        "innateOffenses": "Curse",
-        "class": "Forest Imp",
+        "class": "Wind Demon",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 11,
+        "move": 4,
+        "attack": 3,
+        "shield": 3,
+        "damage": 0,
+        "flying": true,
+        "class": "Wind Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 16,
+        "move": 4,
+        "attack": 5,
+        "shield": 3,
+        "damage": 0,
+        "flying": true,
+        "class": "Wind Demon",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 14,
+        "move": 4,
+        "attack": 4,
+        "shield": 3,
+        "damage": 0,
+        "flying": true,
+        "class": "Wind Demon",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 21,
+        "move": 4,
+        "attack": 6,
+        "shield": 3,
+        "damage": 0,
+        "flying": true,
+        "class": "Wind Demon",
         "rank": "Elite"
       }
     }

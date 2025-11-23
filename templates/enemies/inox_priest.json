@@ -1,0 +1,166 @@
+{
+  "type": "Inox Priest",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 5,
+        "move": 1,
+        "attack": 2,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 7,
+        "move": 2,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 1,
+        "attack": 2,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 2,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 8,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 11,
+        "move": 2,
+        "attack": 2,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 16,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 12,
+        "move": 2,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 18,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 15,
+        "move": 2,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 24,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 20,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 32,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 25,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 36,
+        "move": 4,
+        "attack": 5,
+        "damage": 0,
+        "special": "Adds Safeguard to all its heals",
+        "class": "Inox Priest",
+        "rank": "Elite"
+      }
+    }
+  }
+}

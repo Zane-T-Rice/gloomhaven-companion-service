@@ -1,0 +1,101 @@
+{
+  "type": "The Elder Drake",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 26,
+        "attack": 1,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 31,
+        "attack": 2,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 37,
+        "attack": 2,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 41,
+        "attack": 3,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 47,
+        "attack": 3,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 52,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 62,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 75,
+        "attack": 5,
+        "damage": 0,
+        "class": "The Elder Drake",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": true
+      }
+    }
+  }
+}

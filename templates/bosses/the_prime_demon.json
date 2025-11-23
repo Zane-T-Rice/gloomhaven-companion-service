@@ -1,0 +1,109 @@
+{
+  "type": "The Prime Demon",
+  "stats": {
+    "0": {
+      "boss": {
+        "maximumHP": 17,
+        "move": 3,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "1": {
+      "boss": {
+        "maximumHP": 22,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "2": {
+      "boss": {
+        "maximumHP": 25,
+        "move": 4,
+        "attack": 5,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "3": {
+      "boss": {
+        "maximumHP": 31,
+        "move": 4,
+        "attack": 5,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "4": {
+      "boss": {
+        "maximumHP": 35,
+        "move": 4,
+        "attack": 6,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "5": {
+      "boss": {
+        "maximumHP": 41,
+        "move": 5,
+        "attack": 6,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "6": {
+      "boss": {
+        "maximumHP": 50,
+        "move": 5,
+        "attack": 7,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    },
+    "7": {
+      "boss": {
+        "maximumHP": 60,
+        "move": 5,
+        "attack": 8,
+        "damage": 0,
+        "class": "The Prime Demon",
+        "rank": "Boss",
+        "innateDefenses": "Wound,Poison,Disarm,Immobilize,Stun",
+        "special": "Refer to boss card for special actions.",
+        "attackPlusC": false
+      }
+    }
+  }
+}

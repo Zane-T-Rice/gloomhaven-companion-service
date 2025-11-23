@@ -1,0 +1,164 @@
+{
+  "type": "Rending Drake",
+  "standeeLimit": 6,
+  "stats": {
+    "0": {
+      "normal": {
+        "maximumHP": 5,
+        "move": 3,
+        "attack": 3,
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 7,
+        "move": 4,
+        "attack": 4,
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "1": {
+      "normal": {
+        "maximumHP": 6,
+        "move": 3,
+        "attack": 3,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 7,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "2": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 4,
+        "attack": 3,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 9,
+        "move": 5,
+        "attack": 5,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "3": {
+      "normal": {
+        "maximumHP": 7,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 10,
+        "move": 5,
+        "attack": 6,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "4": {
+      "normal": {
+        "maximumHP": 9,
+        "move": 4,
+        "attack": 4,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 12,
+        "move": 6,
+        "attack": 6,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "5": {
+      "normal": {
+        "maximumHP": 10,
+        "move": 4,
+        "attack": 5,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 15,
+        "move": 6,
+        "attack": 6,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "6": {
+      "normal": {
+        "maximumHP": 14,
+        "move": 5,
+        "attack": 5,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 19,
+        "move": 6,
+        "attack": 7,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    },
+    "7": {
+      "normal": {
+        "maximumHP": 18,
+        "move": 5,
+        "attack": 6,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Normal"
+      },
+      "elite": {
+        "maximumHP": 24,
+        "move": 6,
+        "attack": 8,
+        "innateOffenses": "Wound",
+        "damage": 0,
+        "class": "Rending Drake",
+        "rank": "Elite"
+      }
+    }
+  }
+}
