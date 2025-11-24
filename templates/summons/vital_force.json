@@ -1,0 +1,15 @@
+{
+  "type": "Wildfury",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Wildfury",
+        "name": "Vital Force",
+        "maximumHP": 3,
+        "special": "All allies within Range 3 add +2 Attack to their first attack each round.",
+        "damage": 0
+      }
+    }
+  }
+}

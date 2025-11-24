@@ -1,0 +1,17 @@
+{
+  "type": "Doomstalker",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Doomstalker",
+        "name": "Battle Boar",
+        "maximumHP": 7,
+        "move": 2,
+        "attack": 2,
+        "special": "When attacking, ignore Retaliate.",
+        "damage": 0
+      }
+    }
+  }
+}

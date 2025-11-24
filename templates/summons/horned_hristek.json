@@ -1,0 +1,17 @@
+{
+  "type": "Doomstalker",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Doomstalker",
+        "name": "Horned Hristek",
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 2,
+        "special": "After moving for the first time each round, add +2 Attack to all attacks for the round.",
+        "damage": 0
+      }
+    }
+  }
+}

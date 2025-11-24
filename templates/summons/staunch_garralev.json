@@ -1,0 +1,18 @@
+{
+  "type": "Doomstalker",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Doomstalker",
+        "name": "Staunch Garralev",
+        "maximumHP": 8,
+        "move": 2,
+        "attack": 2,
+        "pierce": 3,
+        "special": "When you summon this summon, it gains Ward. Whenever you long rest, this summon gains Ward.",
+        "damage": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "Wildfury",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Wildfury",
+        "name": "Wind Idol",
+        "maximumHP": 1,
+        "special": "All allies within Range 3 add Pierce 1 to all their attacks.",
+        "damage": 0
+      }
+    }
+  }
+}

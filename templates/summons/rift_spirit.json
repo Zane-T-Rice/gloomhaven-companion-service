@@ -1,0 +1,17 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Rift Spirit",
+        "maximumHP": 2,
+        "move": 2,
+        "innateOffenses": "Muddle",
+        "special": "At end of turn, grant one ally within Range 3: Shield 1. You control the grant abilities of this summon.",
+        "damage": 0
+      }
+    }
+  }
+}

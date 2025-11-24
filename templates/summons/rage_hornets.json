@@ -1,0 +1,18 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Rage hornets",
+        "maximumHP": 5,
+        "move": 3,
+        "attack": 3,
+        "special": "Add +2 Attack if the target is adjacent to any of your allies.",
+        "flying": true,
+        "damage": 0
+      }
+    }
+  }
+}

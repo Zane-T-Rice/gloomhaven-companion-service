@@ -1,0 +1,18 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Iron Beast",
+        "maximumHP": 7,
+        "move": 2,
+        "attack": 1,
+        "shield": 1,
+        "retaliate": 1,
+        "damage": 0
+      }
+    }
+  }
+}

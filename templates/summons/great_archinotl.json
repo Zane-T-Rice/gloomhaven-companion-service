@@ -1,0 +1,17 @@
+{
+  "type": "Doomstalker",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Doomstalker",
+        "name": "Great Archinotl",
+        "maximumHP": 8,
+        "move": 4,
+        "attack": 3,
+        "special": "At initiative 100 each round, this summon performs an additional turn.",
+        "damage": 0
+      }
+    }
+  }
+}

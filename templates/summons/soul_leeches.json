@@ -1,0 +1,16 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Soul Leeches",
+        "maximumHP": 4,
+        "move": 3,
+        "special": "Attack X, where X is the number of adjacent figures.",
+        "damage": 0
+      }
+    }
+  }
+}

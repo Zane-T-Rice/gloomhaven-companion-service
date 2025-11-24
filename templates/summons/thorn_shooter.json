@@ -1,0 +1,17 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Thorn Shooter",
+        "maximumHP": 3,
+        "move": 2,
+        "innateOffenses": "Poison",
+        "special": "Range 4",
+        "damage": 0
+      }
+    }
+  }
+}

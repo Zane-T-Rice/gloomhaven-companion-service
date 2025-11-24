@@ -1,0 +1,17 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Bloat Maggots",
+        "maximumHP": 3,
+        "move": 3,
+        "attack": 1,
+        "special": "All adjacent enemies add -1 Attack to all their attacks.",
+        "damage": 0
+      }
+    }
+  }
+}

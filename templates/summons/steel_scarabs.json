@@ -1,0 +1,18 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Steel Scarabs",
+        "maximumHP": 4,
+        "move": 2,
+        "attack": 1,
+        "special": "All adjacent allies gain Shield 1.",
+        "shield": 1,
+        "damage": 0
+      }
+    }
+  }
+}

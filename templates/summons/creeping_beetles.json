@@ -1,0 +1,17 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Creeping beetles",
+        "maximumHP": 5,
+        "move": 2,
+        "attack": 2,
+        "special": "At end of turn, grant all adjacent allies: Move 1",
+        "damage": 0
+      }
+    }
+  }
+}

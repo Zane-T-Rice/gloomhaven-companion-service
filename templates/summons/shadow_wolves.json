@@ -1,0 +1,18 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Shadow Wolves",
+        "maximumHP": 2,
+        "move": 3,
+        "attack": 2,
+        "pierce": 1,
+        "special": "Whenever a Shadow wolf dies, Generate Dark and all Shadow Wolves gain Invisible.",
+        "damage": 0
+      }
+    }
+  }
+}

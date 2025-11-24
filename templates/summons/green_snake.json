@@ -1,0 +1,17 @@
+{
+  "type": "Doomstalker",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Doomstalker",
+        "name": "Green Snake",
+        "maximumHP": 5,
+        "move": 3,
+        "attack": 2,
+        "special": "Unaffected by difficult terrain. This summon is considered to be last in initiative order when determining monster focus.",
+        "damage": 0
+      }
+    }
+  }
+}

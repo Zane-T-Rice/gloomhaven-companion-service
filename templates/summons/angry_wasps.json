@@ -1,0 +1,17 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Angry Wasps",
+        "maximumHP": 3,
+        "move": 4,
+        "special": "At end of turn, all adjacent allies and enemies suffer 2 damage.",
+        "flying": true,
+        "damage": 0
+      }
+    }
+  }
+}

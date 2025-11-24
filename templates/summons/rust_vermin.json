@@ -1,0 +1,17 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Rust Vermin",
+        "maximumHP": 7,
+        "move": 4,
+        "attack": 3,
+        "special": "Add Disarm if the target has any negative conditions.",
+        "damage": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "Bladeswarm",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Bladeswarm",
+        "name": "Lightning Moths",
+        "maximumHP": 3,
+        "move": 3,
+        "special": "All adjacent summons add +1 Attack to all their attacks.",
+        "flying": true,
+        "damage": 0
+      }
+    }
+  }
+}

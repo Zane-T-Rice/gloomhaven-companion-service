@@ -1,0 +1,18 @@
+{
+  "type": "Doomstalker",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Doomstalker",
+        "name": "Vicious Jackal",
+        "maximumHP": 4,
+        "move": 3,
+        "attack": 2,
+        "retaliate": 1,
+        "innateOffenses": "Wound",
+        "damage": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "Elementalist",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Elementalist",
+        "name": "Chromatic Construct",
+        "maximumHP": 7,
+        "move": 3,
+        "attack": 0,
+        "special": "Add +1 Attack for each element that is strong or waning.",
+        "damage": 0
+      }
+    }
+  }
+}

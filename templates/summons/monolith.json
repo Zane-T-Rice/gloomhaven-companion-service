@@ -1,0 +1,15 @@
+{
+  "type": "Wildfury",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Wildfury",
+        "name": "Monolith",
+        "maximumHP": 2,
+        "special": "All allies within Range 3 gain 1 Shield.",
+        "damage": 0
+      }
+    }
+  }
+}

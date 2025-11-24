@@ -1,0 +1,17 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Covetous Imp",
+        "maximumHP": 5,
+        "move": 3,
+        "attack": 3,
+        "special": "When this summon kills an enemy, you gain the money token directly instead of placing it in the hex that enemy occupied.",
+        "damage": 0
+      }
+    }
+  }
+}

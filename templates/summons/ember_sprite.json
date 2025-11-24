@@ -1,0 +1,18 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Ember Sprite",
+        "maximumHP": 3,
+        "move": 3,
+        "attack": 1,
+        "flying": true,
+        "special": "All allies within Range 3 gain Retaliate 1 Range 3 while Fire is strong or waning.",
+        "damage": 0
+      }
+    }
+  }
+}

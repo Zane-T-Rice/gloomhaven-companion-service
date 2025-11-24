@@ -1,0 +1,18 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Fey Subjugator",
+        "maximumHP": 4,
+        "move": 2,
+        "attack": 2,
+        "special": "Whenever this summon attacks a normal or elite enemy, after the attack ability control that enemy: Attack -1",
+        "flying": true,
+        "damage": 0
+      }
+    }
+  }
+}

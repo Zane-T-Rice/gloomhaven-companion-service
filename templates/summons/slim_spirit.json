@@ -1,0 +1,18 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Slime Spirit",
+        "maximumHP": 5,
+        "move": 2,
+        "attack": 2,
+        "innateOffenses": "Poison",
+        "special": "When this summon would die, if there is no character token on this card, instead negate the Damage and place a character token on this card to summon a Slime Spirit in an empty hex adjacent to this summon.",
+        "damage": 0
+      }
+    }
+  }
+}

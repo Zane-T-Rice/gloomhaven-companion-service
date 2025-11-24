@@ -1,0 +1,19 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Rock Colossus",
+        "maximumHP": 12,
+        "move": 2,
+        "attack": 1,
+        "innateOffenses": "Muddle",
+        "retaliate": 2,
+        "special": "Add +1 Heal to all heals targeting this summon. At the end of each of this summon's turns, it performs: Heal 1 Self",
+        "damage": 0
+      }
+    }
+  }
+}

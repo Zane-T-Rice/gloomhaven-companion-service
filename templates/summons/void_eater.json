@@ -1,0 +1,17 @@
+{
+  "type": "Soultether",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Soultether",
+        "name": "Void Eater",
+        "maximumHP": 6,
+        "move": 3,
+        "attack": 4,
+        "special": "Whenever this summon kills an enemy while Dark is strong or waning, shuffle a Curse card into the monster attack modifier deck.",
+        "damage": 0
+      }
+    }
+  }
+}
