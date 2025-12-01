@@ -1,0 +1,19 @@
+{
+  "type": "Elementalist",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Elementalist",
+        "name": "Elemental Conduit",
+        "maximumHP": 3,
+        "move": 3,
+        "attack": 2,
+        "range": 3,
+        "special": "After each attack, generate any element.",
+        "flying": true,
+        "damage": 0
+      }
+    }
+  }
+}

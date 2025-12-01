@@ -11,6 +11,7 @@
         "attack": 2,
         "special": "Whenever this summon attacks a normal or elite enemy, after the attack ability control that enemy: Attack -1",
         "flying": true,
+        "range": 4,
         "damage": 0
       }
     }

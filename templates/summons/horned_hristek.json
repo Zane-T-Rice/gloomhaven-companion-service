@@ -9,7 +9,7 @@
         "maximumHP": 7,
         "move": 3,
         "attack": 2,
-        "special": "After moving for the first time each round, add +2 Attack to all attacks for the round.",
+        "special": "After moving for the first time each round, add +2 Attack to all attacks for the round. Whenever this summon kills an enemy, grant it: Move +0",
         "damage": 0
       }
     }

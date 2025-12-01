@@ -11,6 +11,7 @@
         "attack": 1,
         "flying": true,
         "special": "All allies within Range 3 gain Retaliate 1 Range 3 while Fire is strong or waning.",
+        "range": 3,
         "damage": 0
       }
     }

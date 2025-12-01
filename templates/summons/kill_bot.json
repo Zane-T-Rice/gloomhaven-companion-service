@@ -1,15 +1,15 @@
 {
-  "type": "Soultether",
+  "type": "Mindthief",
   "stats": {
     "0": {
       "summon": {
         "rank": "Summon",
-        "type": "Soultether",
-        "name": "Thorn Shooter",
-        "maximumHP": 3,
+        "type": "Mindthief",
+        "name": "Rat Swarm",
+        "maximumHP": 5,
         "move": 2,
+        "attack": 2,
         "innateOffenses": "Poison",
-        "range": 4,
         "damage": 0
       }
     }

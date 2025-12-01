@@ -1,0 +1,15 @@
+{
+  "type": "Tinkerer",
+  "stats": {
+    "0": {
+      "summon": {
+        "rank": "Summon",
+        "type": "Tinkerer",
+        "name": "Decoy",
+        "maximumHP": 10,
+        "move": 3,
+        "damage": 0
+      }
+    }
+  }
+}
