@@ -17,6 +17,7 @@ type Figure struct {
 	Attack         *int    `dynamodbav:"attack,omitempty" json:"attack,omitempty"`
 	Target         *int    `dynamodbav:"target,omitempty" json:"target,omitempty"`
 	Pierce         *int    `dynamodbav:"pierce,omitempty" json:"pierce,omitempty"`
+	Range          *int    `dynamodbav:"range,omitempty" json:"range,omitempty"`
 	XP             *int    `dynamodbav:"xp,omitempty" json:"xp,omitempty"`
 	InnateDefenses *string `dynamodbav:"innate_defenses,omitempty" json:"innateDefenses,omitempty"`
 	InnateOffenses *string `dynamodbav:"innate_offenses,omitempty" json:"innateOffenses,omitempty"`
@@ -44,6 +45,7 @@ func NewFigure(item types.FigureItem) Figure {
 		Attack:         item.Attack,
 		Target:         item.Target,
 		Pierce:         item.Pierce,
+		Range:          item.Range,
 		XP:             item.XP,
 		InnateDefenses: item.InnateDefenses,
 		InnateOffenses: item.InnateOffenses,

@@ -18,6 +18,7 @@ type FigureCreateInput struct {
 	Attack         *int    `dynamodbav:"attack,omitempty" json:"attack,omitempty"`
 	Target         *int    `dynamodbav:"target,omitempty" json:"target,omitempty"`
 	Pierce         *int    `dynamodbav:"pierce,omitempty" json:"pierce,omitempty"`
+	Range          *int    `dynamodbav:"range,omitempty" json:"range,omitempty"`
 	XP             *int    `dynamodbav:"xp,omitempty" json:"xp,omitempty"`
 	InnateDefenses *string `dynamodbav:"innate_defenses,omitempty" json:"innateDefenses,omitempty"`
 	InnateOffenses *string `dynamodbav:"innate_offenses,omitempty" json:"innateOffenses,omitempty"`
@@ -56,6 +57,7 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 			Move:           input.Move,
 			Attack:         input.Attack,
 			Pierce:         input.Pierce,
+			Range:          input.Range,
 			Target:         input.Target,
 			XP:             input.XP,
 			InnateDefenses: input.InnateDefenses,
