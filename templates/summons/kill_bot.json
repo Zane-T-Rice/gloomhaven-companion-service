@@ -1,15 +1,14 @@
 {
-  "type": "Mindthief",
+  "type": "Tinkerer",
   "stats": {
     "0": {
       "summon": {
         "rank": "Summon",
-        "type": "Mindthief",
-        "name": "Rat Swarm",
-        "maximumHP": 5,
-        "move": 2,
-        "attack": 2,
-        "innateOffenses": "Poison",
+        "type": "Tinkerer",
+        "name": "Kill Bot",
+        "maximumHP": 8,
+        "move": 4,
+        "attack": 3,
         "damage": 0
       }
     }
