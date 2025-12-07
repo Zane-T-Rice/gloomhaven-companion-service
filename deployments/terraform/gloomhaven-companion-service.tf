@@ -10,6 +10,10 @@ resource "aws_lambda_function" "gloomhaven_companion_service" {
   source_code_hash = data.archive_file.function_archive.output_base64sha256
 
   runtime = "provided.al2023"
+
+  environment {
+    variables = local.environment_variables
+  }
 }
 
 resource "aws_cloudwatch_log_group" "gloomhaven_companion_service" {

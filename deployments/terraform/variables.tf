@@ -32,4 +32,31 @@ locals {
   gloomhaven_companion_service_websocket_disconnect_archive_path = "../../dist/gloomhaven-companion-service-websocket-disconnect/gloomhaven-companion-service-websocket-disconnect.zip"
   gloomhaven_companion_service_websocket_disconnect_binary_name  = "bootstrap"
   gloomhaven_companion_service_websocket_disconnect_binary_path  = "../../dist/gloomhaven-companion-service-websocket-disconnect/bootstrap"
+
+  environment_variables = {
+    // Auth0 Audience (Auth0 API Identifier)
+    AUDIENCE = "https://zanesworld.click"
+
+    // Auth0 tenant/issuer. Something like https://[-a-z1-9]+.us.auth0.com.
+    ISSUER = "https://dev-7n448ak2gn3oqctx.us.auth0.com/"
+
+    // This is the url for the service proper.
+    // Either the custom domain+base path that you set up or
+    // the invoke url from the API gateway -> Stages -> prod.
+    GLOOMHAVEN_COMPANION_SERVICE_URL = "https://api.zanesworld.click/gloomhaven-companion-service"
+
+    // The domain of the frontend to allow the origin for CORS.
+    WEBSITE_DOMAIN = "https://zanesworld.click"
+
+    // If you set up a custom domain, this would be the base path
+    // for that domain.  By default, custom_domain.tf generates a
+    // base path using the the service name /gloomhaven-companion-service.
+    // Without a custom domain, this secret value is blank.
+    API_GATEWAY_BASE_PATH = "/gloomhaven-companion-service"
+
+    // This is the url for the websocket.
+    // Either the custom domain+base path that you set up or
+    // the WebSocket URL from the API gateway -> Stages -> prod.
+    WEB_SOCKETS_URL = "https://ws.zanesworld.click/gloomhaven-companion-service"
+  }
 }

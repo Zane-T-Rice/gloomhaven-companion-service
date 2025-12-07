@@ -4,7 +4,7 @@
 // or updated manually.
 // 
 // There is more information about these in
-// custom-domains.tf, data.tf, secrets.tf, and terraform.tf.
+// custom-domains.tf, data.tf, and terraform.tf.
 
 provider "aws" {
   region = var.aws_region

@@ -34,8 +34,6 @@ github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.11.12 h1:1W0
 github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.11.12/go.mod h1:/kejjnGxwnSc0MHYNScIX/cXpo43xpL3hBRZLVmDSxE=
 github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.11 h1:GpMf3z2KJa4RnJ0ew3Hac+hRFYLZ9DDjfgXjuW+pB54=
 github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.11/go.mod h1:6MZP3ZI4QQsgUCFTwMZA2V0sEriNQ8k2hmoHF3qjimQ=
-github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.39.9 h1:SateVRwzAULF812BCR6+DZ77n8KBlbQoKNiqJvfbAII=
-github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.39.9/go.mod h1:uyJVFSxMat78YTaaz+ROx+FI+K78Qa7VyEQmt8hBSWI=
 github.com/aws/aws-sdk-go-v2/service/sso v1.29.8 h1:M5nimZmugcZUO9wG7iVtROxPhiqyZX6ejS1lxlDPbTU=
 github.com/aws/aws-sdk-go-v2/service/sso v1.29.8/go.mod h1:mbef/pgKhtKRwrigPPs7SSSKZgytzP8PQ6P6JAAdqyM=
 github.com/aws/aws-sdk-go-v2/service/ssooidc v1.35.3 h1:S5GuJZpYxE0lKeMHKn+BRTz6PTFpgThyJ+5mYfux7BM=
