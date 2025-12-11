@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"gloomhaven-companion-service/internal/constants"
+	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/errors"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
@@ -30,9 +31,6 @@ func (c *FiguresController) Create(cxt *fiber.Ctx) error {
 	if err := cxt.BodyParser(&input); err != nil {
 		return err
 	}
-	if input.Damage == nil || input.MaximumHP == nil || input.Class == nil {
-		return errors.NewBadRequestError(nil)
-	}
 	campaignId := cxt.Params("campaignId")
 	scenarioId := cxt.Params("scenarioId")
 	figure, err := c.FiguresService.Create(input, campaignId, scenarioId)
@@ -43,16 +41,14 @@ func (c *FiguresController) Create(cxt *fiber.Ctx) error {
 }
 
 func (c *FiguresController) Patch(cxt *fiber.Ctx) error {
-	input := types.FigurePatchInput{}
-	if err := cxt.BodyParser(&input); err != nil {
-		return err
-	}
-	if input.Damage == nil && input.MaximumHP == nil && input.Name == nil {
-		return errors.NewBadRequestError(nil)
-	}
 	campaignId := cxt.Params("campaignId")
 	scenarioId := cxt.Params("scenarioId")
 	figureId := cxt.Params("figureId")
+	figure, err := c.FiguresService.Get(campaignId, scenarioId, figureId)
+	if err != nil {
+		return err
+	}
+	input := types.NewPatchFigureInput(cxt.Body(), dto.NewFigureItem(figure))
 	scenario, err := c.FiguresService.Patch(input, campaignId, scenarioId, figureId)
 	if err != nil {
 		if strings.Contains(string(err.Error()), "The conditional request failed") {

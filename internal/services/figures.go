@@ -14,6 +14,23 @@ type FiguresService struct {
 	DynamoDB utils.DynamoDB
 }
 
+func (s *FiguresService) Get(campaignId string, scenarioId string, figureId string) (*dto.Figure, error) {
+	figureItem := types.FigureItem{}
+	err := s.DynamoDB.GetItem(
+		constants.PARENT,
+		constants.CAMPAIGN+constants.SEPERATOR+campaignId+constants.SCENARIO+constants.SEPERATOR+scenarioId,
+		constants.ENTITY,
+		constants.FIGURE+constants.SEPERATOR+figureId,
+		&figureItem,
+	)
+	if err != nil {
+		log.Printf("Get failed, here's why %v", err)
+		return nil, err
+	}
+	figure := dto.NewFigure(figureItem)
+	return &figure, nil
+}
+
 func (s *FiguresService) List(campaignId string, scenarioId string) ([]dto.Figure, error) {
 	figureItems := []types.FigureItem{}
 	if err := s.DynamoDB.Query(

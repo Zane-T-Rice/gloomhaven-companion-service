@@ -3,30 +3,30 @@ package dto
 import "gloomhaven-companion-service/internal/types"
 
 type Figure struct {
-	Parent         string  `dynamodbav:"parent" json:"parent"`
-	Entity         string  `dynamodbav:"entity" json:"entity"`
-	Name           *string `dynamodbav:"name,omitempty" json:"name,omitempty"`
-	MaximumHP      *int    `dynamodbav:"maximum_hp,omitempty" json:"maximumHP,omitempty"`
-	Damage         *int    `dynamodbav:"damage,omitempty" json:"damage,omitempty"`
-	Class          *string `dynamodbav:"class,omitempty" json:"class,omitempty"`
-	Shield         *int    `dynamodbav:"shield,omitempty" json:"shield,omitempty"`
-	Retaliate      *int    `dynamodbav:"retaliate,omitempty" json:"retaliate,omitempty"`
-	Rank           *string `dynamodbav:"rank,omitempty" json:"rank,omitempty"`
-	Number         *int    `dynamodbav:"number,omitempty" json:"number,omitempty"`
-	Move           *int    `dynamodbav:"move,omitempty" json:"move,omitempty"`
-	Attack         *int    `dynamodbav:"attack,omitempty" json:"attack,omitempty"`
-	Target         *int    `dynamodbav:"target,omitempty" json:"target,omitempty"`
-	Pierce         *int    `dynamodbav:"pierce,omitempty" json:"pierce,omitempty"`
-	Range          *int    `dynamodbav:"range,omitempty" json:"range,omitempty"`
-	XP             *int    `dynamodbav:"xp,omitempty" json:"xp,omitempty"`
-	InnateDefenses *string `dynamodbav:"innate_defenses,omitempty" json:"innateDefenses,omitempty"`
-	InnateOffenses *string `dynamodbav:"innate_offenses,omitempty" json:"innateOffenses,omitempty"`
-	Statuses       *string `dynamodbav:"statuses,omitempty" json:"statuses,omitempty"`
-	Special        *string `dynamodbav:"special,omitempty" json:"special,omitempty"`
-	Alignment      *string `dynamodbav:"alignment,omitempty" json:"alignment,omitempty"`
-	AttackPlusC    *bool   `dynamodbav:"attack_plus_c,omitempty" json:"attackPlusC,omitempty"`
-	Flying         *bool   `dynamodbav:"flying,omitempty" json:"flying,omitempty"`
-	UpdatedAt      *string `dynamodbav:"updated_at,omitempty" json:"updatedAt,omitempty"`
+	Parent         string  `json:"parent"`
+	Entity         string  `json:"entity"`
+	Name           *string `json:"name,omitempty"`
+	MaximumHP      *int    `json:"maximumHP,omitempty"`
+	Damage         *int    `json:"damage,omitempty"`
+	Class          *string `json:"class,omitempty"`
+	Shield         *int    `json:"shield,omitempty"`
+	Retaliate      *int    `json:"retaliate,omitempty"`
+	Rank           *string `json:"rank,omitempty"`
+	Number         *int    `json:"number,omitempty"`
+	Move           *int    `json:"move,omitempty"`
+	Attack         *int    `json:"attack,omitempty"`
+	Target         *int    `json:"target,omitempty"`
+	Pierce         *int    `json:"pierce,omitempty"`
+	Range          *int    `json:"range,omitempty"`
+	XP             *int    `json:"xp,omitempty"`
+	InnateDefenses *string `json:"innateDefenses,omitempty"`
+	InnateOffenses *string `json:"innateOffenses,omitempty"`
+	Statuses       *string `json:"statuses,omitempty"`
+	Special        *string `json:"special,omitempty"`
+	Alignment      *string `json:"alignment,omitempty"`
+	AttackPlusC    *bool   `json:"attackPlusC,omitempty"`
+	Flying         *bool   `json:"flying,omitempty"`
+	UpdatedAt      *string `json:"updatedAt,omitempty"`
 }
 
 func NewFigure(item types.FigureItem) Figure {
@@ -56,4 +56,35 @@ func NewFigure(item types.FigureItem) Figure {
 		Flying:         item.Flying,
 		UpdatedAt:      item.UpdatedAt,
 	}
+}
+
+func NewFigureItem(dto *Figure) types.FigureItem {
+	return types.FigureItem{Item: types.Item{
+		Parent: dto.Parent,
+		Entity: dto.Entity,
+	},
+		FigureCreateInput: types.FigureCreateInput{
+			Name:           dto.Name,
+			MaximumHP:      dto.MaximumHP,
+			Damage:         dto.Damage,
+			Class:          dto.Class,
+			Shield:         dto.Shield,
+			Retaliate:      dto.Retaliate,
+			Rank:           dto.Rank,
+			Number:         dto.Number,
+			Move:           dto.Move,
+			Attack:         dto.Attack,
+			Pierce:         dto.Pierce,
+			Range:          dto.Range,
+			Target:         dto.Target,
+			XP:             dto.XP,
+			InnateDefenses: dto.InnateDefenses,
+			InnateOffenses: dto.InnateOffenses,
+			Statuses:       dto.Statuses,
+			Special:        dto.Special,
+			Alignment:      dto.Alignment,
+			AttackPlusC:    dto.AttackPlusC,
+			Flying:         dto.Flying,
+			UpdatedAt:      dto.UpdatedAt,
+		}}
 }
