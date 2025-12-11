@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"gloomhaven-companion-service/internal/constants"
-	"gloomhaven-companion-service/internal/dto"
 	"gloomhaven-companion-service/internal/errors"
+	"gloomhaven-companion-service/internal/inputs"
 	"gloomhaven-companion-service/internal/services"
 	"gloomhaven-companion-service/internal/types"
 	"gloomhaven-companion-service/internal/utils"
@@ -48,7 +48,7 @@ func (c *FiguresController) Patch(cxt *fiber.Ctx) error {
 	if err != nil {
 		return err
 	}
-	input := types.NewPatchFigureInput(cxt.Body(), dto.NewFigureItem(figure))
+	input := inputs.NewFigurePatchInput(cxt.Body(), figure)
 	scenario, err := c.FiguresService.Patch(input, campaignId, scenarioId, figureId)
 	if err != nil {
 		if strings.Contains(string(err.Error()), "The conditional request failed") {

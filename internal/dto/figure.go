@@ -57,34 +57,3 @@ func NewFigure(item types.FigureItem) Figure {
 		UpdatedAt:      item.UpdatedAt,
 	}
 }
-
-func NewFigureItem(dto *Figure) types.FigureItem {
-	return types.FigureItem{Item: types.Item{
-		Parent: dto.Parent,
-		Entity: dto.Entity,
-	},
-		FigureCreateInput: types.FigureCreateInput{
-			Name:           dto.Name,
-			MaximumHP:      dto.MaximumHP,
-			Damage:         dto.Damage,
-			Class:          dto.Class,
-			Shield:         dto.Shield,
-			Retaliate:      dto.Retaliate,
-			Rank:           dto.Rank,
-			Number:         dto.Number,
-			Move:           dto.Move,
-			Attack:         dto.Attack,
-			Pierce:         dto.Pierce,
-			Range:          dto.Range,
-			Target:         dto.Target,
-			XP:             dto.XP,
-			InnateDefenses: dto.InnateDefenses,
-			InnateOffenses: dto.InnateOffenses,
-			Statuses:       dto.Statuses,
-			Special:        dto.Special,
-			Alignment:      dto.Alignment,
-			AttackPlusC:    dto.AttackPlusC,
-			Flying:         dto.Flying,
-			UpdatedAt:      dto.UpdatedAt,
-		}}
-}
