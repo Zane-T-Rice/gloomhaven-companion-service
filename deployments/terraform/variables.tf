@@ -46,7 +46,7 @@ locals {
     GLOOMHAVEN_COMPANION_SERVICE_URL = "https://api.zanesworld.click/gloomhaven-companion-service"
 
     // The domain of the frontend to allow the origin for CORS.
-    WEBSITE_DOMAIN = "https://zanesworld.click"
+    WEBSITE_DOMAIN = "https://apps.zanesworld.click"
 
     // If you set up a custom domain, this would be the base path
     // for that domain.  By default, custom_domain.tf generates a
