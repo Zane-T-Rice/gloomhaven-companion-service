@@ -12,7 +12,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/apigatewaymanagementapi v1.29.2
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.52.3
 	github.com/awslabs/aws-lambda-go-api-proxy v0.16.2
-	github.com/gofiber/fiber/v2 v2.52.9
+	github.com/gofiber/fiber/v2 v2.52.14
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/joho/godotenv v1.5.1
