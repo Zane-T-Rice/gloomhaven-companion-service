@@ -25,6 +25,12 @@ API_GATEWAY_BASE_PATH="/gloomhaven-companion-service"
 LOCAL_DATABASE_ENDPOINT="http://localhost:8000/"
 GLOOMHAVEN_COMPANION_SERVICE_URL="http://localhost:7575"
 WEB_SOCKETS_URL="http://localhost:8080"
+
+# For seeding dynamodb table (see scripts/seed_dynamodb.sh).
+# SEED_PLAYER_ID is optional. Set it to your Auth0 user id to also see the fake campaigns when logged in.
+CLIENT_ID="YOUR_M2M_APPLICATION_CLIENT_ID"
+CLIENT_SECRET="YOUR_M2M_APPLICATION_CLIENT_SECRET"
+SEED_PLAYER_ID="google-oauth2|123456789"
 ```
 
 ### For Deploying
@@ -38,16 +44,17 @@ There are scripts in the /scripts directory. Run them from the root of the repos
 - build.sh  : Builds the Go binaries and puts them in the dist directory.
 - local_websocket.sh : Runs websocket-local which is strictly for testing the service locally. websocket-local is never deployed to AWS.
 - local.sh : Runs the service proper locally.
-- seed_local_dynamodb.sh : Creates the service's required dynamodb table in a local dynamodb-admin instance.
-- start_dynamodb_local.sh : Starts dynamo-admin in a docker container.
+- seed_dynamodb.sh : Creates the service's required dynamodb table in the local DynamoDB and seeds the templates (the service needs to be running).
+- start_dynamodb_local.sh : Starts DynamoDB Local (from the nixpkgs dynamodb-local package, no docker) in memory on port 8000.
 
 To get everything up and running locally run the following from the root directory.
 
 ```
 scripts/start_dynamodb_local.sh
-scripts/seed_local_dynamodb.sh
 scripts/local.sh
 scripts/local_websocket.sh
+# Once the others are up, create the table and seed the templates.
+scripts/seed_dynamodb.sh
 ```
 
 ## Deployment
