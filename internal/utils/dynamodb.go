@@ -35,6 +35,24 @@ func (db *DynamoDB) ConnectToDynamoDB() {
 	}
 }
 
+// Ping checks that the table can be read. It asks for an item that does not exist, which is
+// answered without an error when the table is reachable and this service is allowed to read it.
+func (db *DynamoDB) Ping() error {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	_, err := db.DynamoDBClient.GetItem(ctx, &dynamodb.GetItemInput{
+		TableName: aws.String(constants.TABLE_NAME),
+		Key: map[string]types.AttributeValue{
+			"parent": &types.AttributeValueMemberS{Value: "health"},
+			"entity": &types.AttributeValueMemberS{Value: "health"},
+		},
+	})
+	if err != nil {
+		log.Printf("Health check couldn't read the table. Here's why: %v\n", err)
+	}
+	return err
+}
+
 func (db *DynamoDB) PutItem(item any) error {
 	dynamodbItem, err := attributevalue.MarshalMap(item)
 	if err != nil {

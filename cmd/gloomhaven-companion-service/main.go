@@ -35,6 +35,9 @@ func init() {
 		AllowOrigins: os.Getenv(constants.WEBSITE_DOMAIN),
 	}))
 
+	// Registered before the token check on purpose: anyone may ask whether the service is up.
+	routers.RegisterHealthRoutes(app, dynamodb)
+
 	// Always ensure the token is valid before doing anything.
 	app.Use(adaptor.HTTPMiddleware(middlewares.EnsureValidToken()))
 	app.Use(middlewares.HasOneOfScopes([]string{constants.SCOPE_ADMIN, constants.SCOPE_PUBLIC}))
