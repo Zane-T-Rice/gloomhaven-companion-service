@@ -6,6 +6,7 @@ type Figure struct {
 	Parent         string  `json:"parent"`
 	Entity         string  `json:"entity"`
 	Name           *string `json:"name,omitempty"`
+	Nickname       *string `json:"nickname,omitempty"`
 	MaximumHP      *int    `json:"maximumHP,omitempty"`
 	Damage         *int    `json:"damage,omitempty"`
 	Class          *string `json:"class,omitempty"`
@@ -34,6 +35,7 @@ func NewFigure(item types.FigureItem) Figure {
 		Parent:         item.Parent,
 		Entity:         item.Entity,
 		Name:           item.Name,
+		Nickname:       item.Nickname,
 		MaximumHP:      item.MaximumHP,
 		Damage:         item.Damage,
 		Class:          item.Class,

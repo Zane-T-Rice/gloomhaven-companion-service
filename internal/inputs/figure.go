@@ -13,6 +13,7 @@ func NewFigurePatchInput(rawInput []byte, dto *dto.Figure) types.FigurePatchInpu
 	figurePatchInput := types.FigurePatchInput{
 		FigureCreateInput: types.FigureCreateInput{
 			Name:           dto.Name,
+			Nickname:       dto.Nickname,
 			MaximumHP:      dto.MaximumHP,
 			Damage:         dto.Damage,
 			Class:          dto.Class,

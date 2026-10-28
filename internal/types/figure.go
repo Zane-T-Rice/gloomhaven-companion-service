@@ -7,6 +7,7 @@ import (
 
 type FigureCreateInput struct {
 	Name           *string `dynamodbav:"name" json:"name"`
+	Nickname       *string `dynamodbav:"nickname" json:"nickname"`
 	MaximumHP      *int    `dynamodbav:"maximum_hp" json:"maximumHP"`
 	Damage         *int    `dynamodbav:"damage" json:"damage"`
 	Class          *string `dynamodbav:"class" json:"class"`
@@ -47,6 +48,7 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 	},
 		FigureCreateInput: FigureCreateInput{
 			Name:           input.Name,
+			Nickname:       input.Nickname,
 			MaximumHP:      input.MaximumHP,
 			Damage:         input.Damage,
 			Class:          input.Class,
