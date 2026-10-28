@@ -82,6 +82,11 @@ func (s *ScenariosService) Delete(campaignId string, scenarioId string) (*dto.Sc
 		figuresService.Delete(campaignId, scenarioId, strings.Split(figure.Entity, constants.SEPERATOR)[2])
 	}
 
+	stateService := NewStateService(s.DynamoDB)
+	if err := stateService.DeleteAll(campaignId, scenarioId); err != nil {
+		return nil, err
+	}
+
 	scenarioItem := types.ScenarioItem{}
 	if err := s.DynamoDB.DeleteItem(
 		constants.PARENT,

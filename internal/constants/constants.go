@@ -35,10 +35,11 @@ const (
 	API_GATEWAY_BASE_PATH_SECRET_NAME = "gloomhaven-companion-service-api-gateway-base-path"
 
 	// Route Names
-	CAMPAIGNS = "campaigns"
-	SCENARIOS = "scenarios"
-	FIGURES   = "figures"
-	TEMPLATES = "templates"
+	CAMPAIGNS  = "campaigns"
+	SCENARIOS  = "scenarios"
+	FIGURES    = "figures"
+	STATE_PATH = "state"
+	TEMPLATES  = "templates"
 
 	// DynamoDB
 	TABLE_NAME = "gloomhaven-companion-service"
@@ -50,6 +51,7 @@ const (
 	PLAYER     = SEPERATOR + "PLAYER"
 	SCENARIO   = SEPERATOR + "SCENARIO"
 	FIGURE     = SEPERATOR + "FIGURE"
+	STATE      = SEPERATOR + "STATE"
 	TEMPLATE   = SEPERATOR + "TEMPLATE"
 	JOIN       = SEPERATOR + "JOIN"
 )
