@@ -40,6 +40,7 @@ const (
 	FIGURES    = "figures"
 	STATE_PATH = "state"
 	TEMPLATES  = "templates"
+	EDITIONS   = "editions"
 
 	// DynamoDB
 	TABLE_NAME = "gloomhaven-companion-service"
@@ -53,7 +54,25 @@ const (
 	FIGURE     = SEPERATOR + "FIGURE"
 	STATE      = SEPERATOR + "STATE"
 	TEMPLATE   = SEPERATOR + "TEMPLATE"
+	EDITION    = SEPERATOR + "EDITION"
 	JOIN       = SEPERATOR + "JOIN"
+)
+
+// Who a template or edition belongs to, from the point of view of the player asking.
+const (
+	// Defined by an admin. Everyone can use these, only admins can change them.
+	SCOPE_NAME_SYSTEM = "system"
+	// Made by the player asking.
+	SCOPE_NAME_MINE = "mine"
+	// Made by another player in one of the same campaigns. Read only.
+	SCOPE_NAME_SHARED = "shared"
+)
+
+// Templates that were made before editions existed are all for Gloomhaven 2E. That edition is not stored
+// anywhere, it is added to every list, so there is nothing to migrate.
+const (
+	DEFAULT_EDITION_ID   = "gloomhaven-2e"
+	DEFAULT_EDITION_NAME = "Gloomhaven 2E"
 )
 
 // This one is defined outside the const block to allow its address to be taken

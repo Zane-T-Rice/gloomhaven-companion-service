@@ -65,6 +65,21 @@ service binary each in its own alacritty window (change `TERMINAL` at the top of
 and seeds after a short wait.
 If DynamoDB Local is not up in time, run seed_dynamodb.sh again.
 
+## Templates
+
+Templates are the stats that figures are made from. Each one is in an edition (a named group, i.e. "Gloomhaven 2E"
+or a player's "Homebrew") and is either a system template or belongs to the player that made it.
+
+- System templates are made by admins with `POST /templates?scope=system`. Only admins can change or delete them.
+- Any player can make templates (`POST /templates`) and editions (`POST /templates/editions`), and change or delete their own.
+- `GET /templates` and `GET /templates/editions` give the system's, the player's own and those of every other player
+  in any of the player's campaigns, which are read only. Each has a `scope` of `system`, `mine` or `shared`.
+- Templates from before editions existed have no edition and are listed in the default one, "Gloomhaven 2E". It is not
+  stored, so there is nothing to migrate.
+- An edition that still has templates in it can not be deleted.
+
+internal/routers/templates_test.go checks these rules. It needs DynamoDB Local running and is skipped without it.
+
 ## Deployment
 
 The deployments/terraform directory has all the terraform I use to deploy the service

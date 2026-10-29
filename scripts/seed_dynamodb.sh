@@ -33,7 +33,7 @@ ACCESS_TOKEN=`echo $TOKEN_RESPONSE | grep -Eo '"access_token"[^,]*' | grep -Eo '
 
 for i in $(ls templates/enemies/*); do \
   curl --request POST \
-    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
     --data "@$i";
@@ -41,7 +41,7 @@ done
 
 for i in $(ls templates/characters/*); do \
   curl --request POST \
-    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
     --data "@$i";
@@ -49,7 +49,7 @@ done
 
 for i in $(ls templates/summons/*); do \
   curl --request POST \
-    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
     --data "@$i";
@@ -57,7 +57,7 @@ done
 
 for i in $(ls templates/bosses/*); do \
   curl --request POST \
-    --url $GLOOMHAVEN_COMPANION_SERVICE_URL/templates \
+    --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
     --data "@$i";

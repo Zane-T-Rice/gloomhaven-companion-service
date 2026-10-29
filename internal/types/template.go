@@ -17,7 +17,9 @@ type TemplateCreateInput struct {
 	Type         *string       `dynamodbav:"type,omitempty" json:"type,omitempty"`
 	StandeeLimit *int          `dynamodbav:"standee_limit,omitempty" json:"standeeLimit,omitempty"`
 	Stats        *map[int]Stat `dynamodbav:"stats,omitempty" json:"stats,omitempty"`
-	UpdatedAt    *string       `dynamodbav:"updated_at,omitempty" json:"updatedAt,omitempty"`
+	// The edition this template is listed under. Templates without one are in the default edition.
+	EditionId *string `dynamodbav:"edition_id,omitempty" json:"editionId,omitempty"`
+	UpdatedAt *string `dynamodbav:"updated_at,omitempty" json:"updatedAt,omitempty"`
 }
 
 type TemplatePatchInput struct {
@@ -29,17 +31,20 @@ type TemplateItem struct {
 	TemplateCreateInput `dynamodbav:",inline"`
 }
 
-func NewTemplateItem(input TemplateCreateInput, templateId string) TemplateItem {
+// NewTemplateItem makes a template for the given owner, which is either constants.TEMPLATE for a
+// system template or the parent of a player's items.
+func NewTemplateItem(input TemplateCreateInput, templateId string, owner string) TemplateItem {
 	updatedAt := time.Now().UTC().Format(time.RFC3339)
 	return TemplateItem{
 		Item: Item{
-			Parent: constants.TEMPLATE,
+			Parent: owner,
 			Entity: constants.TEMPLATE + constants.SEPERATOR + templateId,
 		},
 		TemplateCreateInput: TemplateCreateInput{
 			Type:         input.Type,
 			Stats:        input.Stats,
 			StandeeLimit: input.StandeeLimit,
+			EditionId:    input.EditionId,
 			UpdatedAt:    &updatedAt,
 		},
 	}
