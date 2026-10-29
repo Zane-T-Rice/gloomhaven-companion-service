@@ -28,7 +28,10 @@ type FigureCreateInput struct {
 	Alignment      *string `dynamodbav:"alignment" json:"alignment"`
 	AttackPlusC    *bool   `dynamodbav:"attack_plus_c" json:"attackPlusC"`
 	Flying         *bool   `dynamodbav:"flying" json:"flying"`
-	UpdatedAt      *string `dynamodbav:"updated_at" json:"updatedAt"`
+	// The edition of the template that the figure was made from. Figures from before editions
+	// existed have none, which is the default edition.
+	EditionId *string `dynamodbav:"edition_id,omitempty" json:"editionId"`
+	UpdatedAt *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 type FigurePatchInput struct {
@@ -69,6 +72,7 @@ func NewFigureItem(input FigureCreateInput, campaignId string, scenarioId string
 			Alignment:      input.Alignment,
 			AttackPlusC:    input.AttackPlusC,
 			Flying:         input.Flying,
+			EditionId:      input.EditionId,
 			UpdatedAt:      &updatedAt,
 		}}
 }

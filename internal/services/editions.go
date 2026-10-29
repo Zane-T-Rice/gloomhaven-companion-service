@@ -20,7 +20,7 @@ func (s *EditionsService) List(playerId string) ([]dto.Edition, error) {
 	if err != nil {
 		return nil, err
 	}
-	editions := []dto.Edition{dto.NewDefaultEdition()}
+	editions := []dto.Edition{}
 	for _, owner := range owners {
 		// The system's editions are kept under constants.EDITION, not constants.TEMPLATE.
 		parent := owner
@@ -75,9 +75,6 @@ func (s *EditionsService) Create(input types.EditionCreateInput, playerId string
 
 // Finds an edition that the player is allowed to change.
 func (s *EditionsService) findChangeable(editionId string, playerId string, admin bool) (*types.EditionItem, error) {
-	if editionId == constants.DEFAULT_EDITION_ID {
-		return nil, errors.NewForbiddenError()
-	}
 	entity := constants.EDITION + constants.SEPERATOR + editionId
 	item := types.EditionItem{}
 	if err := s.DynamoDB.GetItem(constants.PARENT, playerOwner(playerId), constants.ENTITY, entity, &item); err == nil {
@@ -156,12 +153,9 @@ func (s *EditionsService) Delete(editionId string, playerId string, admin bool) 
 	return &edition, nil
 }
 
-// Whether templates belonging to the owner can be put in the edition. That is the case for the default
-// edition, for the system's editions, and for the owner's own editions.
+// Whether templates belonging to the owner can be put in the edition. That is the case for the
+// system's editions, and for the owner's own editions.
 func (s *EditionsService) checkUsable(editionId string, owner string) error {
-	if editionId == constants.DEFAULT_EDITION_ID {
-		return nil
-	}
 	entity := constants.EDITION + constants.SEPERATOR + editionId
 	item := types.EditionItem{}
 	if err := s.DynamoDB.GetItem(constants.PARENT, constants.EDITION, constants.ENTITY, entity, &item); err == nil {

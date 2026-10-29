@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"gloomhaven-companion-service/internal/constants"
 	"gloomhaven-companion-service/internal/middlewares"
 	"gloomhaven-companion-service/internal/types"
@@ -12,6 +13,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
+	"time"
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
 	"github.com/auth0/go-jwt-middleware/v2/validator"
@@ -123,24 +125,35 @@ func ids(t *testing.T, raw []byte) map[string]templateBody {
 func TestTemplatesAndEditionsBelongToTheirOwners(t *testing.T) {
 	db := localDatabase(t)
 	app := newApp(db)
-	suffix := t.Name()
+	// Different people each time, as DynamoDB Local keeps what an earlier run left in it.
+	suffix := fmt.Sprintf("%s-%d", t.Name(), time.Now().UnixNano())
 	admin := caller{app, "admin|" + suffix, true}
 	alice := caller{app, "alice|" + suffix, false}
 	bob := caller{app, "bob|" + suffix, false}
 	carol := caller{app, "carol|" + suffix, false}
 
 	stats := map[string]any{"0": map[string]any{"normal": map[string]any{"maximumHP": 3, "class": "x"}}}
+	// Every template is in an edition. This is the system's.
+	_, raw := admin.call(t, "POST", "/templates/editions?scope=system", map[string]any{"name": "System Edition " + suffix})
+	systemEdition := types.EditionItem{}
+	json.Unmarshal(raw, &systemEdition)
+	sysEditionId := systemEdition.Entity[len("#EDITION#"):]
+
 	system := func(name string) templateBody {
-		_, raw := admin.call(t, "POST", "/templates?scope=system", map[string]any{"type": name, "stats": stats})
+		_, raw := admin.call(t, "POST", "/templates?scope=system", map[string]any{"type": name, "stats": stats, "editionId": sysEditionId})
 		body := templateBody{}
 		json.Unmarshal(raw, &body)
 		return body
 	}
 	sysTemplate := system("Old System Thing " + suffix)
 
-	// A template without an edition is in the default one, and is the system's.
-	if sysTemplate.Scope != "system" || sysTemplate.EditionId != constants.DEFAULT_EDITION_ID {
+	if sysTemplate.Scope != "system" || sysTemplate.EditionId != sysEditionId {
 		t.Fatalf("system template: %+v", sysTemplate)
+	}
+
+	// A template needs an edition.
+	if status, _ := alice.call(t, "POST", "/templates", map[string]any{"type": "No Edition " + suffix, "stats": stats}); status == 200 {
+		t.Fatal("made a template without an edition")
 	}
 
 	// Only admins make system templates.
@@ -149,7 +162,7 @@ func TestTemplatesAndEditionsBelongToTheirOwners(t *testing.T) {
 	}
 
 	// Alice makes an edition and a template in it.
-	_, raw := alice.call(t, "POST", "/templates/editions", map[string]any{"name": "Homebrew"})
+	_, raw = alice.call(t, "POST", "/templates/editions", map[string]any{"name": "Homebrew"})
 	edition := types.EditionItem{}
 	json.Unmarshal(raw, &edition)
 	editionId := edition.Entity[len("#EDITION#"):]
@@ -232,14 +245,19 @@ func TestTemplatesAndEditionsBelongToTheirOwners(t *testing.T) {
 		t.Fatalf("alice could not delete her empty edition: %s", raw)
 	}
 
-	// The default edition is always there and can not be removed.
+	// Everyone sees the system's edition, but only an admin changes it, and only once it is empty.
 	_, raw = bob.call(t, "GET", "/templates/editions", nil)
-	if !bytes.Contains(raw, []byte(constants.DEFAULT_EDITION_NAME)) {
-		t.Fatalf("no default edition: %s", raw)
+	if !bytes.Contains(raw, []byte("System Edition "+suffix)) {
+		t.Fatalf("no system edition: %s", raw)
 	}
-	if status, _ := admin.call(t, "DELETE", "/templates/editions/"+constants.DEFAULT_EDITION_ID, nil); status == 200 {
-		t.Fatal("deleted the default edition")
+	if status, _ := bob.call(t, "DELETE", "/templates/editions/"+sysEditionId, nil); status == 200 {
+		t.Fatal("bob deleted a system edition")
 	}
-
+	if status, _ := admin.call(t, "DELETE", "/templates/editions/"+sysEditionId, nil); status == 200 {
+		t.Fatal("deleted an edition that still has templates")
+	}
 	admin.call(t, "DELETE", "/templates/"+sysId, nil)
+	if status, raw := admin.call(t, "DELETE", "/templates/editions/"+sysEditionId, nil); status != 200 {
+		t.Fatalf("admin could not delete the empty system edition: %s", raw)
+	}
 }

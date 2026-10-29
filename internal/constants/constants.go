@@ -68,12 +68,5 @@ const (
 	SCOPE_NAME_SHARED = "shared"
 )
 
-// Templates that were made before editions existed are all for Gloomhaven 2E. That edition is not stored
-// anywhere, it is added to every list, so there is nothing to migrate.
-const (
-	DEFAULT_EDITION_ID   = "gloomhaven-2e"
-	DEFAULT_EDITION_NAME = "Gloomhaven 2E"
-)
-
 // This one is defined outside the const block to allow its address to be taken
 var ENTITY_INDEX = "entity-index"

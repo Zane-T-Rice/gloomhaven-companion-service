@@ -27,6 +27,7 @@ type Figure struct {
 	Alignment      *string `json:"alignment,omitempty"`
 	AttackPlusC    *bool   `json:"attackPlusC,omitempty"`
 	Flying         *bool   `json:"flying,omitempty"`
+	EditionId      *string `json:"editionId,omitempty"`
 	UpdatedAt      *string `json:"updatedAt,omitempty"`
 }
 
@@ -56,6 +57,7 @@ func NewFigure(item types.FigureItem) Figure {
 		Alignment:      item.Alignment,
 		AttackPlusC:    item.AttackPlusC,
 		Flying:         item.Flying,
+		EditionId:      item.EditionId,
 		UpdatedAt:      item.UpdatedAt,
 	}
 }

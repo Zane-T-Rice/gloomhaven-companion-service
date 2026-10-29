@@ -39,8 +39,8 @@ func maskOwner(owner string, scope string) string {
 
 func NewTemplate(item types.TemplateItem, playerId string) Template {
 	scope := ScopeOf(item.Parent, playerId)
-	editionId := constants.DEFAULT_EDITION_ID
-	if item.EditionId != nil && *item.EditionId != "" {
+	editionId := ""
+	if item.EditionId != nil {
 		editionId = *item.EditionId
 	}
 	return Template{

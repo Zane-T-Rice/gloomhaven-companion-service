@@ -8,6 +8,7 @@ type Scenario struct {
 	Name          *string `dynamodbav:"name" json:"name"`
 	Groups        *string `dynamodbav:"groups,omitempty" json:"groups"`
 	ScenarioLevel *int    `dynamodbav:"scenario_level,omitempty" json:"scenarioLevel"`
+	EditionId     *string `dynamodbav:"edition_id,omitempty" json:"editionId"`
 	UpdatedAt     *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
@@ -18,6 +19,7 @@ func NewScenario(item types.ScenarioItem) Scenario {
 		Name:          item.Name,
 		Groups:        item.Groups,
 		ScenarioLevel: item.ScenarioLevel,
+		EditionId:     item.EditionId,
 		UpdatedAt:     item.UpdatedAt,
 	}
 }

@@ -9,14 +9,20 @@ type ScenarioCreateInput struct {
 	Name          *string `dynamodbav:"name,omitempty" json:"name"`
 	Groups        *string `dynamodbav:"groups,omitempty" json:"groups"`
 	ScenarioLevel *int    `dynamodbav:"scenario_level,omitempty" json:"scenarioLevel"`
-	UpdatedAt     *string `dynamodbav:"updated_at" json:"updatedAt"`
+	// The edition of the enemies in the scenario. Scenarios from before editions existed have none,
+	// which is the default edition.
+	EditionId *string `dynamodbav:"edition_id,omitempty" json:"editionId"`
+	UpdatedAt *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 type ScenarioPatchInput struct {
 	Name          *string `dynamodbav:"name,omitempty" json:"name"`
 	Groups        *string `dynamodbav:"groups,omitempty" json:"groups"`
 	ScenarioLevel *int    `dynamodbav:"scenario_level,omitempty" json:"scenarioLevel"`
-	UpdatedAt     *string `dynamodbav:"updated_at" json:"updatedAt"`
+	// The edition of the enemies in the scenario. Scenarios from before editions existed have none,
+	// which is the default edition.
+	EditionId *string `dynamodbav:"edition_id,omitempty" json:"editionId"`
+	UpdatedAt *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 type ScenarioItem struct {
@@ -24,7 +30,10 @@ type ScenarioItem struct {
 	Name          *string `dynamodbav:"name,omitempty" json:"name"`
 	Groups        *string `dynamodbav:"groups,omitempty" json:"groups"`
 	ScenarioLevel *int    `dynamodbav:"scenario_level,omitempty" json:"scenarioLevel"`
-	UpdatedAt     *string `dynamodbav:"updated_at" json:"updatedAt"`
+	// The edition of the enemies in the scenario. Scenarios from before editions existed have none,
+	// which is the default edition.
+	EditionId *string `dynamodbav:"edition_id,omitempty" json:"editionId"`
+	UpdatedAt *string `dynamodbav:"updated_at" json:"updatedAt"`
 }
 
 func NewScenarioItem(input ScenarioCreateInput, campaignId string, scenarioId string) ScenarioItem {
@@ -37,6 +46,7 @@ func NewScenarioItem(input ScenarioCreateInput, campaignId string, scenarioId st
 		Name:          input.Name,
 		Groups:        input.Groups,
 		ScenarioLevel: input.ScenarioLevel,
+		EditionId:     input.EditionId,
 		UpdatedAt:     &updatedAt,
 	}
 }

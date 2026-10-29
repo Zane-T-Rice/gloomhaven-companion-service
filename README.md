@@ -74,8 +74,9 @@ or a player's "Homebrew") and is either a system template or belongs to the play
 - Any player can make templates (`POST /templates`) and editions (`POST /templates/editions`), and change or delete their own.
 - `GET /templates` and `GET /templates/editions` give the system's, the player's own and those of every other player
   in any of the player's campaigns, which are read only. Each has a `scope` of `system`, `mine` or `shared`.
-- Templates from before editions existed have no edition and are listed in the default one, "Gloomhaven 2E". It is not
-  stored, so there is nothing to migrate.
+- Every template needs an edition, and a template can only be in a system edition or one of its owner's own. A figure or a
+  scenario made from a template remembers the edition (`editionId`), which is how same named templates in different
+  editions are told apart.
 - An edition that still has templates in it can not be deleted.
 
 internal/routers/templates_test.go checks these rules. It needs DynamoDB Local running and is skipped without it.

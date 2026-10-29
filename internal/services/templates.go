@@ -60,11 +60,13 @@ func (s *TemplatesService) Create(input types.TemplateCreateInput, playerId stri
 	if system {
 		owner = constants.TEMPLATE
 	}
-	if input.EditionId != nil {
-		editions := NewEditionsService(s.DynamoDB)
-		if err := editions.checkUsable(*input.EditionId, owner); err != nil {
-			return nil, err
-		}
+	if input.EditionId == nil || *input.EditionId == "" {
+		message := "A template needs an edition."
+		return nil, errors.NewBadRequestError(&message)
+	}
+	editions := NewEditionsService(s.DynamoDB)
+	if err := editions.checkUsable(*input.EditionId, owner); err != nil {
+		return nil, err
 	}
 	templateItem := types.NewTemplateItem(input, uuid.New().String(), owner)
 	if err := s.DynamoDB.PutItem(templateItem); err != nil {

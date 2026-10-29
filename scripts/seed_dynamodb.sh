@@ -31,12 +31,33 @@ TOKEN_RESPONSE=`curl --request POST \
 
 ACCESS_TOKEN=`echo $TOKEN_RESPONSE | grep -Eo '"access_token"[^,]*' | grep -Eo '[^:]*$' | tr -d '"'`;
 
+# Prints the id at the end of the "entity" of a created item.
+created_id() {
+  grep -Eo "\"entity\":\"#$1#[^\"]*\"" | grep -Eo "[^#]*\"$" | tr -d "\""
+}
+
+# Every template is in an edition. These are all Gloomhaven 2E, and are the system's.
+EDITION_ID=`curl -s --request POST \
+  --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates/editions?scope=system" \
+  --header "Authorization: Bearer $ACCESS_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{"name": "Gloomhaven 2E"}' | created_id EDITION`;
+
+# The template in a file, with the edition added to it.
+with_edition() {
+  node -e '
+    const template = require(process.argv[1]);
+    template.editionId = process.argv[2];
+    console.log(JSON.stringify(template));
+  ' "$PWD/$1" "$EDITION_ID"
+}
+
 for i in $(ls templates/enemies/*); do \
   curl --request POST \
     --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
-    --data "@$i";
+    --data "$(with_edition "$i")";
 done
 
 for i in $(ls templates/characters/*); do \
@@ -44,7 +65,7 @@ for i in $(ls templates/characters/*); do \
     --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
-    --data "@$i";
+    --data "$(with_edition "$i")";
 done
 
 for i in $(ls templates/summons/*); do \
@@ -52,7 +73,7 @@ for i in $(ls templates/summons/*); do \
     --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
-    --data "@$i";
+    --data "$(with_edition "$i")";
 done
 
 for i in $(ls templates/bosses/*); do \
@@ -60,7 +81,7 @@ for i in $(ls templates/bosses/*); do \
     --url "$GLOOMHAVEN_COMPANION_SERVICE_URL/templates?scope=system" \
     --header "Authorization: Bearer $ACCESS_TOKEN" \
     --header 'Content-Type: application/json' \
-    --data "@$i";
+    --data "$(with_edition "$i")";
 done
 
 
@@ -72,18 +93,14 @@ done
 # your Auth0 user id (i.e. SEED_PLAYER_ID="google-oauth2|123456789") and the campaigns are
 # linked to that player too. Running this again creates the campaigns again.
 
-# Prints the id at the end of the "entity" of a created item.
-created_id() {
-  grep -Eo "\"entity\":\"#$1#[^\"]*\"" | grep -Eo "[^#]*\"$" | tr -d "\""
-}
 
 # The ally for a character class (i.e. "Silent Knife") at a character level.
 character_ally() {
   node -e "
     const [file, level] = process.argv.slice(1);
     const { character } = require(file).stats[level];
-    console.log(JSON.stringify({ ...character, alignment: \"ally\" }));
-  " "$PWD/templates/characters/$(echo "$1" | tr "A-Z " "a-z_").json" "$2"
+    console.log(JSON.stringify({ ...character, alignment: \"ally\", editionId: process.argv[3] }));
+  " "$PWD/templates/characters/$(echo "$1" | tr "A-Z " "a-z_").json" "$2" "$EDITION_ID"
 }
 
 # seed_campaign "campaign name" "comma separated player classes" scenario...
@@ -111,7 +128,7 @@ seed_campaign() {
       --url $GLOOMHAVEN_COMPANION_SERVICE_URL/campaigns/$campaign_id/scenarios \
       --header "Authorization: Bearer $ACCESS_TOKEN" \
       --header "Content-Type: application/json" \
-      --data "{\"name\": \"$scenario_name\", \"scenarioLevel\": $scenario_level, \"groups\": \"$scenario_groups\"}" | created_id SCENARIO`;
+      --data "{\"name\": \"$scenario_name\", \"scenarioLevel\": $scenario_level, \"groups\": \"$scenario_groups\", \"editionId\": \"$EDITION_ID\"}" | created_id SCENARIO`;
 
     # Characters have levels 1 to 9. Level 0 scenarios just use level 1 characters.
     local character_level=$(( scenario_level > 0 ? scenario_level : 1 ))

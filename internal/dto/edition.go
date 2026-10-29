@@ -1,7 +1,6 @@
 package dto
 
 import (
-	"gloomhaven-companion-service/internal/constants"
 	"gloomhaven-companion-service/internal/types"
 )
 
@@ -21,16 +20,5 @@ func NewEdition(item types.EditionItem, playerId string) Edition {
 		Name:      item.Name,
 		Scope:     scope,
 		UpdatedAt: item.UpdatedAt,
-	}
-}
-
-// The edition that every template without one is in.
-func NewDefaultEdition() Edition {
-	name := constants.DEFAULT_EDITION_NAME
-	return Edition{
-		Parent: constants.EDITION,
-		Entity: constants.EDITION + constants.SEPERATOR + constants.DEFAULT_EDITION_ID,
-		Name:   &name,
-		Scope:  constants.SCOPE_NAME_SYSTEM,
 	}
 }

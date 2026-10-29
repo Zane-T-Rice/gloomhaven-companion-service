@@ -34,6 +34,7 @@ func NewFigurePatchInput(rawInput []byte, dto *dto.Figure) types.FigurePatchInpu
 			Alignment:      dto.Alignment,
 			AttackPlusC:    dto.AttackPlusC,
 			Flying:         dto.Flying,
+			EditionId:      dto.EditionId,
 			UpdatedAt:      dto.UpdatedAt,
 		},
 	}
